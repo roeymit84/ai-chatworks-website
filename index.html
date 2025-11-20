@@ -116,8 +116,10 @@
     <nav class="fixed w-full z-50 glass-panel">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('home')">
+                <!-- Clean Logo without borders -->
                 <img src="images/AI ChatWorks.svg" alt="AI ChatWorks Logo" class="w-12 h-12">
-                <span class="font-display font-bold text-xl tracking-tight">AI ChatWorks</span>
+                <!-- Larger Text (text-2xl) -->
+                <span class="font-display font-bold text-2xl tracking-tight">AI ChatWorks</span>
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-gray">
                 <button onclick="switchView('home')" class="hover:text-brand-purple transition-colors nav-link" data-target="home">Home</button>
@@ -125,15 +127,14 @@
                 <button onclick="switchView('changelog')" class="hover:text-brand-purple transition-colors nav-link" data-target="changelog">Changelog</button>
                 <button onclick="switchView('contact')" class="hover:text-brand-purple transition-colors nav-link" data-target="contact">Contact</button>
                 <div class="h-4 w-px bg-gray-200"></div>
-                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-brand-dark text-white rounded-lg font-semibold hover:bg-brand-purple transition-all duration-300 shadow-lg shadow-brand-dark/10 hover:shadow-brand-purple/25">
-                    <!-- Chrome Icon (White/Grey for Dark Button) -->
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="white"/>
-                        <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="#FCFCFC"/>
-                        <path d="M6.65082 14.5682L11.0087 7.01999L11.0088 7.02005L12 5.30347H20.3757H20.3758C19.0878 2.26352 15.7668 0.21814 12 0.21814C8.09775 0.21814 4.67276 2.41598 2.97852 5.70544L2.97848 5.70551L6.65082 14.5682Z" fill="#DC2F2F"/>
-                        <path d="M16.0418 17.6001L11.684 25.1484L11.6839 25.1483L11.684 25.1484C11.7886 25.1484 11.894 25.1484 12 25.1484C16.1165 25.1484 19.7376 23.0233 21.9214 19.7673L21.9212 19.7671L17.5634 12.2188L16.0418 17.6001Z" fill="#FBC02D"/>
-                        <path d="M13.5514 16.0787L13.5514 16.0788L9.19354 23.627C5.06357 21.9929 2.12793 17.9792 2.12793 13.3128C2.12793 12.5592 2.20632 11.8246 2.3562 11.1143L2.35628 11.1142L6.71424 3.56592L13.5514 16.0787Z" fill="#388E3C"/>
-                        <path d="M12 16.5818C14.5313 16.5818 16.5818 14.5313 16.5818 12C16.5818 9.4687 14.5313 7.41815 12 7.41815C9.4687 7.41815 7.41815 9.4687 7.41815 12C7.41815 14.5313 9.4687 16.5818 12 16.5818Z" fill="#1976D2"/>
+                <!-- Updated: Purple Button with Bounce Effect -->
+                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark hover:scale-105 transition-all duration-300 shadow-lg shadow-brand-purple/25">
+                    <!-- Chrome Icon SVG -->
+                    <svg class="w-5 h-5" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <ellipse cx="50" cy="50" rx="20" ry="20" style="fill:#188FD1"/>
+                        <path d="M 8.5,26 A 48,48 0 0 1 91.5,26 L 62,29.5 A 24,24 0 0 0 26,50 z" style="fill:#EA3939"/>
+                        <path d="M 50,98 A 48,48 0 0 1 8.5,26 L 26,50 A 24,24 0 0 0 62,70.5 z" style="fill:#4AAE48"/>
+                        <path d="M 91.5,26 A 48,48 0 0 1 50,98 L 62,70.5 A 24,24 0 0 0 62,29.5 z" style="fill:#FED14B"/>
                     </svg>
                     Add to Chrome
                 </a>
@@ -151,7 +152,7 @@
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-purple"></span>
                     </span>
-                    v1.1.2 is now available
+                    v1.1.0 is now available
                 </div>
                 
                 <h1 class="font-display text-6xl md:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
@@ -166,13 +167,12 @@
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" class="group relative px-8 py-4 bg-brand-purple text-white rounded-xl font-bold text-lg overflow-hidden shadow-xl shadow-brand-purple/30 transition-all hover:scale-105 flex items-center gap-3">
                         <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
-                        <!-- Chrome Icon White -->
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="white"/>
-                            <path d="M6.65082 14.5682L11.0087 7.01999L11.0088 7.02005L12 5.30347H20.3757H20.3758C19.0878 2.26352 15.7668 0.21814 12 0.21814C8.09775 0.21814 4.67276 2.41598 2.97852 5.70544L2.97848 5.70551L6.65082 14.5682Z" fill="#DC2F2F"/>
-                            <path d="M16.0418 17.6001L11.684 25.1484L11.6839 25.1483L11.684 25.1484C11.7886 25.1484 11.894 25.1484 12 25.1484C16.1165 25.1484 19.7376 23.0233 21.9214 19.7673L21.9212 19.7671L17.5634 12.2188L16.0418 17.6001Z" fill="#FBC02D"/>
-                            <path d="M13.5514 16.0787L13.5514 16.0788L9.19354 23.627C5.06357 21.9929 2.12793 17.9792 2.12793 13.3128C2.12793 12.5592 2.20632 11.8246 2.3562 11.1143L2.35628 11.1142L6.71424 3.56592L13.5514 16.0787Z" fill="#388E3C"/>
-                            <path d="M12 16.5818C14.5313 16.5818 16.5818 14.5313 16.5818 12C16.5818 9.4687 14.5313 7.41815 12 7.41815C9.4687 7.41815 7.41815 9.4687 7.41815 12C7.41815 14.5313 9.4687 16.5818 12 16.5818Z" fill="#1976D2"/>
+                        <!-- Chrome Icon SVG (Larger for Hero) -->
+                        <svg class="w-6 h-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                            <ellipse cx="50" cy="50" rx="20" ry="20" style="fill:#188FD1"/>
+                            <path d="M 8.5,26 A 48,48 0 0 1 91.5,26 L 62,29.5 A 24,24 0 0 0 26,50 z" style="fill:#EA3939"/>
+                            <path d="M 50,98 A 48,48 0 0 1 8.5,26 L 26,50 A 24,24 0 0 0 62,70.5 z" style="fill:#4AAE48"/>
+                            <path d="M 91.5,26 A 48,48 0 0 1 50,98 L 62,70.5 A 24,24 0 0 0 62,29.5 z" style="fill:#FED14B"/>
                         </svg>
                         <span class="relative">Install Now</span>
                     </a>
@@ -284,7 +284,8 @@
                     <!-- Card 1 -->
                     <div class="p-6 rounded-2xl border border-brand-border bg-white hover:shadow-xl hover:border-brand-purple/30 transition-all group">
                         <div class="w-12 h-12 rounded-xl bg-purple-100 text-brand-purple flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                            <!-- Updated Command Library Icon -->
+                            <svg class="view-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 6 4 14"></path><path d="M12 6v14"></path><path d="M8 8v12"></path><path d="M4 4v16"></path></svg>
                         </div>
                         <h3 class="font-bold text-xl text-brand-dark mb-3">Command Library</h3>
                         <p class="text-brand-slate text-sm leading-relaxed">A full-featured manager for your most valuable AI assets. Organize with folders, search instantly, and track usage statistics.</p>
@@ -292,7 +293,8 @@
                     <!-- Card 2 -->
                     <div class="p-6 rounded-2xl border border-brand-border bg-white hover:shadow-xl hover:border-brand-purple/30 transition-all group">
                         <div class="w-12 h-12 rounded-xl bg-purple-100 text-brand-purple flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <!-- Updated AI ChatWorks Flow Icon -->
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-brand-purple"><path d="M3 12C3 12 5.5 7 9 7C12.5 7 12.5 17 16 17C19.5 17 22 12 22 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path></svg>
                         </div>
                         <h3 class="font-bold text-xl text-brand-dark mb-3">AI ChatWorks Flow</h3>
                         <p class="text-brand-slate text-sm leading-relaxed">Press Cmd+Shift+F to open a command palette. Instantly search your entire library and run smart actions.</p>
@@ -335,15 +337,15 @@
                     <div class="col-span-1 md:col-span-2 row-span-2 bg-white rounded-3xl border border-brand-border p-8 relative overflow-hidden bento-card group">
                         <div class="relative z-10">
                             <div class="w-12 h-12 bg-brand-purple rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-brand-purple/30">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                                <!-- Updated Prompt Library Icon -->
+                                <svg class="view-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 6 4 14"></path><path d="M12 6v14"></path><path d="M8 8v12"></path><path d="M4 4v16"></path></svg>
                             </div>
                             <h3 class="font-display text-2xl font-bold mb-2">Centralized Prompt Library</h3>
                             <p class="text-brand-slate max-w-md">Organize thousands of prompts with folders, tags, and color-coding. Access them instantly without leaving the chat.</p>
                         </div>
                         <div class="absolute bottom-[-20px] right-[-20px] w-[80%] h-[60%] bg-brand-surface rounded-tl-2xl border border-brand-border shadow-xl p-6 transition-transform group-hover:-translate-y-2 group-hover:-translate-x-2">
                             <div class="space-y-3 opacity-50 group-hover:opacity-100 transition-opacity">
-                                <div class="flex gap-2"><div class="w-full h-8 bg-brand-purple/5 border border-brand-purple/10 rounded flex items-center px-3 text-xs text-brand-purple font-medium">Marketing / Launch Plan</div></div>
-                                <div class="flex gap-2"><div class="w-full h-8 bg-white border border-brand-border rounded flex items-center px-3 text-xs text-gray-400">Coding / Python Script</div></div>
+                                  <img src="images/Prompt_library.svg">
                             </div>
                         </div>
                     </div>
@@ -352,7 +354,8 @@
                     <div class="col-span-1 bg-brand-dark text-white rounded-3xl p-8 relative overflow-hidden bento-card group">
                         <div class="relative z-10">
                             <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-6 backdrop-blur-sm">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                <!-- Updated Flow Icon -->
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white"><path d="M3 12C3 12 5.5 7 9 7C12.5 7 12.5 17 16 17C19.5 17 22 12 22 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path></svg>
                             </div>
                             <h3 class="font-display text-2xl font-bold mb-2">Flow Command</h3>
                             <p class="text-gray-400 text-sm">Cmd+J to access everything.</p>
@@ -363,10 +366,10 @@
                     <!-- Small Card: RTL -->
                     <div class="col-span-1 bg-white rounded-3xl border border-brand-border p-8 bento-card relative overflow-hidden group">
                         <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
                         </div>
-                        <h3 class="font-display text-xl font-bold mb-2">Auto RTL</h3>
-                        <p class="text-sm text-brand-slate">Intelligent switching for Hebrew & Arabic.</p>
+                        <h3 class="font-display text-xl font-bold mb-2">Right-Click Capture</h3>
+                        <p class="text-sm text-brand-slate">Save prompts directly from the web.</p>
                     </div>
                 </div>
             </div>
@@ -531,57 +534,89 @@
 
             <div class="max-w-4xl mx-auto space-y-6 animate-fade-in" style="animation-delay: 0.1s;">
                 
-                <!-- Version 1.1.2 -->
-                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden transition-all hover:shadow-lg group">
-                    <div class="p-6 cursor-pointer hover:bg-brand-surface transition-colors" onclick="toggleChangelog(this)">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-4">
-                                <h2 class="text-2xl font-bold text-brand-dark">Version 1.1.2</h2>
-                                <span class="bg-brand-purple text-white text-xs font-bold px-2 py-1 rounded">LATEST</span>
-                            </div>
-                            <div class="text-sm text-brand-slate">December 2025</div>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6 border-t border-brand-border bg-gray-50/50 pt-6">
-                        <div class="space-y-3">
-                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Export Format Controls - Choose formats and reorder with drag-and-drop.</p></div>
-                            <div class="flex gap-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-blue-200">IMPROVED</span> <p class="text-brand-gray text-sm">Flow Search Auto-Focus - Immediate keyboard input capture.</p></div>
-                            <div class="flex gap-4"><span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-orange-200">FIX</span> <p class="text-brand-gray text-sm">Export Output Formatting - Removed excess blank lines.</p></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Version 1.1.1 -->
-                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden transition-all hover:shadow-lg group">
-                    <div class="p-6 cursor-pointer hover:bg-brand-surface transition-colors" onclick="toggleChangelog(this)">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-2xl font-bold text-brand-dark">Version 1.1.1</h2>
-                            <div class="text-sm text-brand-slate">November 09, 2025</div>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6 border-t border-brand-border bg-gray-50/50 pt-6 hidden">
-                        <div class="space-y-3">
-                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Ghost Text Autocomplete in Flow.</p></div>
-                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Prompt Enhancer - Auto re-engineer prompts.</p></div>
-                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Right-click Context Menu Integration.</p></div>
-                            <div class="flex gap-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-blue-200">IMPROVED</span> <p class="text-brand-gray text-sm">Bulk Actions (Multi-select delete/move).</p></div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Version 1.1.0 -->
                 <div class="bg-white rounded-2xl border border-brand-border overflow-hidden transition-all hover:shadow-lg group">
                     <div class="p-6 cursor-pointer hover:bg-brand-surface transition-colors" onclick="toggleChangelog(this)">
                         <div class="flex items-center justify-between">
-                            <h2 class="text-2xl font-bold text-brand-dark">Version 1.1.0</h2>
-                            <div class="text-sm text-brand-slate">November 03, 2025</div>
+                            <div class="flex items-center gap-4">
+                                <h2 class="text-2xl font-bold text-brand-dark">Version 1.1.0</h2>
+                                <span class="bg-brand-purple text-white text-xs font-bold px-2 py-1 rounded">LATEST</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-brand-slate">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="text-sm">November 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 border-t border-brand-border bg-gray-50/50 pt-6">
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded text-xs font-bold h-fit border border-emerald-200 flex items-center justify-center w-24 gap-1 flex-shrink-0">
+                                    <span>✨</span> New
+                                </span> 
+                                <p class="text-brand-gray text-sm flex-1">Chat summaries with auto-copy and progress feedback.</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded text-xs font-bold h-fit border border-emerald-200 flex items-center justify-center w-24 gap-1 flex-shrink-0">
+                                    <span>✨</span> New
+                                </span> 
+                                <p class="text-brand-gray text-sm flex-1">Language detection for summaries with localized sections.</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded text-xs font-bold h-fit border border-emerald-200 flex items-center justify-center w-24 gap-1 flex-shrink-0">
+                                    <span>✨</span> New
+                                </span> 
+                                <p class="text-brand-gray text-sm flex-1">Full-fidelity summaries for clearer context.</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded text-xs font-bold h-fit border border-blue-200 flex items-center justify-center w-24 gap-1 flex-shrink-0">
+                                    <span>🔧</span> Improved
+                                </span> 
+                                <p class="text-brand-gray text-sm flex-1">Favorite animations feel smoother and more responsive.</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded text-xs font-bold h-fit border border-blue-200 flex items-center justify-center w-24 gap-1 flex-shrink-0">
+                                    <span>🔧</span> Improved
+                                </span> 
+                                <p class="text-brand-gray text-sm flex-1">Flow icons and spacing feel more balanced.</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded text-xs font-bold h-fit border border-orange-200 flex items-center justify-center w-24 gap-1 flex-shrink-0">
+                                    <span>🐛</span> Fixed
+                                </span> 
+                                <p class="text-brand-gray text-sm flex-1">Sort dropdown now displays correctly in dark mode.</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded text-xs font-bold h-fit border border-orange-200 flex items-center justify-center w-24 gap-1 flex-shrink-0">
+                                    <span>🐛</span> Fixed
+                                </span> 
+                                <p class="text-brand-gray text-sm flex-1">Sidebar and folder animations are smoother and slower for easier reading.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 1.0.0 -->
+                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden transition-all hover:shadow-lg group">
+                    <div class="p-6 cursor-pointer hover:bg-brand-surface transition-colors" onclick="toggleChangelog(this)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <h2 class="text-2xl font-bold text-brand-dark">Version 1.0.0</h2>
+                            </div>
+                            <div class="flex items-center gap-2 text-brand-slate">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="text-sm">October 2025</span>
+                            </div>
                         </div>
                     </div>
                     <div class="px-6 pb-6 border-t border-brand-border bg-gray-50/50 pt-6 hidden">
                         <div class="space-y-3">
-                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Summarize Chat with auto-copy.</p></div>
-                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Language Detection for summaries.</p></div>
-                            <div class="flex gap-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-blue-200">IMPROVED</span> <p class="text-brand-gray text-sm">Flow UX and Animation refinements.</p></div>
+                            <div class="flex gap-4">
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded text-xs font-bold h-fit border border-emerald-200 flex items-center justify-center w-24 gap-1 flex-shrink-0">
+                                    <span>✨</span> New
+                                </span> 
+                                <p class="text-brand-gray text-sm flex-1">Public release with Chrome Web Store packaging.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -625,18 +660,18 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white py-12 px-6">
+    <footer class="bg-white border-t border-brand-border pt-16 pb-8 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
             <div class="flex items-center gap-2 mb-4 md:mb-0">
                 <div class="w-6 h-6 bg-brand-purple/20 text-brand-purple rounded flex items-center justify-center font-bold text-xs">AI</div>
-                <span>AI ChatWorks © 2025 All rights reserved</span>
+                <span class="text-brand-dark font-medium">AI ChatWorks © 2025 All rights reserved</span>
             </div>
-            <div>Your smart layer for AI chatbots.</div>
+            <div class="text-brand-slate">Your smart layer for AI chatbots.</div>
             <div class="flex gap-6">
-                <a href="#" class="hover:text-white transition-colors">Privacy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms</a>
-                <button onclick="switchView('about')" class="hover:text-white transition-colors">About</button>
-                <button onclick="switchView('contact')" class="hover:text-white transition-colors">Contact</button>
+                <a href="#" class="hover:text-brand-purple transition-colors">Privacy</a>
+                <a href="#" class="hover:text-brand-purple transition-colors">Terms</a>
+                <button onclick="switchView('about')" class="hover:text-brand-purple transition-colors">About</button>
+                <button onclick="switchView('contact')" class="hover:text-brand-purple transition-colors">Contact</button>
             </div>
         </div>
     </footer>
