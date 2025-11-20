@@ -116,7 +116,7 @@
     <nav class="fixed w-full z-50 glass-panel">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('home')">
-                <div class="w-9 h-9 bg-brand-purple rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-brand-purple/20">AI</div>
+                <img src="images/AI ChatWorks.svg" alt="AI ChatWorks Logo" class="w-9 h-9 rounded-lg shadow-lg shadow-brand-purple/20">
                 <span class="font-display font-bold text-xl tracking-tight">AI ChatWorks</span>
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-gray">
@@ -125,7 +125,16 @@
                 <button onclick="switchView('changelog')" class="hover:text-brand-purple transition-colors nav-link" data-target="changelog">Changelog</button>
                 <button onclick="switchView('contact')" class="hover:text-brand-purple transition-colors nav-link" data-target="contact">Contact</button>
                 <div class="h-4 w-px bg-gray-200"></div>
-                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" class="px-5 py-2.5 bg-brand-dark text-white rounded-lg font-semibold hover:bg-brand-purple transition-all duration-300 shadow-lg shadow-brand-dark/10 hover:shadow-brand-purple/25">
+                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-brand-dark text-white rounded-lg font-semibold hover:bg-brand-purple transition-all duration-300 shadow-lg shadow-brand-dark/10 hover:shadow-brand-purple/25">
+                    <!-- Chrome Icon (White/Grey for Dark Button) -->
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="white"/>
+                        <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="#FCFCFC"/>
+                        <path d="M6.65082 14.5682L11.0087 7.01999L11.0088 7.02005L12 5.30347H20.3757H20.3758C19.0878 2.26352 15.7668 0.21814 12 0.21814C8.09775 0.21814 4.67276 2.41598 2.97852 5.70544L2.97848 5.70551L6.65082 14.5682Z" fill="#DC2F2F"/>
+                        <path d="M16.0418 17.6001L11.684 25.1484L11.6839 25.1483L11.684 25.1484C11.7886 25.1484 11.894 25.1484 12 25.1484C16.1165 25.1484 19.7376 23.0233 21.9214 19.7673L21.9212 19.7671L17.5634 12.2188L16.0418 17.6001Z" fill="#FBC02D"/>
+                        <path d="M13.5514 16.0787L13.5514 16.0788L9.19354 23.627C5.06357 21.9929 2.12793 17.9792 2.12793 13.3128C2.12793 12.5592 2.20632 11.8246 2.3562 11.1143L2.35628 11.1142L6.71424 3.56592L13.5514 16.0787Z" fill="#388E3C"/>
+                        <path d="M12 16.5818C14.5313 16.5818 16.5818 14.5313 16.5818 12C16.5818 9.4687 14.5313 7.41815 12 7.41815C9.4687 7.41815 7.41815 9.4687 7.41815 12C7.41815 14.5313 9.4687 16.5818 12 16.5818Z" fill="#1976D2"/>
+                    </svg>
                     Add to Chrome
                 </a>
             </div>
@@ -155,12 +164,17 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#" class="group relative px-8 py-4 bg-brand-purple text-white rounded-xl font-bold text-lg overflow-hidden shadow-xl shadow-brand-purple/30 transition-all hover:scale-105">
+                    <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" class="group relative px-8 py-4 bg-brand-purple text-white rounded-xl font-bold text-lg overflow-hidden shadow-xl shadow-brand-purple/30 transition-all hover:scale-105 flex items-center gap-3">
                         <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
-                        <span class="relative flex items-center gap-2">
-                            Install Extension
-                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </span>
+                        <!-- Chrome Icon White -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="white"/>
+                            <path d="M6.65082 14.5682L11.0087 7.01999L11.0088 7.02005L12 5.30347H20.3757H20.3758C19.0878 2.26352 15.7668 0.21814 12 0.21814C8.09775 0.21814 4.67276 2.41598 2.97852 5.70544L2.97848 5.70551L6.65082 14.5682Z" fill="#DC2F2F"/>
+                            <path d="M16.0418 17.6001L11.684 25.1484L11.6839 25.1483L11.684 25.1484C11.7886 25.1484 11.894 25.1484 12 25.1484C16.1165 25.1484 19.7376 23.0233 21.9214 19.7673L21.9212 19.7671L17.5634 12.2188L16.0418 17.6001Z" fill="#FBC02D"/>
+                            <path d="M13.5514 16.0787L13.5514 16.0788L9.19354 23.627C5.06357 21.9929 2.12793 17.9792 2.12793 13.3128C2.12793 12.5592 2.20632 11.8246 2.3562 11.1143L2.35628 11.1142L6.71424 3.56592L13.5514 16.0787Z" fill="#388E3C"/>
+                            <path d="M12 16.5818C14.5313 16.5818 16.5818 14.5313 16.5818 12C16.5818 9.4687 14.5313 7.41815 12 7.41815C9.4687 7.41815 7.41815 9.4687 7.41815 12C7.41815 14.5313 9.4687 16.5818 12 16.5818Z" fill="#1976D2"/>
+                        </svg>
+                        <span class="relative">Install Now</span>
                     </a>
                     <button onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 bg-white text-brand-dark border border-brand-border rounded-xl font-bold text-lg hover:bg-brand-surface hover:border-brand-purple/30 transition-all">
                         Explore Features
@@ -258,22 +272,67 @@
             </div>
         </section>
 
+        <!-- Core Capabilities (New Section from Screenshot) -->
+        <section class="py-24 px-6 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-brand-dark mb-4">Everything You Need in One Place</h2>
+                    <p class="text-lg text-brand-slate">Smart tools for organized chat work. All in one place.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1 -->
+                    <div class="p-6 rounded-2xl border border-brand-border bg-white hover:shadow-xl hover:border-brand-purple/30 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-brand-purple flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        </div>
+                        <h3 class="font-bold text-xl text-brand-dark mb-3">Command Library</h3>
+                        <p class="text-brand-slate text-sm leading-relaxed">A full-featured manager for your most valuable AI assets. Organize with folders, search instantly, and track usage statistics.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="p-6 rounded-2xl border border-brand-border bg-white hover:shadow-xl hover:border-brand-purple/30 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-brand-purple flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="font-bold text-xl text-brand-dark mb-3">AI ChatWorks Flow</h3>
+                        <p class="text-brand-slate text-sm leading-relaxed">Press Cmd+Shift+F to open a command palette. Instantly search your entire library and run smart actions.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="p-6 rounded-2xl border border-brand-border bg-white hover:shadow-xl hover:border-brand-purple/30 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-brand-purple flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        </div>
+                        <h3 class="font-bold text-xl text-brand-dark mb-3">Universal Sync</h3>
+                        <p class="text-brand-slate text-sm leading-relaxed">All your prompts are stored locally and work uniformly across ChatGPT, Claude, and Gemini.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="p-6 rounded-2xl border border-brand-border bg-white hover:shadow-xl hover:border-brand-purple/30 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-brand-purple flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+                        </div>
+                        <h3 class="font-bold text-xl text-brand-dark mb-3">Right-Click Capture</h3>
+                        <p class="text-brand-slate text-sm leading-relaxed">Work directly in the chat, without copying or switching. Right-click any text on the page to save it as a new prompt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Features Bento Grid -->
-        <section id="features" class="py-32 px-6 bg-white relative">
+        <section id="features" class="py-24 px-6 bg-brand-surface border-t border-brand-border relative">
             <div class="max-w-7xl mx-auto">
                 <div class="mb-20 max-w-3xl">
                     <h2 class="font-display text-4xl md:text-5xl font-bold text-brand-dark mb-6">
-                        Everything you need to <br>
-                        <span class="text-brand-purple">master the chat.</span>
+                        Master the chat <br>
+                        <span class="text-brand-purple">with pro-level tools.</span>
                     </h2>
                     <p class="text-lg text-brand-slate">
-                        AI ChatWorks combines a professional prompt manager with essential workflow tools, built directly into your browser.
+                        Deep features designed for power users who need more than just a clipboard history.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-6 h-auto md:h-[600px]">
                     <!-- Large Card: Prompt Library -->
-                    <div class="col-span-1 md:col-span-2 row-span-2 bg-brand-surface rounded-3xl border border-brand-border p-8 relative overflow-hidden bento-card group">
+                    <div class="col-span-1 md:col-span-2 row-span-2 bg-white rounded-3xl border border-brand-border p-8 relative overflow-hidden bento-card group">
                         <div class="relative z-10">
                             <div class="w-12 h-12 bg-brand-purple rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-brand-purple/30">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
@@ -281,7 +340,7 @@
                             <h3 class="font-display text-2xl font-bold mb-2">Centralized Prompt Library</h3>
                             <p class="text-brand-slate max-w-md">Organize thousands of prompts with folders, tags, and color-coding. Access them instantly without leaving the chat.</p>
                         </div>
-                        <div class="absolute bottom-[-20px] right-[-20px] w-[80%] h-[60%] bg-white rounded-tl-2xl border border-brand-border shadow-xl p-6 transition-transform group-hover:-translate-y-2 group-hover:-translate-x-2">
+                        <div class="absolute bottom-[-20px] right-[-20px] w-[80%] h-[60%] bg-brand-surface rounded-tl-2xl border border-brand-border shadow-xl p-6 transition-transform group-hover:-translate-y-2 group-hover:-translate-x-2">
                             <div class="space-y-3 opacity-50 group-hover:opacity-100 transition-opacity">
                                 <div class="flex gap-2"><div class="w-full h-8 bg-brand-purple/5 border border-brand-purple/10 rounded flex items-center px-3 text-xs text-brand-purple font-medium">Marketing / Launch Plan</div></div>
                                 <div class="flex gap-2"><div class="w-full h-8 bg-white border border-brand-border rounded flex items-center px-3 text-xs text-gray-400">Coding / Python Script</div></div>
