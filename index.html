@@ -204,17 +204,22 @@
                 </div>
             </div>
 
-            <!-- Video Demo (No Header) -->
-            <div class="hero-container max-w-5xl mx-auto mt-12 relative z-10">
-                <div class="relative rounded-xl bg-brand-dark p-1.5 shadow-2xl ring-1 ring-gray-900/10 overflow-hidden">
-                    <!-- Updated to use the specific MP4 file requested -->
-                    <video autoplay loop muted playsinline controls class="w-full h-auto block bg-white rounded-lg">
-                        <source src="images/ai-chatworks (1).mp4" type="video/mp4">
-                        <!-- Fallback content -->
-                        <div class="p-20 text-center bg-gray-100 text-gray-500">
-                            Video not supported or file missing.
-                        </div>
-                    </video>
+            <!-- Video Demo (Improved UX: Browser Window Style) -->
+            <!-- Reduced width to max-w-4xl (from 5xl) for a tighter look -->
+            <div class="hero-container max-w-4xl mx-auto mt-12 relative z-10">
+                <!-- Replaced aggressive dark border with a clean, browser-like window frame -->
+                <div class="relative rounded-xl bg-white border border-brand-border shadow-2xl shadow-brand-purple/10 overflow-hidden">
+                    
+                    <!-- Video Content -->
+                    <div class="aspect-video bg-gray-100">
+                        <video autoplay loop muted playsinline controls class="w-full h-full object-contain">
+                            <source src="images/ai-chatworks (1).mp4" type="video/mp4">
+                            <!-- Fallback content -->
+                            <div class="flex items-center justify-center h-full text-gray-400 text-sm">
+                                Video loading...
+                            </div>
+                        </video>
+                    </div>
                 </div>
             </div>
         </section>
