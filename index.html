@@ -207,10 +207,9 @@
             <!-- Video Demo (No Header) -->
             <div class="hero-container max-w-5xl mx-auto mt-12 relative z-10">
                 <div class="relative rounded-xl bg-brand-dark p-1.5 shadow-2xl ring-1 ring-gray-900/10 overflow-hidden">
-                    <!-- Added controls attribute for manual playback if autoplay fails -->
+                    <!-- Updated to use the specific MP4 file requested -->
                     <video autoplay loop muted playsinline controls class="w-full h-auto block bg-white rounded-lg">
-                        <source src="images/ai-chatworks.mp4" type="video/mp4">
-                        <source src="images/ai-chatworks.mov" type="video/quicktime">
+                        <source src="images/ai-chatworks (1).mp4" type="video/mp4">
                         <!-- Fallback content -->
                         <div class="p-20 text-center bg-gray-100 text-gray-500">
                             Video not supported or file missing.
@@ -622,12 +621,11 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-brand-border">
-        <!-- Changed max-w-7xl to max-w-6xl for better compactness -->
-        <!-- Changed justify-between to justify-center with gap-20 for proper centering -->
-        <div class="max-w-6xl mx-auto py-12 px-6 flex flex-wrap justify-center gap-20">
+        <!-- Reduced width from 6xl to 5xl for tighter centering -->
+        <!-- justify-between spreads the items out nicely within that narrower container -->
+        <div class="max-w-5xl mx-auto py-12 px-6 flex flex-wrap justify-between gap-16">
             
             <!-- Brand Block -->
-            <!-- Removed flex-1 so it doesn't stretch unnecessarily -->
             <div class="min-w-[220px]">
                 <div class="flex items-center gap-3 mb-3">
                     <img src="images/AI ChatWorks.svg" alt="AI ChatWorks Logo" class="w-8 h-8" onerror="this.style.display='none'">
