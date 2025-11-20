@@ -113,10 +113,10 @@
                 <span class="font-bold text-2xl tracking-tight">AI ChatWorks</span>
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-gray">
+                <!-- Removed "About Us" from header as requested -->
                 <button onclick="switchView('home')" class="hover:text-brand-purple transition-colors nav-link" data-target="home">Home</button>
-                <button onclick="switchView('about')" class="hover:text-brand-purple transition-colors nav-link" data-target="about">About Us</button>
                 <button onclick="switchView('changelog')" class="hover:text-brand-purple transition-colors nav-link" data-target="changelog">Changelog</button>
-                <button onclick="switchView('contact')" class="hover:text-brand-purple transition-colors nav-link" data-target="contact">Contact</button>
+                <button onclick="switchView('contact')" class="hover:text-brand-purple transition-colors nav-link" data-target="contact">Contact us</button>
                 <div class="h-4 w-px bg-gray-200"></div>
                 <!-- Updated: Purple Button with Bounce Effect -->
                 <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark hover:scale-105 transition-all duration-300 shadow-lg shadow-brand-purple/25">
@@ -204,22 +204,14 @@
                 </div>
             </div>
 
-            <!-- Video Demo -->
+            <!-- Video Demo (No Header) -->
             <div class="hero-container max-w-5xl mx-auto mt-12 relative z-10">
                 <div class="relative rounded-xl bg-brand-dark p-1.5 shadow-2xl ring-1 ring-gray-900/10 overflow-hidden">
-                    <!-- Browser Header Simulation -->
-                    <div class="bg-white border-b border-brand-border h-8 flex items-center px-3 gap-2">
-                        <div class="flex gap-1.5">
-                            <div class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></div>
-                        </div>
-                        <div class="mx-auto bg-gray-100 px-2 py-0.5 rounded text-[10px] text-gray-400 font-mono w-1/3 text-center">ai-chatworks.com</div>
-                    </div>
+                    <!-- Browser Header Removed -->
                     <!-- Video Player -->
-                    <video autoplay loop muted playsinline class="w-full h-auto block bg-white">
-                        <source src="images/ai-chatworks.mov" type="video/quicktime">
-                        <source src="images/ai-chatworks.mp4" type="video/mp4"> <!-- Fallback if user converts to mp4 -->
+                    <video autoplay loop muted playsinline class="w-full h-auto block bg-white rounded-lg">
+                        <source src="images/ai-chatworks.mp4" type="video/mp4"> <!-- Priority: MP4 (Web Standard) -->
+                        <source src="images/ai-chatworks.mov" type="video/quicktime"> <!-- Fallback: MOV -->
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -310,7 +302,7 @@
                             <p class="text-brand-slate max-w-md">Organize thousands of prompts with folders, tags, and color-coding. Access them instantly without leaving the chat.</p>
                         </div>
                         <div class="absolute bottom-0 right-0 w-[80%] h-[60%] overflow-hidden rounded-tl-2xl border-t border-l border-brand-border shadow-xl group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform">
-                             <!-- UPDATED IMAGE -->
+                             <!-- UPDATED IMAGE with correct path -->
                              <img src="images/Prompt_library.svg" class="w-full h-full object-cover object-left-top" alt="Prompt Library Interface">
                         </div>
                     </div>
@@ -634,7 +626,7 @@
             </div>
             
             <!-- Links -->
-            <div class="flex flex-wrap justify-center gap-8 text-sm font-medium text-brand-gray">
+            <div class="flex flex-col gap-4 text-sm font-medium text-brand-gray">
                 <button onclick="switchView('about')" class="hover:text-brand-purple transition-colors">About us</button>
                 <button onclick="switchView('contact')" class="hover:text-brand-purple transition-colors">Contact us</button>
                 <button onclick="switchView('changelog')" class="hover:text-brand-purple transition-colors">Changelog</button>
