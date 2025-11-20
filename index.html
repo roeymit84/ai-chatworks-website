@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI ChatWorks - Your Smart Layer for AI Chatbots</title>
+    
+    <!-- Fonts: Open Sans (Body) & Rubik (Headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Rubik:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#8b5cf6',
+                            purpleDark: '#7c3aed',
+                            purpleLight: '#ddd6fe',
+                            dark: '#111827',
+                            gray: '#374151',
+                            slate: '#64748b',
+                            bg: '#ffffff',
+                            surface: '#f9fafb',
+                            border: '#e5e7eb',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        display: ['Rubik', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Glassmorphism & Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+
+        .hero-perspective { perspective: 2000px; }
+        
+        .hero-rotate {
+            transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg) scale(0.95);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out;
+        }
+        
+        .hero-container:hover .hero-rotate {
+            transform: rotateX(10deg) scale(1);
+        }
+
+        .bento-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.15);
+            border-color: #8b5cf6;
+        }
+
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #111827 30%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* SPA View Transitions */
+        .view-section {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .view-section.active {
+            display: block;
+        }
+        
+        /* Accordion Logic */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-dark antialiased overflow-x-hidden">
+
+    <!-- Ambient Background Light -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-brand-purple/5 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('home')">
+                <div class="w-9 h-9 bg-brand-purple rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-brand-purple/20">AI</div>
+                <span class="font-display font-bold text-xl tracking-tight">AI ChatWorks</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-gray">
+                <button onclick="switchView('home')" class="hover:text-brand-purple transition-colors nav-link" data-target="home">Home</button>
+                <button onclick="switchView('about')" class="hover:text-brand-purple transition-colors nav-link" data-target="about">About Us</button>
+                <button onclick="switchView('changelog')" class="hover:text-brand-purple transition-colors nav-link" data-target="changelog">Changelog</button>
+                <button onclick="switchView('contact')" class="hover:text-brand-purple transition-colors nav-link" data-target="contact">Contact</button>
+                <div class="h-4 w-px bg-gray-200"></div>
+                <a href="#" class="px-5 py-2.5 bg-brand-dark text-white rounded-lg font-semibold hover:bg-brand-purple transition-all duration-300 shadow-lg shadow-brand-dark/10 hover:shadow-brand-purple/25">
+                    Add to Chrome
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== HOME VIEW ===================== -->
+    <main id="view-home" class="view-section active">
+        <!-- Hero Section -->
+        <section class="pt-40 pb-20 px-6 relative">
+            <div class="max-w-5xl mx-auto text-center mb-16 relative z-10">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-purple/5 border border-brand-purple/10 text-brand-purple font-medium text-sm mb-8 animate-float">
+                    <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-purple"></span>
+                    </span>
+                    v1.1.2 is now available
+                </div>
+                
+                <h1 class="font-display text-6xl md:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
+                    Your smart layer for <br>
+                    <span class="text-gradient-purple">AI Chatbots</span>
+                </h1>
+                
+                <p class="text-xl text-brand-slate mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Stop wrestling with chat interfaces. Centralize your prompts, control text direction, and automate actions across ChatGPT, Claude, and Gemini.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#" class="group relative px-8 py-4 bg-brand-purple text-white rounded-xl font-bold text-lg overflow-hidden shadow-xl shadow-brand-purple/30 transition-all hover:scale-105">
+                        <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                        <span class="relative flex items-center gap-2">
+                            Install Extension
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
+                    </a>
+                    <button onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 bg-white text-brand-dark border border-brand-border rounded-xl font-bold text-lg hover:bg-brand-surface hover:border-brand-purple/30 transition-all">
+                        Explore Features
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3D Dashboard Visualization -->
+            <div class="hero-container hero-perspective max-w-6xl mx-auto mt-8">
+                <div class="hero-rotate relative rounded-xl bg-brand-dark p-2 shadow-2xl ring-1 ring-gray-900/10">
+                    <!-- Screen Bezel -->
+                    <div class="rounded-lg overflow-hidden bg-white aspect-[16/10] relative">
+                        <!-- Fake UI Header -->
+                        <div class="bg-white border-b border-brand-border h-12 flex items-center px-4 gap-3">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#FEBC2E]"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#28C840]"></div>
+                            </div>
+                            <div class="mx-auto bg-gray-100 px-3 py-1 rounded-md text-xs text-gray-400 font-mono flex items-center gap-2">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                                chat.openai.com
+                            </div>
+                        </div>
+                        
+                        <!-- UI Content Layout -->
+                        <div class="flex h-full">
+                            <!-- Sidebar -->
+                            <div class="w-64 border-r border-brand-border bg-brand-surface flex flex-col p-4 gap-4">
+                                <div class="flex items-center gap-2 text-brand-purple font-bold mb-4">
+                                    <div class="w-6 h-6 bg-brand-purple rounded text-white flex items-center justify-center text-xs">AI</div>
+                                    ChatWorks
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="px-3 py-2 bg-brand-purple/10 text-brand-purple rounded-lg text-sm font-medium flex items-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                                        Prompt Library
+                                    </div>
+                                    <div class="px-3 py-2 text-brand-gray hover:bg-gray-100 rounded-lg text-sm font-medium flex items-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                                        New Folder
+                                    </div>
+                                </div>
+                                <div class="mt-auto p-4 bg-white rounded-xl border border-brand-border shadow-sm">
+                                    <div class="text-xs font-bold text-gray-400 uppercase mb-2">Storage Used</div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5 mb-2">
+                                        <div class="bg-brand-purple h-1.5 rounded-full w-[35%]"></div>
+                                    </div>
+                                    <div class="text-xs text-brand-gray">Local-First • High Capacity</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Main Chat Area -->
+                            <div class="flex-1 bg-white p-8 relative">
+                                <!-- Flow Palette -->
+                                <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-xl shadow-2xl border border-gray-100 z-20 animate-float">
+                                    <div class="p-4 border-b border-gray-100 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                        <span class="text-gray-400 text-lg">Search prompts or run actions...</span>
+                                        <span class="ml-auto text-xs bg-gray-100 px-2 py-1 rounded text-gray-500 font-mono">Cmd+J</span>
+                                    </div>
+                                    <div class="p-2">
+                                        <div class="flex items-center gap-3 p-3 bg-brand-purple text-white rounded-lg shadow-lg shadow-brand-purple/20">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                            <div>
+                                                <div class="font-bold text-sm">Summarize Chat</div>
+                                                <div class="text-xs opacity-80">Generate a structured summary of this conversation</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3 p-3 text-brand-dark hover:bg-gray-50 rounded-lg">
+                                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                            <div>
+                                                <div class="font-bold text-sm">Fix Grammar & Tone</div>
+                                                <div class="text-xs text-gray-500">Rewrite the input text for professional clarity</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof -->
+        <section class="py-10 border-y border-brand-border bg-brand-surface/50">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <p class="text-sm font-bold text-brand-slate uppercase tracking-widest mb-6">Seamlessly Integrated With</p>
+                <div class="flex flex-wrap justify-center gap-12 md:gap-20 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="flex items-center gap-2 text-xl font-bold text-[#10A37F]">ChatGPT</div>
+                    <div class="flex items-center gap-2 text-xl font-bold text-[#CC785C]">Claude</div>
+                    <div class="flex items-center gap-2 text-xl font-bold text-[#4285F4]">Gemini</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Bento Grid -->
+        <section id="features" class="py-32 px-6 bg-white relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-20 max-w-3xl">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-brand-dark mb-6">
+                        Everything you need to <br>
+                        <span class="text-brand-purple">master the chat.</span>
+                    </h2>
+                    <p class="text-lg text-brand-slate">
+                        AI ChatWorks combines a professional prompt manager with essential workflow tools, built directly into your browser.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-6 h-auto md:h-[600px]">
+                    <!-- Large Card: Prompt Library -->
+                    <div class="col-span-1 md:col-span-2 row-span-2 bg-brand-surface rounded-3xl border border-brand-border p-8 relative overflow-hidden bento-card group">
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 bg-brand-purple rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-brand-purple/30">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold mb-2">Centralized Prompt Library</h3>
+                            <p class="text-brand-slate max-w-md">Organize thousands of prompts with folders, tags, and color-coding. Access them instantly without leaving the chat.</p>
+                        </div>
+                        <div class="absolute bottom-[-20px] right-[-20px] w-[80%] h-[60%] bg-white rounded-tl-2xl border border-brand-border shadow-xl p-6 transition-transform group-hover:-translate-y-2 group-hover:-translate-x-2">
+                            <div class="space-y-3 opacity-50 group-hover:opacity-100 transition-opacity">
+                                <div class="flex gap-2"><div class="w-full h-8 bg-brand-purple/5 border border-brand-purple/10 rounded flex items-center px-3 text-xs text-brand-purple font-medium">Marketing / Launch Plan</div></div>
+                                <div class="flex gap-2"><div class="w-full h-8 bg-white border border-brand-border rounded flex items-center px-3 text-xs text-gray-400">Coding / Python Script</div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tall Card: Flow -->
+                    <div class="col-span-1 bg-brand-dark text-white rounded-3xl p-8 relative overflow-hidden bento-card group">
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-6 backdrop-blur-sm">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold mb-2">Flow Command</h3>
+                            <p class="text-gray-400 text-sm">Cmd+J to access everything.</p>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-brand-purple/20 to-transparent"></div>
+                    </div>
+
+                    <!-- Small Card: RTL -->
+                    <div class="col-span-1 bg-white rounded-3xl border border-brand-border p-8 bento-card relative overflow-hidden group">
+                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-2">Auto RTL</h3>
+                        <p class="text-sm text-brand-slate">Intelligent switching for Hebrew & Arabic.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-24 px-6 max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-display font-bold text-brand-dark mb-2">Frequently Asked Questions</h2>
+                <p class="text-brand-slate">Everything you wanted to know</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- Item 1 -->
+                <details class="group bg-white rounded-xl border border-brand-border overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
+                        Is my information secure?
+                        <svg class="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-brand-slate leading-relaxed">
+                        Absolutely. Security and privacy are core to our design. Your entire prompt library is stored 100% locally on your computer using secure browser storage (chrome.storage.local). Nothing is ever sent to an external server, ensuring your data remains private and secure.
+                    </div>
+                </details>
+                
+                <!-- Item 2 -->
+                <details class="group bg-white rounded-xl border border-brand-border overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
+                        Is there a backup for the prompt library?
+                        <svg class="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-brand-slate leading-relaxed">
+                        Yes. The "Data Management" tab in Settings features a robust Import/Export tool. You can create a full backup of your prompts, folders, and settings as a single .zip file, allowing you to restore your library or move it to a new computer at any time.
+                    </div>
+                </details>
+
+                <!-- Item 3 -->
+                <details class="group bg-white rounded-xl border border-brand-border overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
+                        How do I get started?
+                        <svg class="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-brand-slate leading-relaxed">
+                        After installing, the extension will automatically activate on supported sites (ChatGPT, Claude, Gemini). You can either follow the quick onboarding tour or start immediately. Open the main window by clicking the floating icon, or press Cmd+Shift+F (Mac) / Ctrl+Shift+F (Windows) to launch the "Flow" command palette.
+                    </div>
+                </details>
+
+                <!-- Item 4 -->
+                <details class="group bg-white rounded-xl border border-brand-border overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
+                        Is there technical support?
+                        <svg class="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-brand-slate leading-relaxed">
+                        Yes. We offer community and direct support. You can access support links, join our Facebook group, or find our contact email directly from the "Help & Support" section within the extension's settings panel.
+                    </div>
+                </details>
+
+                <!-- Item 5 -->
+                <details class="group bg-white rounded-xl border border-brand-border overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
+                        What is "Flow"?
+                        <svg class="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-brand-slate leading-relaxed">
+                        Flow is your productivity command palette. Press Cmd+Shift+F (Mac) or Ctrl+Shift+F (Windows) to open it. From there, you can instantly search your entire prompt library or execute smart actions—like "Summarize Chat" or "Open Settings"—all without using your mouse.
+                    </div>
+                </details>
+
+                <!-- Item 6 -->
+                <details class="group bg-white rounded-xl border border-brand-border overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
+                        How does the "Summarize Chat" action work?
+                        <svg class="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-brand-slate leading-relaxed">
+                        The "Summarize Chat" action (available in Flow) is an intelligent tool that reads the current conversation, detects the dominant language (e.g., English, Hebrew, etc.), and then instructs the AI to generate a "full fidelity" summary. This summary is automatically copied to your clipboard, allowing you to seamlessly start a new chat with full context.
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================== ABOUT VIEW ===================== -->
+    <main id="view-about" class="view-section">
+        <section class="pt-32 pb-20 px-6">
+            <div class="max-w-5xl mx-auto text-center mb-20 animate-fade-in">
+                <h1 class="font-display text-5xl md:text-6xl font-bold mb-6 text-brand-dark">About AI ChatWorks</h1>
+                <p class="text-xl text-brand-slate max-w-3xl mx-auto">Transforming how people work with AI chatbots.</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto space-y-8 animate-fade-in" style="animation-delay: 0.1s;">
+                <!-- Mission -->
+                <div class="bg-white rounded-3xl border border-brand-border p-12 shadow-sm">
+                    <div class="flex flex-col md:flex-row items-start gap-8">
+                        <div class="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center flex-shrink-0 text-brand-purple">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <div>
+                            <h2 class="font-display text-2xl font-bold mb-4 text-brand-dark">Our Mission</h2>
+                            <p class="text-lg text-brand-slate leading-relaxed">
+                                AI ChatWorks was created from a deep understanding of the everyday challenges of working with AI tools. 
+                                We saw how users struggled with organizing prompts, switching between platforms, and managing their workflow efficiently.
+                                <br /><br />
+                                We decided to create a solution that combines all the essential tools in one place - simple, elegant, and effective.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Values Grid -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-3xl border border-brand-border p-10 shadow-sm hover:border-brand-purple/30 transition-colors">
+                        <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-6 text-blue-600">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-3 text-brand-dark">Simplicity and Efficiency</h3>
+                        <p class="text-brand-slate leading-relaxed">
+                            We believe that good tools should be simple to use and intuitive. 
+                            Every feature in AI ChatWorks is designed to save you time and help you work smarter.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-brand-border p-10 shadow-sm hover:border-brand-purple/30 transition-colors">
+                        <div class="w-14 h-14 rounded-xl bg-emerald-50 flex items-center justify-center mb-6 text-emerald-600">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-3 text-brand-dark">Community and Support</h3>
+                        <p class="text-brand-slate leading-relaxed mb-6">
+                            We're not just building tools, we're building a community of users who help each other.
+                            Your feedback is important to us.
+                        </p>
+                        <a href="https://www.facebook.com/groups/1208608001123842/" target="_blank" class="inline-flex items-center gap-2 text-blue-600 font-bold hover:underline">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            Join our Facebook Community
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Story -->
+                <div class="rounded-3xl p-12 text-white bg-gradient-to-br from-brand-purple to-blue-600 shadow-xl">
+                    <h2 class="font-display text-3xl font-bold mb-6">Our Story</h2>
+                    <p class="text-lg leading-relaxed opacity-90 mb-6">
+                        AI ChatWorks started as a personal project by a team of developers who worked daily with ChatGPT, Claude, and Gemini.
+                        We were frustrated with the need to switch between tools, copy and paste prompts, and manage our workflow across multiple platforms.
+                    </p>
+                    <p class="text-lg leading-relaxed opacity-90">
+                        So we built a solution for ourselves, and to our surprise, we discovered that thousands of other users faced the same problems.
+                        Today, AI ChatWorks serves a growing community of people looking for a better way to work with AI.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================== CHANGELOG VIEW ===================== -->
+    <main id="view-changelog" class="view-section">
+        <section class="pt-32 pb-20 px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
+                <h1 class="font-display text-5xl font-bold mb-4 text-brand-dark">Changelog</h1>
+                <p class="text-xl text-brand-slate">Stay up to date with the latest features and improvements.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-6 animate-fade-in" style="animation-delay: 0.1s;">
+                
+                <!-- Version 1.1.2 -->
+                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden transition-all hover:shadow-lg group">
+                    <div class="p-6 cursor-pointer hover:bg-brand-surface transition-colors" onclick="toggleChangelog(this)">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <h2 class="text-2xl font-bold text-brand-dark">Version 1.1.2</h2>
+                                <span class="bg-brand-purple text-white text-xs font-bold px-2 py-1 rounded">LATEST</span>
+                            </div>
+                            <div class="text-sm text-brand-slate">December 2025</div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 border-t border-brand-border bg-gray-50/50 pt-6">
+                        <div class="space-y-3">
+                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Export Format Controls - Choose formats and reorder with drag-and-drop.</p></div>
+                            <div class="flex gap-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-blue-200">IMPROVED</span> <p class="text-brand-gray text-sm">Flow Search Auto-Focus - Immediate keyboard input capture.</p></div>
+                            <div class="flex gap-4"><span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-orange-200">FIX</span> <p class="text-brand-gray text-sm">Export Output Formatting - Removed excess blank lines.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 1.1.1 -->
+                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden transition-all hover:shadow-lg group">
+                    <div class="p-6 cursor-pointer hover:bg-brand-surface transition-colors" onclick="toggleChangelog(this)">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl font-bold text-brand-dark">Version 1.1.1</h2>
+                            <div class="text-sm text-brand-slate">November 09, 2025</div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 border-t border-brand-border bg-gray-50/50 pt-6 hidden">
+                        <div class="space-y-3">
+                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Ghost Text Autocomplete in Flow.</p></div>
+                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Prompt Enhancer - Auto re-engineer prompts.</p></div>
+                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Right-click Context Menu Integration.</p></div>
+                            <div class="flex gap-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-blue-200">IMPROVED</span> <p class="text-brand-gray text-sm">Bulk Actions (Multi-select delete/move).</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 1.1.0 -->
+                <div class="bg-white rounded-2xl border border-brand-border overflow-hidden transition-all hover:shadow-lg group">
+                    <div class="p-6 cursor-pointer hover:bg-brand-surface transition-colors" onclick="toggleChangelog(this)">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl font-bold text-brand-dark">Version 1.1.0</h2>
+                            <div class="text-sm text-brand-slate">November 03, 2025</div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 border-t border-brand-border bg-gray-50/50 pt-6 hidden">
+                        <div class="space-y-3">
+                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Summarize Chat with auto-copy.</p></div>
+                            <div class="flex gap-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-emerald-200">NEW</span> <p class="text-brand-gray text-sm">Language Detection for summaries.</p></div>
+                            <div class="flex gap-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold h-fit border border-blue-200">IMPROVED</span> <p class="text-brand-gray text-sm">Flow UX and Animation refinements.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================== CONTACT VIEW ===================== -->
+    <main id="view-contact" class="view-section">
+        <section class="min-h-screen pt-32 pb-20 px-6 bg-gradient-to-br from-purple-50 via-white to-blue-50">
+            <div class="max-w-4xl mx-auto animate-fade-in">
+                <div class="text-center mb-12">
+                    <h1 class="font-display text-5xl font-bold text-brand-dark mb-4">Contact Us</h1>
+                    <p class="text-xl text-brand-slate max-w-2xl mx-auto">
+                        We'd love to hear from you! Have a question, suggestion, or feedback? Get in touch.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-xl border border-brand-border p-12">
+                    <div class="flex flex-col items-center gap-8 text-center">
+                        <div class="w-20 h-20 bg-brand-purple/10 rounded-full flex items-center justify-center">
+                            <svg class="w-10 h-10 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <h2 class="text-2xl font-bold text-brand-dark">Send us an email</h2>
+                            <p class="text-brand-slate max-w-md mx-auto">
+                                We're here to help! Reach out to us with any question or request.
+                            </p>
+                        </div>
+
+                        <a href="mailto:info@ai-chatworks.com" class="inline-flex items-center gap-3 bg-brand-purple hover:bg-brand-purpleDark text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            info@ai-chatworks.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
+            <div class="flex items-center gap-2 mb-4 md:mb-0">
+                <div class="w-6 h-6 bg-brand-purple/20 text-brand-purple rounded flex items-center justify-center font-bold text-xs">AI</div>
+                <span>AI ChatWorks © 2025 All rights reserved</span>
+            </div>
+            <div>Your smart layer for AI chatbots.</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <button onclick="switchView('about')" class="hover:text-white transition-colors">About</button>
+                <button onclick="switchView('contact')" class="hover:text-white transition-colors">Contact</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchView(viewId) {
+            // Hide all views
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            // Show selected view
+            document.getElementById('view-' + viewId).classList.add('active');
+            // Update Nav State
+            document.querySelectorAll('.nav-link').forEach(el => {
+                if(el.dataset.target === viewId) el.classList.add('text-brand-purple');
+                else el.classList.remove('text-brand-purple');
+            });
+            // Scroll to top
+            window.scrollTo(0,0);
+        }
+
+        function toggleChangelog(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.querySelector('.nav-link[data-target="home"]').classList.add('text-brand-purple');
+    </script>
+</body>
+</html>
