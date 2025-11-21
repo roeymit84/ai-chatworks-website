@@ -121,7 +121,6 @@
         
         <section class="pt-40 pb-20 px-6 relative">
             <div class="max-w-5xl mx-auto text-center mb-16 relative z-10">
-                <!-- UPDATED: Benefit-Driven Badge with New Copy -->
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-purple/5 border border-brand-purple/10 text-brand-purple font-medium text-sm mb-8 animate-float">
                     <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
@@ -244,10 +243,12 @@
             <div class="hero-container max-w-4xl mx-auto mt-12 relative z-10">
                 <div class="relative rounded-xl bg-white border border-brand-border shadow-2xl shadow-brand-purple/10 overflow-hidden">
                     <div class="aspect-video bg-gray-100 flex items-center justify-center">
-                         <div class="text-center">
-                            <p class="text-gray-400 font-medium">Demo Video Placeholder</p>
-                            <p class="text-xs text-gray-300 mt-2">(Video file not loaded in preview)</p>
-                         </div>
+                         <video autoplay loop muted playsinline controls class="w-full h-full object-contain">
+                            <source src="images/ai-chatworks (1).mp4" type="video/mp4">
+                            <div class="flex items-center justify-center h-full text-gray-400 text-sm">
+                                Video loading...
+                            </div>
+                        </video>
                     </div>
                 </div>
             </div>
@@ -325,7 +326,8 @@
                             <p class="text-brand-slate max-w-md">Instead of “that one chat from last week”, you get a structured library: folders, colors, and tags for every prompt you actually want to reuse.</p>
                         </div>
                         <div class="absolute bottom-0 right-0 w-[80%] h-[60%] overflow-hidden rounded-tl-2xl border-t border-l border-brand-border shadow-xl group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform bg-purple-50">
-                             <img src="images/Prompt_library.svg" class="w-full h-full object-cover object-left-top" alt="Prompt Library Interface" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-brand-purple/30 font-bold\'>UI Preview</div>'">
+                             <!-- UPDATED IMAGE PATH - Removed Fallback Text -->
+                             <img src="images/Prompt_library.svg" class="w-full h-full object-cover object-left-top" alt="Prompt Library Interface">
                         </div>
                     </div>
 
@@ -428,8 +430,8 @@
                 <div class="bg-white rounded-3xl border border-brand-border p-12 shadow-sm">
                     <div class="flex flex-col md:flex-row items-start gap-8">
                         <div class="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center flex-shrink-0 text-brand-purple">
-                            <!-- UPDATED MISSION ICON - RESTORED CAPA_1 SVG -->
-                            <svg class="w-8 h-8 text-brand-purple" fill="currentColor" viewBox="0 0 494.914 494.914" xmlns="http://www.w3.org/2000/svg">
+                            <!-- CORRECTED MISSION ICON: Capa_1 SVG -->
+                            <svg class="w-8 h-8 text-brand-purple" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 494.914 494.914" style="enable-background:new 0 0 494.914 494.914;" xml:space="preserve" fill="currentColor">
                                 <g>
                                     <path d="M285.813,266.034v36.483c91.16,9.032,145.408,40.674,145.408,64.427c0,27.993-75.088,67.024-197.362,67.024 S36.514,394.937,36.514,366.944c0-23.93,54.996-55.856,147.32-64.635v-36.466C87.701,274.843,0,309.59,0,366.944 c0,67.247,120.488,103.54,233.858,103.54c113.369,0,233.877-36.293,233.877-103.54 C467.735,309.972,381.194,275.321,285.813,266.034z"/>
                                     <path d="M486.869,40.363c-2.789-1.752-5.959-2.63-9.145-2.63c-2.551,0-5.098,0.558-7.472,1.704l-30.271,14.689 c-14.084,6.836-29.346,10.245-44.593,10.245c-16.123,0-32.214-3.808-46.919-11.392c-14.673-7.568-30.699-11.327-46.695-11.327 c-16.728,0-33.441,4.095-48.592,12.252V42.8c0-10.149-8.236-18.37-18.369-18.37c-10.133,0-18.354,8.221-18.354,18.37v328.94 c0,10.133,8.221,18.354,18.354,18.354c10.133,0,18.369-8.221,18.369-18.354V203.853c15.15-8.157,31.88-12.268,48.607-12.268 c15.996,0,32.007,3.76,46.68,11.326c14.705,7.584,30.796,11.393,46.902,11.393c15.247,0,30.51-3.41,44.609-10.244l45.245-21.953 c5.927-2.868,9.686-8.859,9.686-15.438V54.908C494.914,48.981,491.855,43.485,486.869,40.363z"/>
@@ -452,8 +454,8 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="bg-white rounded-3xl border border-brand-border p-10 shadow-sm hover:border-brand-purple/30 transition-colors">
                         <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mb-6 text-blue-600">
-                            <!-- UPDATED SIMPLICITY ICON - 16x16 PUZZLE/GEAR -->
-                            <svg class="w-7 h-7" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                            <!-- CORRECTED SIMPLICITY ICON: Puzzle/Gear SVG -->
+                            <svg class="w-7 h-7" width="800px" height="800px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor">
                                 <path d="M10.3 8.2l-0.9 0.9 0.9 0.9-1.2 1.2 4.3 4.3c0.6 0.6 1.5 0.6 2.1 0s0.6-1.5 0-2.1l-5.2-5.2zM14.2 15c-0.4 0-0.8-0.3-0.8-0.8 0-0.4 0.3-0.8 0.8-0.8s0.8 0.3 0.8 0.8c0 0.5-0.3 0.8-0.8 0.8z"></path>
                                 <path d="M3.6 8l0.9-0.6 1.5-1.7 0.9 0.9 0.9-0.9-0.1-0.1c0.2-0.5 0.3-1 0.3-1.6 0-2.2-1.8-4-4-4-0.6 0-1.1 0.1-1.6 0.3l2.9 2.9-2.1 2.1-2.9-2.9c-0.2 0.5-0.3 1-0.3 1.6 0 2.1 1.6 3.7 3.6 4z"></path>
                                 <path d="M8 10.8l0.9-0.8-0.9-0.9 5.7-5.7 1.2-0.4 1.1-2.2-0.7-0.7-2.3 1-0.5 1.2-5.6 5.7-0.9-0.9-0.8 0.9c0 0 0.8 0.6-0.1 1.5-0.5 0.5-1.3-0.1-2.8 1.4-0.5 0.5-2.1 2.1-2.1 2.1s-0.6 1 0.6 2.2 2.2 0.6 2.2 0.6 1.6-1.6 2.1-2.1c1.4-1.4 0.9-2.3 1.3-2.7 0.9-0.9 1.6-0.2 1.6-0.2zM4.9 10.4l0.7 0.7-3.8 3.8-0.7-0.7z"></path>
@@ -482,15 +484,17 @@
                     </div>
                 </div>
 
-                <!-- Story -->
+                <!-- Story (REVERTED TO TEXT ONLY) -->
                 <div class="rounded-3xl p-12 text-white bg-gradient-to-br from-brand-purple to-blue-600 shadow-xl">
                     <h2 class="text-3xl font-bold mb-6">Our Story</h2>
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        <div class="flex-1 text-lg leading-relaxed opacity-90 space-y-4">
-                            <p>AI ChatWorks started as a personal project by a team of developers who worked daily with ChatGPT, Claude, and Gemini. We were frustrated with the need to switch between tools, copy and paste prompts, and manage our workflow across multiple platforms.</p>
-                            <p>So we built a solution for ourselves, and to our surprise, we discovered that thousands of other users faced the same problems. Today, AI ChatWorks serves a growing community of people looking for a better way to work with AI.</p>
-                        </div>
-                    </div>
+                    <p class="text-lg leading-relaxed opacity-90 mb-6">
+                        AI ChatWorks started as a personal project by a team of developers who worked daily with ChatGPT, Claude, and Gemini.
+                        We were frustrated with the need to switch between tools, copy and paste prompts, and manage our workflow across multiple platforms.
+                    </p>
+                    <p class="text-lg leading-relaxed opacity-90">
+                        So we built a solution for ourselves, and to our surprise, we discovered that thousands of other users faced the same problems.
+                        Today, AI ChatWorks serves a growing community of people looking for a better way to work with AI.
+                    </p>
                 </div>
             </div>
         </section>
@@ -579,7 +583,7 @@
                      </div>
                      <h2 class="text-2xl font-bold text-brand-dark">Get in touch via Email</h2>
                      <p class="text-brand-slate mb-6">For support, feedback, or just to say hi.</p>
-                     <a href="mailto:info@ai-chatworks.com" class="px-8 py-3 bg-brand-purple text-white rounded-lg font-bold hover:bg-brand-purpleDark transition-all">info@ai-chatworks.com</a>
+                     <a href="mailto:support@ai-chatworks.com" class="px-8 py-3 bg-brand-purple text-white rounded-lg font-bold hover:bg-brand-purpleDark transition-all">support@ai-chatworks.com</a>
                  </div>
              </div>
         </section>
