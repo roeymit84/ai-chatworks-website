@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export default function ChangelogPage() {
   const [openVersion, setOpenVersion] = useState('1.1.1')
