@@ -1,5 +1,6 @@
 // DESTINATION: /app/page.jsx
 
+import Image from 'next/image'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
@@ -53,6 +54,34 @@ export default function Home() {
                 Learn More
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/></svg>
               </a>
+            </div>
+            
+            {/* Platform Logos */}
+            <div className="mt-16 animate-fade-in">
+              <p className="text-sm text-brand-slate mb-6 font-medium">Works seamlessly with</p>
+              <div className="flex items-center justify-center gap-8 md:gap-12 opacity-80">
+                <Image 
+                  src="/images/chatgpt-logo.webp" 
+                  alt="ChatGPT" 
+                  width={120} 
+                  height={40}
+                  className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                />
+                <Image 
+                  src="/images/claude-logo.webp" 
+                  alt="Claude" 
+                  width={120} 
+                  height={40}
+                  className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                />
+                <Image 
+                  src="/images/google-gemini-logo.webp" 
+                  alt="Google Gemini" 
+                  width={120} 
+                  height={40}
+                  className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -257,23 +286,72 @@ export default function Home() {
 
         {/* CTA SECTION */}
         <section className="py-24 px-6">
-          <div className="max-w-5xl mx-auto">
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-purple via-purple-600 to-blue-600 p-12 md:p-16 text-white text-center shadow-2xl">
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
-              
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to work smarter with AI?</h2>
-                <p className="text-lg md:text-xl opacity-90 mb-10 max-w-2xl mx-auto">Join thousands of users who've transformed their AI workflow with AI ChatWorks.</p>
-                
-                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-10 py-5 bg-white text-brand-purple rounded-xl font-bold text-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300 shadow-xl">
-                  <svg className="w-6 h-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="50" cy="50" rx="20" ry="20" style={{fill:"#188FD1"}}/>
-                    <path d="M 8.5,26 A 48,48 0 0 1 91.5,26 L 62,29.5 A 24,24 0 0 0 26,50 z" style={{fill:"#EA3939"}}/>
-                    <path d="M 91.5,74 A 48,48 0 0 1 8.5,74 L 38,70.5 A 24,24 0 0 0 74,50 z" style={{fill:"#FBBC04"}}/>
-                    <path d="M 50,8.5 A 48,48 0 0 1 74,91.5 L 70.5,62 A 24,24 0 0 0 50,26 z" style={{fill:"#34A853"}}/>
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-bold mb-10 text-brand-dark">Ready to work smarter with AI?</h2>
+            
+            <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-10 py-5 bg-white border-2 border-brand-border text-brand-dark rounded-xl font-bold text-lg hover:border-brand-purple hover:bg-brand-surface transition-all duration-300">
+              <svg className="w-6 h-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <ellipse cx="50" cy="50" rx="20" ry="20" style={{fill:"#188FD1"}}/>
+                <path d="M 8.5,26 A 48,48 0 0 1 91.5,26 L 62,29.5 A 24,24 0 0 0 26,50 z" style={{fill:"#EA3939"}}/>
+                <path d="M 50,98 A 48,48 0 0 1 8.5,26 L 26,50 A 24,24 0 0 0 62,70.5 z" style={{fill:"#4AAE48"}}/>
+                <path d="M 91.5,26 A 48,48 0 0 1 50,98 L 62,70.5 A 24,24 0 0 0 62,29.5 z" style={{fill:"#FED14B"}}/>
+              </svg>
+              Install Free Extension
+            </a>
+          </div>
+        </section>
+
+        {/* USE CASES SECTION */}
+        <section className="py-24 px-6 bg-brand-surface/30">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-dark">Stop letting your best ideas vanish.</h2>
+              <p className="text-lg md:text-xl text-brand-slate max-w-3xl mx-auto">You don't need another subscription. You need a system. AI ChatWorks is built for the "early adopters" who are tired of copy-pasting from Apple Notes.</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* For Developers */}
+              <div className="bg-white rounded-2xl border border-brand-border p-8 hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                   </svg>
-                  Install Free Extension
-                </a>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-brand-dark">For Developers</h3>
+                <p className="text-brand-slate leading-relaxed">Store your best code refactoring prompts and debugging frameworks. Stop typing "act as a senior react developer" fifty times a day.</p>
+              </div>
+
+              {/* For Writers & Marketers */}
+              <div className="bg-white rounded-2xl border border-brand-border p-8 hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-brand-dark">For Writers & Marketers</h3>
+                <p className="text-brand-slate leading-relaxed">Keep your brand voice guidelines and article structures one click away. Never let the AI drift off-brand again.</p>
+              </div>
+
+              {/* Zero Friction Setup */}
+              <div className="bg-white rounded-2xl border border-brand-border p-8 hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-brand-dark">Zero Friction Setup</h3>
+                <p className="text-brand-slate leading-relaxed">No account required. No login. No "cloud sync" delays. Install the extension and it works instantly on your existing tabs.</p>
+              </div>
+
+              {/* Privacy First */}
+              <div className="bg-white rounded-2xl border border-brand-border p-8 hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-brand-dark">Privacy First</h3>
+                <p className="text-brand-slate leading-relaxed">Your prompts are your IP. We store everything locally in your browser. We don't see your data, ever.</p>
               </div>
             </div>
           </div>
