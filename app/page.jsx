@@ -41,12 +41,13 @@ export default function Home() {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in">
               <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-purple text-white rounded-xl font-semibold text-lg hover:bg-brand-purpleDark hover:scale-105 transition-all duration-300 shadow-xl shadow-brand-purple/25">
-                <svg className="w-6 h-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                  <ellipse cx="50" cy="50" rx="20" ry="20" style={{fill:"#188FD1"}}/>
-                  <path d="M 8.5,26 A 48,48 0 0 1 91.5,26 L 62,29.5 A 24,24 0 0 0 26,50 z" style={{fill:"#EA3939"}}/>
-                  <path d="M 91.5,74 A 48,48 0 0 1 8.5,74 L 38,70.5 A 24,24 0 0 0 74,50 z" style={{fill:"#FBBC04"}}/>
-                  <path d="M 50,8.5 A 48,48 0 0 1 74,91.5 L 70.5,62 A 24,24 0 0 0 50,26 z" style={{fill:"#34A853"}}/>
-                </svg>
+                <svg class="w-5 h-5" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <ellipse cx="50" cy="50" rx="20" ry="20" style="fill:#188FD1"></ellipse>
+                        <path d="M 8.5,26 A 48,48 0 0 1 91.5,26 L 62,29.5 A 24,24 0 0 0 26,50 z" style="fill:#EA3939"></path>
+                        <path d="M 50,98 A 48,48 0 0 1 8.5,26 L 26,50 A 24,24 0 0 0 62,70.5 z" style="fill:#4AAE48"></path>
+                        <path d="M 91.5,26 A 48,48 0 0 1 50,98 L 62,70.5 A 24,24 0 0 0 62,29.5 z" style="fill:#FED14B"></path>
+                    </svg>
+
                 Add to Chrome — It's Free
               </a>
               <a href="#features" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border-2 border-brand-border text-brand-dark rounded-xl font-semibold text-lg hover:border-brand-purple hover:bg-brand-surface transition-all duration-300">
