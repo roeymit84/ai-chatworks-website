@@ -31,16 +31,16 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-brand-gray">
           <Link 
-            href="/" 
-            className={`hover:text-brand-purple transition-colors ${isActive('/') ? 'text-brand-purple font-bold' : ''}`}
-          >
-            Home
-          </Link>
-          <Link 
             href="/about" 
             className={`hover:text-brand-purple transition-colors ${isActive('/about') ? 'text-brand-purple font-bold' : ''}`}
           >
             About
+          </Link>
+          <Link 
+            href="/#pricing" 
+            className={`hover:text-brand-purple transition-colors ${pathname.includes('#pricing') ? 'text-brand-purple font-bold' : ''}`}
+          >
+            Pricing
           </Link>
           <Link 
             href="/contact" 
@@ -82,18 +82,18 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-brand-border py-4 px-6 space-y-4">
           <Link 
-            href="/" 
-            onClick={() => setMobileMenuOpen(false)}
-            className={`block py-2 hover:text-brand-purple transition-colors ${isActive('/') ? 'text-brand-purple font-bold' : ''}`}
-          >
-            Home
-          </Link>
-          <Link 
             href="/about" 
             onClick={() => setMobileMenuOpen(false)}
             className={`block py-2 hover:text-brand-purple transition-colors ${isActive('/about') ? 'text-brand-purple font-bold' : ''}`}
           >
             About
+          </Link>
+          <Link 
+            href="/#pricing" 
+            onClick={() => setMobileMenuOpen(false)}
+            className={`block py-2 hover:text-brand-purple transition-colors`}
+          >
+            Pricing
           </Link>
           <Link 
             href="/contact" 
