@@ -59,27 +59,27 @@ export default function Home() {
             {/* Platform Logos */}
             <div className="mt-16 animate-fade-in">
               <p className="text-sm text-brand-slate mb-6 font-medium">Works seamlessly with</p>
-              <div className="flex items-center justify-center gap-8 md:gap-12 opacity-80">
+              <div className="flex items-center justify-center gap-8 md:gap-12 opacity-70">
                 <Image 
                   src="/images/chatgpt-logo.webp" 
                   alt="ChatGPT" 
-                  width={120} 
-                  height={40}
-                  className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                  width={140} 
+                  height={48}
+                  className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
                 />
                 <Image 
                   src="/images/claude-logo.webp" 
                   alt="Claude" 
-                  width={120} 
-                  height={40}
-                  className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                  width={140} 
+                  height={48}
+                  className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
                 />
                 <Image 
                   src="/images/google-gemini-logo.webp" 
                   alt="Google Gemini" 
-                  width={120} 
-                  height={40}
-                  className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                  width={140} 
+                  height={48}
+                  className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             </div>
@@ -154,8 +154,8 @@ export default function Home() {
             {/* Pricing Cards */}
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               
-              {/* Free Tier */}
-              <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 transition-all hover:shadow-lg">
+              {/* Basic Tier */}
+              <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 transition-all hover:shadow-lg flex flex-col">
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold mb-2">Basic</h3>
                   <p className="text-brand-slate text-sm mb-6">Perfect for getting started</p>
@@ -165,36 +165,40 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-4 mb-8 flex-grow">
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">5 Saved Prompts</span>
+                    <span className="text-brand-gray text-sm"><strong>5 Saved Prompts</strong> to organize your workflow</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">1 Personal Folder</span>
+                    <span className="text-brand-gray text-sm"><strong>1 Personal Folder</strong> for categorization</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">Chat messages timeline</span>
+                    <span className="text-brand-gray text-sm"><strong>2 Export Formats</strong> (Markdown, Text)</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">Flow - All Actions Enabled</span>
+                    <span className="text-brand-gray text-sm">Chat timeline for conversation tracking</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">2 Exports (MD, Text)</span>
+                    <span className="text-brand-gray text-sm">Flow command palette - all actions enabled</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm"><strong>No account required</strong> – instant access</span>
                   </li>
                 </ul>
                 
-                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-white border-2 border-brand-dark text-brand-dark rounded-lg font-semibold hover:bg-brand-dark hover:text-white transition-all duration-200">
+                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-white border-2 border-brand-dark text-brand-dark rounded-lg font-semibold hover:bg-brand-dark hover:text-white transition-all duration-200 mt-auto">
                   Get Started Free
                 </a>
               </div>
 
               {/* Starter Tier - Most Popular */}
-              <div className="bg-white rounded-2xl border-3 border-brand-purple p-8 relative shadow-lg transition-all hover:shadow-xl" style={{borderWidth: '3px'}}>
+              <div className="bg-white rounded-2xl border-3 border-brand-purple p-8 relative shadow-lg transition-all hover:shadow-xl flex flex-col" style={{borderWidth: '3px'}}>
                 {/* Most Popular Badge */}
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-purple text-white px-4 py-1.5 rounded-full text-xs font-bold">
                   Most Popular
@@ -209,36 +213,40 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <ul className="space-y-4 mb-8">
+                <div className="mb-4">
+                  <p className="text-brand-purple font-semibold text-sm">All Basic features, plus:</p>
+                </div>
+                
+                <ul className="space-y-4 mb-8 flex-grow">
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">15 Saved Prompts</span>
+                    <span className="text-brand-gray text-sm"><strong>25 Saved Prompts</strong> for expanded library</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">3 Organized Folders</span>
+                    <span className="text-brand-gray text-sm"><strong>5 Organized Folders</strong> for better structure</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">Automatic Cloud Sync</span>
+                    <span className="text-brand-gray text-sm"><strong>4 Export Formats</strong> (MD, Text, HTML, PDF)</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">Marketplace Access</span>
+                    <span className="text-brand-gray text-sm"><strong>Automatic Cloud Sync</strong> across all devices</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">4 Exports (MD, Text, HTML, PDF)</span>
+                    <span className="text-brand-gray text-sm"><strong>Marketplace Access</strong> - unlimited curated prompts</span>
                   </li>
                 </ul>
                 
-                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark transition-all duration-200">
+                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark transition-all duration-200 mt-auto">
                   Get Started
                 </a>
               </div>
 
               {/* Pro Tier */}
-              <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 transition-all hover:shadow-lg">
+              <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 transition-all hover:shadow-lg flex flex-col">
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold mb-2">Pro</h3>
                   <p className="text-brand-slate text-sm mb-6">For high-volume users</p>
@@ -248,26 +256,30 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <ul className="space-y-4 mb-8">
+                <div className="mb-4">
+                  <p className="text-brand-purple font-semibold text-sm">All Starter features, plus:</p>
+                </div>
+                
+                <ul className="space-y-4 mb-8 flex-grow">
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">UNLIMITED Prompts & Folders</span>
+                    <span className="text-brand-gray text-sm"><strong>UNLIMITED Prompts & Folders</strong></span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">Marketplace Pro Prompts</span>
+                    <span className="text-brand-gray text-sm"><strong>8 Export Formats</strong> (MD, Text, HTML, PDF, JSON, XML, Doc, HTML Raw)</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">8 Exports (Docx, JSON, XML, HTML Raw)</span>
+                    <span className="text-brand-gray text-sm"><strong>Marketplace Pro</strong> - exclusive premium prompts</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm">7-Day Recycle Bin Retention</span>
+                    <span className="text-brand-gray text-sm"><strong>7-Day Recycle Bin</strong> retention & recovery</span>
                   </li>
                 </ul>
                 
-                <button disabled className="block w-full text-center px-6 py-3 bg-gray-100 text-gray-400 rounded-lg font-semibold cursor-not-allowed">
+                <button disabled className="block w-full text-center px-6 py-3 bg-gray-100 text-gray-400 rounded-lg font-semibold cursor-not-allowed mt-auto">
                   Coming Soon
                 </button>
               </div>
@@ -283,6 +295,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+
 
         {/* CTA SECTION */}
         <section className="py-24 px-6">
@@ -428,6 +441,14 @@ export default function Home() {
                   <svg className="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/></svg>
                 </summary>
                 <div className="px-6 pb-6 text-brand-slate leading-relaxed">The "Summarize Chat" action (available in Flow) is an intelligent tool that reads the current conversation, detects the dominant language, and then instructs the AI to generate a "full fidelity" summary. This summary is automatically copied to your clipboard, allowing you to seamlessly start a new chat with full context.</div>
+              </details>
+
+              <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
+                <summary className="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
+                  What export formats are available in the Pro tier?
+                  <svg className="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/></svg>
+                </summary>
+                <div className="px-6 pb-6 text-brand-slate leading-relaxed">Pro users get access to 8 professional export formats: Markdown, Text, HTML, PDF, JSON, XML, Doc (Word), and HTML Raw. This gives you maximum flexibility to integrate your prompts into any workflow, documentation system, or development environment. Perfect for teams and power users who need advanced data portability.</div>
               </details>
             </div>
           </div>
