@@ -111,139 +111,146 @@ export default function Home() {
           </div>
         </section>
 
+
         {/* PRICING SECTION */}
-        <section id="pricing" className="py-24 px-6">
+        <section id="pricing" className="py-24 px-6 bg-white">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-8">
-              <p className="text-sm font-bold tracking-wider text-brand-dark uppercase mb-4">60+ USERS ALREADY PART OF THE CLOSED BETA. <span className="text-brand-purple italic">AND YOU?</span></p>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-brand-dark via-blue-600 to-brand-dark bg-clip-text">CHOOSE YOUR TIER</h2>
-              <p className="text-xl text-brand-slate max-w-2xl mx-auto">Lock in your Beta rate. Cloud-synced, private, and 10x faster.</p>
+            {/* Header */}
+            <div className="text-center mb-16">
+              <p className="text-sm font-bold tracking-wider text-brand-slate uppercase mb-3">PRICING</p>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Simplified pricing</h2>
+              <p className="text-lg text-brand-slate max-w-2xl mx-auto">Our pricing is simple and transparent, you just pay for the amount of prompts you need each month.</p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {/* Basic Tier */}
-              <div className="bg-white rounded-2xl border-2 border-brand-border p-8 hover:shadow-xl transition-all hover:scale-105 duration-300">
-                <div className="mb-6">
-                  <p className="text-sm font-bold tracking-wider text-brand-gray uppercase mb-2">ESSENTIAL</p>
-                  <h3 className="text-3xl font-bold mb-2">Basic</h3>
-                  <p className="text-brand-slate text-sm italic mb-4">No account required. Test the flow instantly.</p>
-                  <div className="flex items-baseline gap-2">
+            {/* Pricing Cards */}
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              
+              {/* Free Tier */}
+              <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 transition-all hover:shadow-lg">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-2">Basic</h3>
+                  <p className="text-brand-slate text-sm mb-6">Perfect for getting started</p>
+                  <div className="flex items-baseline gap-1 mb-6">
                     <span className="text-5xl font-bold">$0</span>
+                    <span className="text-brand-slate">/month</span>
                   </div>
                 </div>
                 
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray">5 Saved Prompts</span>
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm">5 Saved Prompts</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray">1 Personal Folder</span>
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm">1 Personal Folder</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray italic">Chat messages timeline</span>
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm">Chat messages timeline</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray">Flow - All Actions Enabled</span>
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm">Flow - All Actions Enabled</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray">2 Exports (MD, Text)</span>
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm">2 Exports (MD, Text)</span>
                   </li>
                 </ul>
                 
-                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-brand-surface border-2 border-brand-border text-brand-dark rounded-xl font-semibold hover:border-brand-purple hover:bg-brand-purple hover:text-white transition-all duration-300">
+                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-white border-2 border-brand-dark text-brand-dark rounded-lg font-semibold hover:bg-brand-dark hover:text-white transition-all duration-200">
                   Get Started Free
                 </a>
               </div>
 
-              {/* Starter Tier */}
-              <div className="bg-white rounded-2xl border-2 border-brand-purple p-8 hover:shadow-2xl transition-all hover:scale-105 duration-300 relative">
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-purple text-white px-4 py-1 rounded-full text-sm font-bold">
-                  POPULAR
-                </div>
-                <div className="mb-6">
-                  <p className="text-sm font-bold tracking-wider text-brand-purple uppercase mb-2">STANDARD</p>
-                  <h3 className="text-3xl font-bold mb-2">Starter</h3>
-                  <p className="text-brand-slate text-sm italic mb-4">Secure cloud layer for your growing system.</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold">$3.99</span>
-                  </div>
+              {/* Starter Tier - Most Popular */}
+              <div className="bg-white rounded-2xl border-3 border-brand-purple p-8 relative shadow-lg transition-all hover:shadow-xl" style={{borderWidth: '3px'}}>
+                {/* Most Popular Badge */}
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-purple text-white px-4 py-1.5 rounded-full text-xs font-bold">
+                  Most Popular
                 </div>
                 
-                <p className="text-brand-purple italic font-semibold mb-4">Everything in Basic +</p>
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-2">Starter</h3>
+                  <p className="text-brand-slate text-sm mb-6">For growing businesses</p>
+                  <div className="flex items-baseline gap-1 mb-6">
+                    <span className="text-5xl font-bold">$3.99</span>
+                    <span className="text-brand-slate">/month</span>
+                  </div>
+                </div>
                 
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray">15 Saved Prompts</span>
+                    <span className="text-brand-gray text-sm">15 Saved Prompts</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray">3 Organized Folders</span>
+                    <span className="text-brand-gray text-sm">3 Organized Folders</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray font-semibold">Automatic Cloud Sync</span>
+                    <span className="text-brand-gray text-sm">Automatic Cloud Sync</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray">Marketplace Access</span>
+                    <span className="text-brand-gray text-sm">Marketplace Access</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray">4 Exports (MD, Text, HTML, PDF)</span>
+                    <span className="text-brand-gray text-sm">4 Exports (MD, Text, HTML, PDF)</span>
                   </li>
                 </ul>
                 
-                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-brand-purple text-white rounded-xl font-semibold hover:bg-brand-purpleDark transition-all duration-300 shadow-lg shadow-brand-purple/25">
+                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark transition-all duration-200">
                   Get Started
                 </a>
               </div>
 
               {/* Pro Tier */}
-              <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-2xl border-2 border-indigo-700 p-8 hover:shadow-2xl transition-all hover:scale-105 duration-300 relative text-white">
-                <div className="absolute -top-4 right-6 bg-blue-400 text-indigo-900 px-4 py-1 rounded-full text-xs font-bold">
-                  BETA
-                </div>
-                <div className="mb-6">
-                  <p className="text-sm font-bold tracking-wider text-blue-300 uppercase mb-2">PROFESSIONAL</p>
-                  <h3 className="text-3xl font-bold mb-2">Pro</h3>
-                  <p className="text-purple-200 text-sm italic mb-4">Total control for power users.</p>
-                  <div className="flex items-baseline gap-2">
+              <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 transition-all hover:shadow-lg">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-2">Pro</h3>
+                  <p className="text-brand-slate text-sm mb-6">For high-volume users</p>
+                  <div className="flex items-baseline gap-1 mb-6">
                     <span className="text-5xl font-bold">$7.99</span>
-                    <span className="text-xl text-purple-200">/mo</span>
+                    <span className="text-brand-slate">/month</span>
                   </div>
                 </div>
                 
-                <p className="text-purple-300 italic font-semibold mb-4">Everything in Starter +</p>
-                
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="font-semibold">UNLIMITED Prompts & Folders</span>
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm">UNLIMITED Prompts & Folders</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span>Marketplace Pro Prompts</span>
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm">Marketplace Pro Prompts</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span>8 Exports (Docx, JSON, XML, HTML Raw)</span>
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm">8 Exports (Docx, JSON, XML, HTML Raw)</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span>7-Day Recycle Bin Retention</span>
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm">7-Day Recycle Bin Retention</span>
                   </li>
                 </ul>
                 
-                <button disabled className="block w-full text-center px-6 py-3 bg-white/20 text-white rounded-xl font-semibold cursor-not-allowed border-2 border-white/30">
+                <button disabled className="block w-full text-center px-6 py-3 bg-gray-100 text-gray-400 rounded-lg font-semibold cursor-not-allowed">
                   Coming Soon
                 </button>
               </div>
+              
+            </div>
+            
+            {/* View full pricing link */}
+            <div className="text-center mt-12">
+              <a href="#faq" className="inline-flex items-center gap-2 text-brand-slate hover:text-brand-purple transition-colors text-sm font-medium">
+                View full pricing details
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
             </div>
           </div>
         </section>
