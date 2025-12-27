@@ -158,7 +158,7 @@ export default function Home() {
               <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 transition-all hover:shadow-lg flex flex-col">
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold mb-2">Basic</h3>
-                  <p className="text-brand-slate text-sm mb-6">Perfect for getting started</p>
+                  <p className="text-brand-slate text-sm mb-6">Perfect for trying it out instantly</p>
                   <div className="flex items-baseline gap-1 mb-6">
                     <span className="text-5xl font-bold">$0</span>
                     <span className="text-brand-slate">/month</span>
@@ -206,7 +206,7 @@ export default function Home() {
                 
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold mb-2">Starter</h3>
-                  <p className="text-brand-slate text-sm mb-6">For growing businesses</p>
+                  <p className="text-brand-slate text-sm mb-6">Great for everyday AI workflows</p>
                   <div className="flex items-baseline gap-1 mb-6">
                     <span className="text-5xl font-bold">$3.99</span>
                     <span className="text-brand-slate">/month</span>
@@ -228,7 +228,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm"><strong>4 Export Formats</strong> (MD, Text, HTML, PDF)</span>
+                    <span className="text-brand-gray text-sm"><strong>4 Export Formats:</strong> HTML, PDF</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
@@ -249,7 +249,7 @@ export default function Home() {
               <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 transition-all hover:shadow-lg flex flex-col">
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold mb-2">Pro</h3>
-                  <p className="text-brand-slate text-sm mb-6">For high-volume users</p>
+                  <p className="text-brand-slate text-sm mb-6">Built for power users and pros</p>
                   <div className="flex items-baseline gap-1 mb-6">
                     <span className="text-5xl font-bold">$7.99</span>
                     <span className="text-brand-slate">/month</span>
@@ -263,11 +263,15 @@ export default function Home() {
                 <ul className="space-y-4 mb-8 flex-grow">
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm"><strong>UNLIMITED Prompts & Folders</strong></span>
+                    <span className="text-brand-gray text-sm"><strong>UNLIMITED Prompts</strong></span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                    <span className="text-brand-gray text-sm"><strong>8 Export Formats</strong> (MD, Text, HTML, PDF, JSON, XML, Doc, HTML Raw)</span>
+                    <span className="text-brand-gray text-sm"><strong>UNLIMITED Folders</strong></span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
+                    <span className="text-brand-gray text-sm"><strong>8 Export Formats:</strong> JSON, XML, Doc, HTML Raw</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
