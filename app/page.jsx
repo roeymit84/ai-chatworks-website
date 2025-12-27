@@ -284,7 +284,7 @@ export default function Home() {
                 </ul>
                 
                 <button disabled className="block w-full text-center px-6 py-3 bg-gray-100 text-gray-400 rounded-lg font-semibold cursor-not-allowed mt-auto">
-                  Coming Soon
+                  Coming Soon...
                 </button>
               </div>
               
