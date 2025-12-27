@@ -61,21 +61,21 @@ export default function Home() {
               <p className="text-sm text-brand-slate mb-6 font-medium">Works seamlessly with</p>
               <div className="flex items-center justify-center gap-8 md:gap-12 opacity-70">
                 <Image 
-                  src="/images/chatgpt-logo.webp" 
+                  src="/images/openai-logo.svg" 
                   alt="ChatGPT" 
                   width={140} 
                   height={48}
                   className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
                 />
                 <Image 
-                  src="/images/claude-logo.webp" 
+                  src="/images/claude-logo.svg" 
                   alt="Claude" 
                   width={140} 
                   height={48}
                   className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
                 />
                 <Image 
-                  src="/images/google-gemini-logo.webp" 
+                  src="/images/gemini-logo.svg" 
                   alt="Google Gemini" 
                   width={140} 
                   height={48}
