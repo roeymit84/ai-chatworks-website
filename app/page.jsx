@@ -61,25 +61,25 @@ export default function Home() {
               <p className="text-sm text-brand-slate mb-6 font-medium">Works seamlessly with</p>
               <div className="flex items-center justify-center gap-8 md:gap-12 opacity-70">
                 <Image 
-                  src="/images/openai-logo.svg" 
+                  src="/images/chatgpt-logo.webp" 
                   alt="ChatGPT" 
                   width={140} 
                   height={48}
-                  className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                  className="h-10 md:h-12 w-auto object-contain self-center grayscale hover:grayscale-0 transition-all duration-300"
                 />
                 <Image 
-                  src="/images/claude-logo.svg" 
+                  src="/images/claude-logo.webp" 
                   alt="Claude" 
                   width={140} 
                   height={48}
-                  className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                  className="h-10 md:h-12 w-auto object-contain self-center grayscale hover:grayscale-0 transition-all duration-300"
                 />
                 <Image 
-                  src="/images/gemini-logo.svg" 
+                  src="/images/google-gemini-logo.webp" 
                   alt="Google Gemini" 
                   width={140} 
                   height={48}
-                  className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                  className="h-10 md:h-12 w-auto object-contain self-center grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             </div>
@@ -207,10 +207,14 @@ export default function Home() {
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold mb-2">Starter</h3>
                   <p className="text-brand-slate text-sm mb-6">Great for everyday AI workflows</p>
-                  <div className="flex items-baseline gap-1 mb-6">
-                    <span className="text-5xl font-bold">$3.99</span>
+                  <div className="flex items-center justify-center gap-3 mb-3">
+                    <span className="text-4xl font-bold text-gray-300 line-through decoration-2">$3.99</span>
+                    <span className="text-5xl font-bold text-brand-purple">$0</span>
                     <span className="text-brand-slate">/month</span>
                   </div>
+                  <p className="text-sm text-brand-purple font-semibold text-center mb-6">
+                    Free during beta period (limited time only)
+                  </p>
                 </div>
                 
                 <div className="mb-4">
@@ -284,7 +288,7 @@ export default function Home() {
                 </ul>
                 
                 <button disabled className="block w-full text-center px-6 py-3 bg-gray-100 text-gray-400 rounded-lg font-semibold cursor-not-allowed mt-auto">
-                  Coming Soon...
+                  Coming Soon
                 </button>
               </div>
               
