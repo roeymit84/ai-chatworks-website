@@ -365,26 +365,54 @@ export default function Home() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {/* For Developers */}
+              {/* Embedded Mastery */}
               <div className="bg-white rounded-2xl border border-brand-border p-8 hover:shadow-lg transition-all">
                 <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  <svg className="w-6 h-6 text-blue-600" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 3.5c-7.181 0-13 5.82-13 13s5.819 13 13 13c7.179 0 13-5.82 13-13s-5.82-13-13-13zM15.895 27.027c-5.799 0-10.5-4.701-10.5-10.5s4.701-10.5 10.5-10.5c5.798 0 10.5 4.701 10.5 10.5s-4.702 10.5-10.5 10.5zM18.93 17.131h-2.98v-5.032c0-0.546-0.443-0.99-0.989-0.99s-0.99 0.443-0.99 0.99v6.021c0 0.547 0.443 0.989 0.99 0.989h3.969c0.547 0 0.99-0.442 0.99-0.989 0-0.546-0.443-0.989-0.99-0.989z"></path>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-brand-dark">For Developers</h3>
-                <p className="text-brand-slate leading-relaxed">Store your best code refactoring prompts and debugging frameworks. Stop typing "act as a senior react developer" fifty times a day.</p>
+                <h3 className="text-2xl font-bold mb-3 text-brand-dark">Embedded Mastery</h3>
+                <p className="text-brand-slate leading-relaxed">Stop the 10-second "copy-paste" hunt from external docs. Your prompt library now lives where you work, keeping your best logic exactly one click away at all times.</p>
               </div>
 
-              {/* For Writers & Marketers */}
+              {/* Effortless Organization */}
               <div className="bg-white rounded-2xl border border-brand-border p-8 hover:shadow-lg transition-all">
                 <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  <svg className="w-6 h-6 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"></path>
+                    <path d="M20 21a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"></path>
+                    <path d="M3 5a2 2 0 0 0 2 2h3"></path>
+                    <path d="M3 3v13a2 2 0 0 0 2 2h3"></path>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-brand-dark">For Writers & Marketers</h3>
-                <p className="text-brand-slate leading-relaxed">Keep your brand voice guidelines and article structures one click away. Never let the AI drift off-brand again.</p>
+                <h3 className="text-2xl font-bold mb-3 text-brand-dark">Effortless Organization</h3>
+                <p className="text-brand-slate leading-relaxed">Stop treating your best prompts like messy notes. We provide a simple, folder-based system that makes it easy to manage hundreds of items with zero clutter.</p>
+              </div>
+
+              {/* 0.5 Second Execution */}
+              <div className="bg-white rounded-2xl border border-brand-border p-8 hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-brand-dark">0.5 Second Execution</h3>
+                <p className="text-brand-slate leading-relaxed">Trigger the Spotlight-style search with `Cmd+Shift+F`/`Ctrl+Shift+F`. Find, select, and deploy your most complex prompts faster than you can type a single word into the chat.</p>
+              </div>
+
+              {/* Clean Logic. No Maintenance. */}
+              <div className="bg-white rounded-2xl border border-brand-border p-8 hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
+                    <path d="M20 2v4"></path>
+                    <path d="M22 4h-4"></path>
+                    <circle cx="4" cy="20" r="2"></circle>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-brand-dark">Clean Logic. No Maintenance.</h3>
+                <p className="text-brand-slate leading-relaxed">As your prompt list grows, finding what you need stays easy. We handle the technical heavy lifting so your library remains fast and searchable whether you have 10 prompts or 10,000.</p>
               </div>
             </div>
           </div>
