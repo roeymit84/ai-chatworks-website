@@ -20,22 +20,22 @@ export default function Home() {
 
       <Navbar />
 
-      {/* ANNOUNCEMENT BANNER */}
-      <div className="bg-brand-surface/50 border-b border-brand-border py-3 px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-4">
-          <div className="bg-brand-purple text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide">
-            NOW SYNCED
-          </div>
-          <p className="text-brand-dark text-sm md:text-base font-medium">
-            AI ChatWorks is now on the Cloud. Your library follows you everywhere.
-          </p>
-        </div>
-      </div>
-
       <main className="relative">
         {/* HERO SECTION */}
-        <section className="pt-20 pb-16 px-6 text-center">
+        <section className="pt-32 pb-16 px-6 text-center">
           <div className="max-w-6xl mx-auto">
+            {/* Announcement Banner */}
+            <div className="mb-12 animate-fade-in">
+              <div className="inline-flex items-center gap-4 bg-brand-surface/50 border border-brand-border rounded-full px-6 py-3">
+                <div className="bg-brand-purple text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide">
+                  NOW SYNCED
+                </div>
+                <p className="text-brand-dark text-sm md:text-base font-medium">
+                  AI ChatWorks is now on the Cloud. Your library follows you everywhere.
+                </p>
+              </div>
+            </div>
+
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in">
               Get Your AI Workflow <span className="text-brand-purple">Systematized</span> Once and For All.
             </h1>
