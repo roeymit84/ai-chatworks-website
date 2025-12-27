@@ -26,8 +26,8 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             {/* Announcement Banner */}
             <div className="mb-12 animate-fade-in">
-              <div className="inline-flex items-center gap-4 bg-brand-surface/50 border border-brand-border rounded-full px-6 py-3">
-                <div className="bg-brand-purple text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide">
+              <div className="inline-flex items-center gap-4 bg-brand-surface/50 border border-brand-border rounded-[20px] px-6 py-2 animate-bounce-slow">
+                <div className="bg-brand-purple text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
                   NOW SYNCED
                 </div>
                 <p className="text-brand-dark text-sm md:text-base font-medium">

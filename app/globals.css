@@ -27,4 +27,17 @@
     box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.15);
     border-color: #8b5cf6;
   }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
