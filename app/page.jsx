@@ -360,8 +360,8 @@ export default function Home() {
         <section className="py-24 px-6 bg-brand-surface/30">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-dark">Stop letting your best ideas vanish.</h2>
-              <p className="text-lg md:text-xl text-brand-slate max-w-3xl mx-auto">You don't need another subscription. You need a system. AI ChatWorks is built for the "early adopters" who are tired of copy-pasting from Apple Notes.</p>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-dark">You’re drowning in a sea of messy chats and lost ideas.</h2>
+              <p className="text-lg md:text-xl text-brand-slate max-w-3xl mx-auto">Stop the "Notes App" context-switching and turn your scattered thoughts into a professional, embedded prompt library.</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
