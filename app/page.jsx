@@ -20,6 +20,18 @@ export default function Home() {
 
       <Navbar />
 
+      {/* ANNOUNCEMENT BANNER */}
+      <div className="bg-brand-surface/50 border-b border-brand-border py-3 px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-4">
+          <div className="bg-brand-purple text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide">
+            NOW SYNCED
+          </div>
+          <p className="text-brand-dark text-sm md:text-base font-medium">
+            AI ChatWorks is now on the Cloud. Your library follows you everywhere.
+          </p>
+        </div>
+      </div>
+
       <main className="relative">
         {/* HERO SECTION */}
         <section className="pt-40 pb-24 px-6">
@@ -393,7 +405,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-brand-dark">Zero Friction Setup</h3>
-                <p className="text-brand-slate leading-relaxed">No account required. No login. No "cloud sync" delays. Install the extension and it works instantly on your existing tabs.</p>
+                <p className="text-brand-slate leading-relaxed">No account required. No login. No "cloud sync" delays to get started. Install the extension and it works instantly on your existing tabs. Only enable Cloud Sync when you're ready to backup across devices.</p>
               </div>
 
               {/* Privacy First */}
@@ -405,6 +417,41 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-brand-dark">Privacy First</h3>
                 <p className="text-brand-slate leading-relaxed">Your prompts are your IP. We store everything locally in your browser. We don't see your data, ever.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ZERO FRICTION HERO SECTION */}
+        <section className="py-24 px-6 bg-white">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className="text-brand-purple font-bold text-sm md:text-base mb-6 tracking-wide uppercase">NO COMPLEXITY. JUST SPEED.</p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-brand-dark">Zero Friction Setup</h2>
+            <p className="text-lg md:text-xl text-brand-slate max-w-4xl mx-auto mb-12 leading-relaxed">
+              No account required. No login. No "cloud sync" delays to get started. Install the extension and it works instantly on your existing tabs. Only enable Cloud Sync when you're ready to backup across devices.
+            </p>
+            
+            {/* Three Checkmarks */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-12">
+              <div className="flex items-center gap-3">
+                <svg className="w-6 h-6 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+                </svg>
+                <span className="text-brand-dark font-semibold text-lg">Works Instantly</span>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <svg className="w-6 h-6 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+                </svg>
+                <span className="text-brand-dark font-semibold text-lg">No Registration</span>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <svg className="w-6 h-6 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+                </svg>
+                <span className="text-brand-dark font-semibold text-lg">Local First</span>
               </div>
             </div>
           </div>
