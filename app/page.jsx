@@ -182,8 +182,8 @@ export default function Home() {
             {/* Header */}
             <div className="text-center mb-16">
               <p className="text-sm font-bold tracking-wider text-brand-slate uppercase mb-3">PRICING</p>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">Simplified pricing</h2>
-              <p className="text-lg text-brand-slate max-w-2xl mx-auto">Our pricing is simple and transparent, you just pay for the amount of prompts you need each month.</p>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Our pricing is simple and transparent.</h2>
+              <p className="text-lg text-brand-slate max-w-2xl mx-auto">You only pay for the number of prompts you want to manage. Start small and only upgrade when your library grows.</p>
             </div>
 
             {/* Pricing Cards */}
