@@ -372,15 +372,41 @@ export default function AdminDashboard() {
     e.preventDefault();
     
     try {
-      const { error } = await supabase
-        .from('marketplace_prompts')
-        .insert({
-          ...createForm,
-          user_id: currentUser.id
-        });
-        
-      if (error) throw error;
+      // Validate tier value
+      const validTiers = ['free', 'pro', 'premium'];
+      const tier = createForm.tier.toLowerCase();
       
+      if (!validTiers.includes(tier)) {
+        throw new Error(`Invalid tier value: ${tier}. Must be one of: ${validTiers.join(', ')}`);
+      }
+      
+      // Prepare data matching database schema exactly
+      const promptData = {
+        title: createForm.title.trim(),
+        category: createForm.category || 'Uncategorized',
+        description: createForm.description?.trim() || '',
+        content: createForm.content.trim(),
+        tier: tier,
+        is_active: Boolean(createForm.is_active),
+        user_id: currentUser.id,
+        downloads_count: 0, // Initialize with 0
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      };
+      
+      console.log('Creating prompt with data:', promptData); // Debug log
+      
+      const { data, error } = await supabase
+        .from('marketplace_prompts')
+        .insert(promptData)
+        .select();
+        
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+      
+      console.log('Prompt created successfully:', data); // Debug log
       showAlert('Success', 'Prompt created successfully!');
       setShowCreatePromptModal(false);
       await loadMarketplaceData();
@@ -420,16 +446,39 @@ export default function AdminDashboard() {
     e.preventDefault();
     
     try {
-      const { error } = await supabase
-        .from('marketplace_prompts')
-        .update({
-          ...editForm,
-          updated_at: new Date().toISOString()
-        })
-        .eq('id', editingPrompt.id);
-        
-      if (error) throw error;
+      // Validate tier value
+      const validTiers = ['free', 'pro', 'premium'];
+      const tier = editForm.tier.toLowerCase();
       
+      if (!validTiers.includes(tier)) {
+        throw new Error(`Invalid tier value: ${tier}. Must be one of: ${validTiers.join(', ')}`);
+      }
+      
+      // Prepare data matching database schema exactly
+      const updateData = {
+        title: editForm.title.trim(),
+        category: editForm.category || 'Uncategorized',
+        description: editForm.description?.trim() || '',
+        content: editForm.content.trim(),
+        tier: tier,
+        is_active: Boolean(editForm.is_active),
+        updated_at: new Date().toISOString()
+      };
+      
+      console.log('Updating prompt with data:', updateData); // Debug log
+      
+      const { data, error } = await supabase
+        .from('marketplace_prompts')
+        .update(updateData)
+        .eq('id', editingPrompt.id)
+        .select();
+        
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+      
+      console.log('Prompt updated successfully:', data); // Debug log
       showAlert('Success', 'Prompt updated successfully!');
       setShowEditPromptModal(false);
       await loadMarketplaceData();
@@ -572,27 +621,45 @@ export default function AdminDashboard() {
       
       let successCount = 0;
       let errorCount = 0;
+      const validTiers = ['free', 'pro', 'premium'];
       
       for (const prompt of prompts) {
         try {
           if (!prompt.title || !prompt.content) {
+            console.warn('Skipping prompt: missing title or content', prompt);
             errorCount++;
             continue;
           }
           
+          const tier = (prompt.tier || 'free').toLowerCase();
+          if (!validTiers.includes(tier)) {
+            console.warn(`Skipping prompt "${prompt.title}": invalid tier "${tier}"`, prompt);
+            errorCount++;
+            continue;
+          }
+          
+          const promptData = {
+            title: prompt.title.trim(),
+            category: prompt.category || 'Uncategorized',
+            description: prompt.description?.trim() || '',
+            content: prompt.content.trim(),
+            tier: tier,
+            is_active: prompt.is_active !== undefined ? Boolean(prompt.is_active) : true,
+            downloads_count: 0,
+            tags: prompt.tags || [],
+            user_id: currentUser.id,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          };
+          
           const { error } = await supabase
             .from('marketplace_prompts')
-            .insert({
-              title: prompt.title,
-              category: prompt.category || 'Uncategorized',
-              description: prompt.description || '',
-              content: prompt.content,
-              tier: (prompt.tier || 'free').toLowerCase(),
-              tags: prompt.tags || [],
-              user_id: currentUser.id
-            });
+            .insert(promptData);
             
-          if (error) throw error;
+          if (error) {
+            console.error(`Error inserting prompt "${prompt.title}":`, error);
+            throw error;
+          }
           successCount++;
         } catch (error) {
           console.error('Error inserting prompt:', error);
@@ -840,34 +907,38 @@ export default function AdminDashboard() {
           </div>
 
           <nav>
-            <div className="nav-section">
-              <div className={`nav-link ${currentView === 'overview' ? 'active' : ''}`} onClick={() => switchView('overview')}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="3" y="3" width="7" height="7" />
-                  <rect x="14" y="3" width="7" height="7" />
-                  <rect x="14" y="14" width="7" height="7" />
-                  <rect x="3" y="14" width="7" height="7" />
-                </svg>
-                Overview
-              </div>
-              <div className={`nav-link ${currentView === 'marketplace' ? 'active' : ''}`} onClick={() => switchView('marketplace')}>
-                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M2.7,9.45a4.235,4.235,0,0,0,.3.3V22a1,1,0,0,0,1,1H20a1,1,0,0,0,1-1V9.752a4.235,4.235,0,0,0,.3-.3,4,4,0,0,0,.731-3.456L20.97,1.758A1,1,0,0,0,20,1H4a1,1,0,0,0-.97.758L1.972,5.994A4,4,0,0,0,2.7,9.45ZM13,21H11V16h2Zm6,0H15V15a1,1,0,0,0-1-1H10a1,1,0,0,0-1,1v6H5V10.9A3.989,3.989,0,0,0,8.914,9.61c.026.03.053.059.08.089A4.086,4.086,0,0,0,12.041,11a4.039,4.039,0,0,0,2.965-1.3c.027-.03.054-.059.08-.089A3.989,3.989,0,0,0,19,10.9ZM3.911,6.479,4.781,3H19.219l.87,3.479A2.029,2.029,0,0,1,18.12,9,2.041,2.041,0,0,1,16.1,7.14l-.042-.5a1,1,0,0,0-1.993.166v0a2.006,2.006,0,0,1-.529,1.539A2.059,2.059,0,0,1,11.959,9,2.029,2.029,0,0,1,9.937,6.806v0a1,1,0,0,0-.914-1.079.989.989,0,0,0-1.079.913l-.042.5A2.041,2.041,0,0,1,5.88,9,2.029,2.029,0,0,1,3.911,6.479Z" />
-                </svg>
-                Marketplace
-                <span className="nav-badge" id="marketplaceBadge">0</span>
-              </div>
-              <div className={`nav-link ${currentView === 'settings' ? 'active' : ''}`} onClick={() => switchView('settings')}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="3" />
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                </svg>
-                Settings
-              </div>
+            <div className={`nav-link ${currentView === 'overview' ? 'active' : ''}`} onClick={() => switchView('overview')}>
+              <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              Overview
+            </div>
+            <div className={`nav-link ${currentView === 'queries' ? 'active' : ''}`} onClick={() => switchView('queries')}>
+              <svg className="icon" width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.5 2.49866C14.5 3.60194 11.366 4.49731 7.5 4.49731C3.634 4.49731 0.5 3.60194 0.5 2.49866M14.5 2.49866C14.5 1.39538 11.366 0.5 7.5 0.5C3.634 0.5 0.5 1.39538 0.5 2.49866M14.5 2.49866V12.4922C14.5 13.5955 11.366 14.4908 7.5 14.4908C3.634 14.4908 0.5 13.5956 0.5 12.4923V2.49866M14.5 7.49536C14.5 8.59864 11.366 9.49414 7.5 9.49414C3.634 9.49414 0.5 8.59864 0.5 7.49536" stroke="currentColor" strokeLinecap="square" />
+              </svg>
+              DB Queries
+            </div>
+            <div className={`nav-link ${currentView === 'marketplace' ? 'active' : ''}`} onClick={() => switchView('marketplace')}>
+              <svg className="icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2.7,9.45a4.235,4.235,0,0,0,.3.3V22a1,1,0,0,0,1,1H20a1,1,0,0,0,1-1V9.752a4.235,4.235,0,0,0,.3-.3,4,4,0,0,0,.731-3.456L20.97,1.758A1,1,0,0,0,20,1H4a1,1,0,0,0-.97.758L1.972,5.994A4,4,0,0,0,2.7,9.45ZM13,21H11V16h2Zm6,0H15V15a1,1,0,0,0-1-1H10a1,1,0,0,0-1,1v6H5V10.9A3.989,3.989,0,0,0,8.914,9.61c.026.03.053.059.08.089A4.086,4.086,0,0,0,12.041,11a4.039,4.039,0,0,0,2.965-1.3c.027-.03.054-.059.08-.089A3.989,3.989,0,0,0,19,10.9ZM3.911,6.479,4.781,3H19.219l.87,3.479A2.029,2.029,0,0,1,18.12,9,2.041,2.041,0,0,1,16.1,7.14l-.042-.5a1,1,0,0,0-1.993.166v0a2.006,2.006,0,0,1-.529,1.539A2.059,2.059,0,0,1,11.959,9,2.029,2.029,0,0,1,9.937,6.806v0a1,1,0,0,0-.914-1.079.989.989,0,0,0-1.079.913l-.042.5A2.041,2.041,0,0,1,5.88,9,2.029,2.029,0,0,1,3.911,6.479Z" />
+              </svg>
+              Marketplace
+              <span className="nav-badge" id="marketplaceBadge">0</span>
+            </div>
+            <div className={`nav-link ${currentView === 'settings' ? 'active' : ''}`} onClick={() => switchView('settings')}>
+              <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+              </svg>
+              Settings
             </div>
           </nav>
 
-          <div className="sidebar-footer">
+          <div className="user-profile-section">
             <div className="user-card">
               <div className="user-avatar">{currentUser?.email?.substring(0, 2).toUpperCase()}</div>
               <div className="user-info">
@@ -1105,6 +1176,35 @@ export default function AdminDashboard() {
                     </tr>
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
+
+          {/* DB QUERIES VIEW */}
+          <div className={`view-container ${currentView === 'queries' ? 'active' : ''}`}>
+            <div className="page-header">
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <svg width="24" height="24" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.5 2.49866C14.5 3.60194 11.366 4.49731 7.5 4.49731C3.634 4.49731 0.5 3.60194 0.5 2.49866M14.5 2.49866C14.5 1.39538 11.366 0.5 7.5 0.5C3.634 0.5 0.5 1.39538 0.5 2.49866M14.5 2.49866V12.4922C14.5 13.5955 11.366 14.4908 7.5 14.4908C3.634 14.4908 0.5 13.5956 0.5 12.4923V2.49866M14.5 7.49536C14.5 8.59864 11.366 9.49414 7.5 9.49414C3.634 9.49414 0.5 8.59864 0.5 7.49536" stroke="currentColor" strokeLinecap="square" />
+                  </svg>
+                  <h1>Database Queries</h1>
+                </div>
+                <p>Run predefined queries on your database</p>
+              </div>
+            </div>
+
+            <div className="card">
+              <div className="card-body" style={{ padding: '40px', textAlign: 'center' }}>
+                <svg width="64" height="64" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ margin: '0 auto 20px', opacity: 0.3 }}>
+                  <path d="M14.5 2.49866C14.5 3.60194 11.366 4.49731 7.5 4.49731C3.634 4.49731 0.5 3.60194 0.5 2.49866M14.5 2.49866C14.5 1.39538 11.366 0.5 7.5 0.5C3.634 0.5 0.5 1.39538 0.5 2.49866M14.5 2.49866V12.4922C14.5 13.5955 11.366 14.4908 7.5 14.4908C3.634 14.4908 0.5 13.5956 0.5 12.4923V2.49866M14.5 7.49536C14.5 8.59864 11.366 9.49414 7.5 9.49414C3.634 9.49414 0.5 8.59864 0.5 7.49536" stroke="currentColor" strokeLinecap="square" />
+                </svg>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '8px' }}>
+                  Query Console Coming Soon
+                </h3>
+                <p style={{ color: 'var(--text-tertiary)', fontSize: '14px', maxWidth: '500px', margin: '0 auto' }}>
+                  Run custom database queries, export results to CSV, and analyze your data with predefined query templates.
+                </p>
               </div>
             </div>
           </div>
