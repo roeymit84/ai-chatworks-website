@@ -52,7 +52,7 @@ export default function Home() {
                   <path d="M 50,98 A 48,48 0 0 1 8.5,26 L 26,50 A 24,24 0 0 0 62,70.5 z" style={{ fill: "#4AAE48" }} />
                   <path d="M 91.5,26 A 48,48 0 0 1 50,98 L 62,70.5 A 24,24 0 0 0 62,29.5 z" style={{ fill: "#FED14B" }} />
                 </svg>
-                Add to Chrome — It's Free
+                Add to Chrome
               </a>
               <a href="#features" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border-2 border-brand-border text-brand-dark rounded-xl font-semibold text-lg hover:border-brand-purple hover:bg-brand-surface transition-all duration-300">
                 Learn More
@@ -328,7 +328,7 @@ export default function Home() {
                 </ul>
 
                 <button disabled className="block w-full text-center px-6 py-3 bg-gray-100 text-gray-400 rounded-lg font-semibold cursor-not-allowed mt-auto">
-                  Coming Soon
+                  Coming Soon...
                 </button>
               </div>
 
@@ -348,7 +348,7 @@ export default function Home() {
                 <path d="M 50,98 A 48,48 0 0 1 8.5,26 L 26,50 A 24,24 0 0 0 62,70.5 z" style={{ fill: "#4AAE48" }} />
                 <path d="M 91.5,26 A 48,48 0 0 1 50,98 L 62,70.5 A 24,24 0 0 0 62,29.5 z" style={{ fill: "#FED14B" }} />
               </svg>
-              Install Free Extension
+              Add to Chrome
             </a>
           </div>
         </section>
@@ -421,7 +421,7 @@ export default function Home() {
             <p className="text-brand-purple font-bold text-sm md:text-base mb-6 tracking-wide uppercase">NO COMPLEXITY. JUST SPEED.</p>
             <h2 className="text-4xl md:text-6xl font-bold mb-8 text-brand-dark">Zero Friction Setup</h2>
             <p className="text-lg md:text-xl text-brand-slate max-w-4xl mx-auto mb-12 leading-relaxed">
-              No account required. No login. No "cloud sync" delays to get started. Install the extension and it works instantly on your existing tabs. Only enable <strong>Cloud Sync</strong> when you're ready to backup across devices.
+              No account required. No login. No "cloud sync" delays to get started. Install the extension and it works instantly on your existing tabs. Only enable Cloud Sync when you're ready to backup across devices and use advanced features.
             </p>
 
             {/* Three Checkmarks */}
