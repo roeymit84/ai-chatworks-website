@@ -285,7 +285,7 @@ export default function Home() {
                 </p>
                 
                 <p className="text-xs text-brand-slate text-center mt-2">
-                  * Consent required for promotional pricing
+                  * Agreement to beta terms required
                 </p>
               </div>
 
