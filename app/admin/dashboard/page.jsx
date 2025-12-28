@@ -37,7 +37,7 @@ export default function AdminDashboard() {
     category: '',
     description: '',
     content: '',
-    tier: 'free',
+    tier: 'starter',
     is_active: true
   });
   
@@ -46,7 +46,7 @@ export default function AdminDashboard() {
     category: '',
     description: '',
     content: '',
-    tier: 'free',
+    tier: 'starter',
     is_active: true
   });
   
@@ -234,7 +234,7 @@ export default function AdminDashboard() {
             </td>
             <td><span class="badge badge-category">${p.category || 'Uncategorized'}</span></td>
             <td class="text-mono">${(p.downloads_count || 0).toLocaleString()}</td>
-            <td><span class="badge badge-${p.tier || 'free'}">${(p.tier || 'free').toUpperCase()}</span></td>
+            <td><span class="badge badge-${p.tier || 'starter'}">${(p.tier || 'starter').toUpperCase()}</span></td>
           </tr>
         `).join('');
       }
@@ -362,7 +362,7 @@ export default function AdminDashboard() {
       category: categories[0]?.name || '',
       description: '',
       content: '',
-      tier: 'free',
+      tier: 'starter',
       is_active: true
     });
     setShowCreatePromptModal(true);
@@ -373,7 +373,7 @@ export default function AdminDashboard() {
     
     try {
       // Validate tier value
-      const validTiers = ['free', 'pro', 'premium'];
+      const validTiers = ['starter', 'pro', 'premium'];
       const tier = createForm.tier.toLowerCase();
       
       if (!validTiers.includes(tier)) {
@@ -431,7 +431,7 @@ export default function AdminDashboard() {
           category: data.category || '',
           description: data.description || '',
           content: data.content || '',
-          tier: data.tier || 'free',
+          tier: data.tier || 'starter',
           is_active: data.is_active !== undefined ? data.is_active : true
         });
         setShowEditPromptModal(true);
@@ -447,7 +447,7 @@ export default function AdminDashboard() {
     
     try {
       // Validate tier value
-      const validTiers = ['free', 'pro', 'premium'];
+      const validTiers = ['starter', 'pro', 'premium'];
       const tier = editForm.tier.toLowerCase();
       
       if (!validTiers.includes(tier)) {
@@ -621,7 +621,7 @@ export default function AdminDashboard() {
       
       let successCount = 0;
       let errorCount = 0;
-      const validTiers = ['free', 'pro', 'premium'];
+      const validTiers = ['starter', 'pro', 'premium'];
       
       for (const prompt of prompts) {
         try {
@@ -631,7 +631,7 @@ export default function AdminDashboard() {
             continue;
           }
           
-          const tier = (prompt.tier || 'free').toLowerCase();
+          const tier = (prompt.tier || 'starter').toLowerCase();
           if (!validTiers.includes(tier)) {
             console.warn(`Skipping prompt "${prompt.title}": invalid tier "${tier}"`, prompt);
             errorCount++;
@@ -708,7 +708,7 @@ export default function AdminDashboard() {
       const category = p.category || 'Uncategorized';
       const uploaderEmail = p.uploader_email || 'Unknown';
       const downloads = p.downloads || p.downloads_count || 0;
-      const tier = p.tier || 'free';
+      const tier = p.tier || 'starter';
       const isActive = p.is_active !== undefined ? p.is_active : true;
       const createdAt = p.created_at 
         ? new Date(p.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) 
@@ -1455,10 +1455,10 @@ export default function AdminDashboard() {
                       <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                         <input 
                           type="radio" 
-                          checked={createForm.tier === 'free'}
-                          onChange={() => setCreateForm({...createForm, tier: 'free'})}
+                          checked={createForm.tier === 'starter'}
+                          onChange={() => setCreateForm({...createForm, tier: 'starter'})}
                         />
-                        Free
+                        starter
                       </label>
                       <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                         <input 
