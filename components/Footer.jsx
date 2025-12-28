@@ -81,6 +81,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/roadmap" className="text-sm text-brand-gray hover:text-brand-purple transition-colors">
+                Roadmap
+              </Link>
+            </li>
+            <li>
               <Link href="/#faq" className="text-sm text-brand-gray hover:text-brand-purple transition-colors">
                 FAQ
               </Link>

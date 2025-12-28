@@ -43,6 +43,12 @@ export default function Navbar() {
             Pricing
           </Link>
           <Link 
+            href="/roadmap" 
+            className={`hover:text-brand-purple transition-colors ${isActive('/roadmap') ? 'text-brand-purple font-bold' : ''}`}
+          >
+            Roadmap
+          </Link>
+          <Link 
             href="/contact" 
             className={`hover:text-brand-purple transition-colors ${isActive('/contact') ? 'text-brand-purple font-bold' : ''}`}
           >
@@ -100,6 +106,13 @@ export default function Navbar() {
             className={`block py-2 hover:text-brand-purple transition-colors`}
           >
             Pricing
+          </Link>
+          <Link 
+            href="/roadmap" 
+            onClick={() => setMobileMenuOpen(false)}
+            className={`block py-2 hover:text-brand-purple transition-colors ${isActive('/roadmap') ? 'text-brand-purple font-bold' : ''}`}
+          >
+            Roadmap
           </Link>
           <Link 
             href="/contact" 
