@@ -283,11 +283,15 @@ export default function Home() {
                 <p className="text-xs text-brand-dark font-medium text-center mt-3 whitespace-nowrap">
                   Free during beta period (limited time only)
                 </p>
+                
+                <p className="text-xs text-brand-slate text-center mt-2">
+                  * Consent required for promotional pricing
+                </p>
               </div>
 
               {/* Pro Tier */}
               <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 transition-all hover:shadow-lg flex flex-col">
-                <div className="mb-8">
+                <div className="mb-5">
                   <h3 className="text-2xl font-bold mb-2">Pro</h3>
                   <p className="text-brand-slate text-sm mb-6">Built for power users and pros</p>
                   <div className="flex items-baseline gap-1 mb-6">
