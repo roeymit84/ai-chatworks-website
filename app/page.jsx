@@ -461,34 +461,10 @@ export default function Home() {
             <div className="space-y-4">
               <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
                 <summary className="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
-                  Is AI ChatWorks really free?
+                  Can I backup my library?
                   <svg className="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
                 </summary>
-                <div className="px-6 pb-6 text-brand-slate leading-relaxed">Yes! AI ChatWorks is completely free to use. All core features — including the prompt library, Flow command palette, and multi-platform support — are available at no cost. We believe in making productivity tools accessible to everyone.</div>
-              </details>
-
-              <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
-                <summary className="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
-                  Which AI platforms does it support?
-                  <svg className="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                </summary>
-                <div className="px-6 pb-6 text-brand-slate leading-relaxed">AI ChatWorks currently supports ChatGPT (chat.openai.com), Claude (claude.ai), and Google Gemini (gemini.google.com). The extension automatically activates on these platforms, giving you instant access to your prompt library wherever you work.</div>
-              </details>
-
-              <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
-                <summary className="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
-                  Is my information secure?
-                  <svg className="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                </summary>
-                <div className="px-6 pb-6 text-brand-slate leading-relaxed">Absolutely. Security and privacy are core to our design. Your entire prompt library is stored 100% locally on your computer using secure browser storage (chrome.storage.local). Nothing is ever sent to an external server, ensuring your data remains private and secure.</div>
-              </details>
-
-              <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
-                <summary className="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
-                  Is there a backup for the prompt library?
-                  <svg className="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                </summary>
-                <div className="px-6 pb-6 text-brand-slate leading-relaxed">Yes. The "Data Management" tab in Settings features a robust Import/Export tool. You can create a full backup of your prompts, folders, and settings as a single .zip file, allowing you to restore your library or move it to a new computer at any time.</div>
+                <div className="px-6 pb-6 text-brand-slate leading-relaxed">Yes. The "Local Data" tab in Settings features a robust Import/Export tool. You can create a full backup of your prompts, folders, and settings as a single .zip file, allowing you to restore your library or move it to a new computer at any time.</div>
               </details>
 
               <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
@@ -501,10 +477,18 @@ export default function Home() {
 
               <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
                 <summary className="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
+                  Which AI platforms does it support?
+                  <svg className="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <div className="px-6 pb-6 text-brand-slate leading-relaxed">AI ChatWorks currently supports ChatGPT (chat.openai.com), Claude (claude.ai), and Google Gemini (gemini.google.com). The extension automatically activates on these platforms, giving you instant access to your prompt library wherever you work.</div>
+              </details>
+
+              <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
+                <summary className="flex items-center justify-between p-6 font-bold text-brand-dark cursor-pointer hover:bg-brand-surface transition select-none">
                   Is there technical support?
                   <svg className="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
                 </summary>
-                <div className="px-6 pb-6 text-brand-slate leading-relaxed">Yes. We offer community and direct support. You can access support links, join our Facebook group, or find our contact email directly from the "Help & Support" section within the extension's settings panel.</div>
+                <div className="px-6 pb-6 text-brand-slate leading-relaxed">Yes. We offer community and direct support. Contact email directly from the "Help & Support" section.</div>
               </details>
 
               <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
@@ -520,7 +504,7 @@ export default function Home() {
                   How does the "Summarize Chat" action work?
                   <svg className="w-5 h-5 transition-transform group-open:rotate-180 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
                 </summary>
-                <div className="px-6 pb-6 text-brand-slate leading-relaxed">The "Summarize Chat" action (available in Flow) is an intelligent tool that reads the current conversation, detects the dominant language, and then instructs the AI to generate a "full fidelity" summary. This summary is automatically copied to your clipboard, allowing you to seamlessly start a new chat with full context.</div>
+                <div className="px-6 pb-6 text-brand-slate leading-relaxed">The "Summarize Chat" action (available in Flow/Actions) is an intelligent tool that reads the current conversation, detects the dominant language, and then instructs the AI to generate a "full fidelity" summary. This summary is automatically copied to your clipboard, allowing you to seamlessly start a new chat with full context.</div>
               </details>
 
               <details className="group bg-white rounded-xl border border-brand-border overflow-hidden">
