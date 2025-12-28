@@ -243,13 +243,13 @@ export default function Home() {
                   <h3 className="text-2xl font-bold mb-2">Starter</h3>
                   <p className="text-brand-slate text-sm mb-6">Great for everyday AI workflows</p>
                   <div className="flex items-center justify-center gap-3 mb-3">
-                    <span className="text-4xl font-bold text-gray-300 line-through decoration-2">$3.99</span>
+                    <span className="text-4xl font-bold text-gray-300 line-through decoration-2">$4.99</span>
                     <span className="text-5xl font-bold text-brand-dark">$0</span>
                     <span className="text-brand-slate">/month</span>
                   </div>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-2">
                   <p className="text-brand-purple font-semibold text-sm">All Basic features, plus:</p>
                 </div>
 
@@ -280,7 +280,7 @@ export default function Home() {
                   Upgrade
                 </a>
                 
-                <p className="text-sm text-brand-purple font-semibold text-center mt-3">
+                <p className="text-xs text-brand-dark font-medium text-center mt-3 whitespace-nowrap">
                   Free during beta period (limited time only)
                 </p>
               </div>
@@ -296,7 +296,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-2">
                   <p className="text-brand-purple font-semibold text-sm">All Starter features, plus:</p>
                 </div>
 
