@@ -31,9 +31,11 @@ export default function AdminDashboard() {
   const [showBulkUploadModal, setShowBulkUploadModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showAlertModal, setShowAlertModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [editingPrompt, setEditingPrompt] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [alertConfig, setAlertConfig] = useState({ title: '', message: '' });
+  const [confirmConfig, setConfirmConfig] = useState({ title: '', message: '', onConfirm: null });
   
   // Form states
   const [createForm, setCreateForm] = useState({
@@ -212,6 +214,11 @@ export default function AdminDashboard() {
   function showAlert(title, message) {
     setAlertConfig({ title, message });
     setShowAlertModal(true);
+  }
+
+  function showConfirm(title, message, onConfirm) {
+    setConfirmConfig({ title, message, onConfirm });
+    setShowConfirmModal(true);
   }
 
   // ============================================
@@ -626,25 +633,27 @@ export default function AdminDashboard() {
   }
 
   async function handleDeleteCategory(categoryName) {
-    if (!confirm(`Delete category "${categoryName}"? Prompts will be moved to "Uncategorized".`)) {
-      return;
-    }
-    
-    try {
-      const { error } = await supabase.rpc('delete_marketplace_category', {
-        category_name: categoryName,
-        move_to_category: 'Uncategorized'
-      });
-      
-      if (error) throw error;
-      
-      showAlert('Success', 'Category deleted successfully!');
-      await loadCategories();
-      await loadMarketplaceData();
-    } catch (error) {
-      console.error('Error deleting category:', error);
-      showAlert('Error', 'Failed to delete category: ' + error.message);
-    }
+    showConfirm(
+      'Delete Category',
+      `Delete category "${categoryName}"? All prompts will be moved to "Uncategorized".`,
+      async () => {
+        try {
+          const { error } = await supabase.rpc('delete_marketplace_category', {
+            category_name: categoryName,
+            move_to_category: 'Uncategorized'
+          });
+          
+          if (error) throw error;
+          
+          showAlert('Success', 'Category deleted successfully!');
+          await loadCategories();
+          await loadMarketplaceData();
+        } catch (error) {
+          console.error('Error deleting category:', error);
+          showAlert('Error', 'Failed to delete category: ' + error.message);
+        }
+      }
+    );
   }
 
   // ============================================
@@ -752,39 +761,12 @@ export default function AdminDashboard() {
     
     // Category color pool - 30 distinct colors
     const categoryColorPool = [
-      '#f59e0b', // Orange
-      '#3b82f6', // Blue
-      '#8b5cf6', // Purple
-      '#10b981', // Green
-      '#ef4444', // Red
-      '#06b6d4', // Cyan
-      '#ec4899', // Pink
-      '#6366f1', // Indigo
-      '#f97316', // Deep Orange
-      '#14b8a6', // Teal
-      '#84cc16', // Lime
-      '#a855f7', // Violet
-      '#f43f5e', // Rose
-      '#0ea5e9', // Sky Blue
-      '#22c55e', // Light Green
-      '#eab308', // Yellow
-      '#d946ef', // Fuchsia
-      '#fb923c', // Amber
-      '#4ade80', // Emerald
-      '#facc15', // Bright Yellow
-      '#94a3b8', // Slate
-      '#fb7185', // Light Rose
-      '#38bdf8', // Light Sky
-      '#a78bfa', // Light Purple
-      '#34d399', // Mint
-      '#fbbf24', // Gold
-      '#c084fc', // Lavender
-      '#60a5fa', // Bright Blue
-      '#f472b6', // Hot Pink
-      '#2dd4bf'  // Turquoise
+      '#f59e0b', '#3b82f6', '#8b5cf6', '#10b981', '#ef4444', '#06b6d4', '#ec4899', '#6366f1',
+      '#f97316', '#14b8a6', '#84cc16', '#a855f7', '#f43f5e', '#0ea5e9', '#22c55e', '#eab308',
+      '#d946ef', '#fb923c', '#4ade80', '#facc15', '#94a3b8', '#fb7185', '#38bdf8', '#a78bfa',
+      '#34d399', '#fbbf24', '#c084fc', '#60a5fa', '#f472b6', '#2dd4bf'
     ];
     
-    // Hash function to get consistent color for category
     const getCategoryColor = (category) => {
       let hash = 0;
       for (let i = 0; i < category.length; i++) {
@@ -1743,48 +1725,54 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      {/* CATEGORIES MODAL */}
+      {/* CATEGORIES MODAL - SIZED TO MATCH CREATE/EDIT MODALS */}
       {showCategoriesModal && (
         <div className="modal-overlay" onClick={() => setShowCategoriesModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content modal-wide" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h2 className="modal-title">Manage Categories</h2>
               <button className="modal-close" onClick={() => setShowCategoriesModal(false)}>×</button>
             </div>
             <div className="modal-body">
               <div className="form-group">
-                <label>Add New Category</label>
+                <label>ADD NEW CATEGORY</label>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <input
                     type="text"
                     value={newCategoryName}
                     onChange={(e) => setNewCategoryName(e.target.value)}
-                    placeholder="Category name"
+                    placeholder="Enter category name"
                     onKeyPress={(e) => e.key === 'Enter' && handleAddCategory()}
                   />
-                  <button className="btn btn-accent" onClick={handleAddCategory}>
+                  <button className="btn btn-accent" onClick={handleAddCategory} style={{ width: '94.8px', flexShrink: 0 }}>
                     Add
                   </button>
                 </div>
               </div>
               
               <div style={{ marginTop: '24px' }}>
-                <label style={{ marginBottom: '12px', display: 'block' }}>Existing Categories</label>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label style={{ marginBottom: '12px', display: 'block' }}>EXISTING CATEGORIES</label>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '350px', overflowY: 'auto' }}>
                   {categories.map(cat => (
                     <div key={cat.name} style={{ 
                       display: 'flex', 
                       justifyContent: 'space-between', 
                       alignItems: 'center',
-                      padding: '10px 12px',
+                      padding: '12px 16px',
                       background: 'var(--bg-tertiary)',
-                      borderRadius: 'var(--radius-md)'
+                      borderRadius: 'var(--radius-md)',
+                      border: '1px solid var(--border-color)'
                     }}>
-                      <span style={{ fontWeight: '500' }}>{cat.name}</span>
+                      <div>
+                        <span style={{ fontWeight: '500', fontSize: '14px' }}>{cat.name}</span>
+                        <span style={{ fontSize: '12px', color: 'var(--text-muted)', marginLeft: '8px' }}>
+                          ({cat.prompt_count || 0} prompts)
+                        </span>
+                      </div>
                       <button 
                         className="btn btn-ghost" 
                         onClick={() => handleDeleteCategory(cat.name)}
-                        style={{ padding: '4px 8px', fontSize: '12px', color: 'var(--danger)' }}
+                        style={{ padding: '6px 12px', fontSize: '13px', color: 'var(--danger)' }}
                       >
                         Delete
                       </button>
@@ -1802,29 +1790,42 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      {/* BULK UPLOAD MODAL */}
+      {/* BULK UPLOAD MODAL - REFINED WITH JSON EXAMPLE */}
       {showBulkUploadModal && (
         <div className="modal-overlay" onClick={() => setShowBulkUploadModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content modal-wide" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h2 className="modal-title">Bulk Upload Prompts</h2>
               <button className="modal-close" onClick={() => setShowBulkUploadModal(false)}>×</button>
             </div>
             <div className="modal-body">
-              <p style={{ marginBottom: '16px', color: 'var(--text-secondary)' }}>
-                Upload a JSON file containing an array of prompts. Each prompt should have:
+              <p style={{ marginBottom: '16px', color: 'var(--text-secondary)', fontSize: '14px' }}>
+                Upload a JSON file with multiple prompts. Expected format:
               </p>
-              <ul style={{ marginBottom: '20px', color: 'var(--text-tertiary)', fontSize: '13px', paddingLeft: '20px' }}>
-                <li>title (required)</li>
-                <li>content (required)</li>
-                <li>category (optional)</li>
-                <li>description (optional)</li>
-                <li>tier (optional: starter, pro, or premium)</li>
-                <li>is_active (optional: true or false)</li>
-              </ul>
+              
+              <div style={{ 
+                background: 'var(--bg-tertiary)', 
+                padding: '16px', 
+                borderRadius: 'var(--radius-md)',
+                fontFamily: 'monospace',
+                fontSize: '12px',
+                marginBottom: '20px',
+                border: '1px solid var(--border-color)',
+                overflowX: 'auto'
+              }}>
+                <pre style={{ margin: 0, color: 'var(--text-secondary)' }}>{`[
+  {
+    "title": "Prompt Name",
+    "category": "Marketing",
+    "description": "Short description",
+    "content": "Act as an expert...",
+    "tier": "starter"
+  }
+]`}</pre>
+              </div>
               
               <div className="form-group">
-                <label>Select JSON File</label>
+                <label>SELECT JSON FILE</label>
                 <input
                   type="file"
                   accept=".json"
@@ -1836,20 +1837,29 @@ export default function AdminDashboard() {
                 <div style={{ 
                   marginTop: '16px', 
                   padding: '12px', 
-                  background: 'var(--bg-tertiary)', 
+                  background: bulkUploadStatus.includes('✓') ? 'var(--success-bg)' : 'var(--bg-tertiary)', 
                   borderRadius: 'var(--radius-md)',
-                  fontSize: '13px'
+                  fontSize: '13px',
+                  color: bulkUploadStatus.includes('✓') ? 'var(--success)' : 'var(--text-primary)',
+                  border: `1px solid ${bulkUploadStatus.includes('✓') ? 'var(--success)' : 'var(--border-color)'}`
                 }}>
                   {bulkUploadStatus}
                 </div>
               )}
             </div>
             <div className="modal-footer">
-              <button className="btn btn-secondary" onClick={() => {
+              <button className="btn btn-cancel" onClick={() => {
                 setShowBulkUploadModal(false);
                 setBulkUploadStatus('');
               }}>
-                Close
+                Cancel
+              </button>
+              <button 
+                className="btn btn-primary" 
+                onClick={() => document.querySelector('input[type="file"]').click()}
+                style={{ width: 'auto', paddingLeft: '20px', paddingRight: '20px' }}
+              >
+                Upload Prompts
               </button>
             </div>
           </div>
@@ -1869,6 +1879,34 @@ export default function AdminDashboard() {
             </div>
             <div className="modal-footer">
               <button className="btn btn-accent" onClick={() => setShowAlertModal(false)}>
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CONFIRM MODAL */}
+      {showConfirmModal && (
+        <div className="modal-overlay" onClick={() => setShowConfirmModal(false)}>
+          <div className="modal-content modal-sm" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">{confirmConfig.title}</h2>
+              <button className="modal-close" onClick={() => setShowConfirmModal(false)}>×</button>
+            </div>
+            <div className="modal-body">
+              <p>{confirmConfig.message}</p>
+            </div>
+            <div className="modal-footer">
+              <button className="btn btn-secondary" onClick={() => setShowConfirmModal(false)}>
+                Cancel
+              </button>
+              <button className="btn btn-danger" onClick={() => {
+                if (confirmConfig.onConfirm) {
+                  confirmConfig.onConfirm();
+                }
+                setShowConfirmModal(false);
+              }}>
                 OK
               </button>
             </div>
