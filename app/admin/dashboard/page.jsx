@@ -1473,39 +1473,86 @@ export default function AdminDashboard() {
       {/* CREATE PROMPT MODAL */}
       {showCreatePromptModal && (
         <div className="modal-overlay" onClick={() => setShowCreatePromptModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content modal-wide" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h2 className="modal-title">Create New Prompt</h2>
               <button className="modal-close" onClick={() => setShowCreatePromptModal(false)}>×</button>
             </div>
             <form onSubmit={handleCreatePrompt}>
               <div className="modal-body">
-                <div className="form-group">
-                  <label>Title *</label>
-                  <input
-                    type="text"
-                    value={createForm.title}
-                    onChange={(e) => setCreateForm({...createForm, title: e.target.value})}
-                    required
-                    placeholder="Enter prompt title"
-                  />
+                {/* Row 1: Prompt Name and Category */}
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>PROMPT NAME</label>
+                    <input
+                      type="text"
+                      value={createForm.title}
+                      onChange={(e) => setCreateForm({...createForm, title: e.target.value})}
+                      required
+                      placeholder="Enter prompt name"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>CATEGORY</label>
+                    <select
+                      className="custom-select"
+                      value={createForm.category}
+                      onChange={(e) => setCreateForm({...createForm, category: e.target.value})}
+                      required
+                    >
+                      {categories.map(cat => (
+                        <option key={cat.name} value={cat.name}>{cat.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Row 2: Tier and Status */}
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>TIER</label>
+                    <div className="radio-group">
+                      <label className="radio-label">
+                        <input
+                          type="radio"
+                          name="create-tier"
+                          value="starter"
+                          checked={createForm.tier === 'starter'}
+                          onChange={(e) => setCreateForm({...createForm, tier: e.target.value})}
+                        />
+                        <span>FREE</span>
+                      </label>
+                      <label className="radio-label">
+                        <input
+                          type="radio"
+                          name="create-tier"
+                          value="pro"
+                          checked={createForm.tier === 'pro'}
+                          onChange={(e) => setCreateForm({...createForm, tier: e.target.value})}
+                        />
+                        <span>PRO</span>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>STATUS</label>
+                    <div className="toggle-wrapper">
+                      <div 
+                        className={`toggle-switch ${createForm.is_active ? 'active' : ''}`}
+                        onClick={() => setCreateForm({...createForm, is_active: !createForm.is_active})}
+                      >
+                        <div className="toggle-slider"></div>
+                      </div>
+                      <span className="toggle-label">{createForm.is_active ? 'Active' : 'Inactive'}</span>
+                    </div>
+                  </div>
                 </div>
                 
+                {/* Description */}
                 <div className="form-group">
-                  <label>Category *</label>
-                  <select
-                    value={createForm.category}
-                    onChange={(e) => setCreateForm({...createForm, category: e.target.value})}
-                    required
-                  >
-                    {categories.map(cat => (
-                      <option key={cat.name} value={cat.name}>{cat.name}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div className="form-group">
-                  <label>Description</label>
+                  <label>DESCRIPTION</label>
                   <textarea
                     value={createForm.description}
                     onChange={(e) => setCreateForm({...createForm, description: e.target.value})}
@@ -1514,47 +1561,25 @@ export default function AdminDashboard() {
                   />
                 </div>
                 
+                {/* System Prompt with Character Count */}
                 <div className="form-group">
-                  <label>Prompt Content *</label>
+                  <label>SYSTEM PROMPT</label>
                   <textarea
                     value={createForm.content}
                     onChange={(e) => setCreateForm({...createForm, content: e.target.value})}
                     required
-                    placeholder="Enter the prompt content"
-                    rows="8"
+                    placeholder="Enter the system prompt content"
+                    rows="10"
                   />
-                </div>
-                
-                <div className="form-group">
-                  <label>Tier *</label>
-                  <select
-                    value={createForm.tier}
-                    onChange={(e) => setCreateForm({...createForm, tier: e.target.value})}
-                    required
-                  >
-                    <option value="starter">Starter</option>
-                    <option value="pro">Pro</option>
-                    <option value="premium">Premium</option>
-                  </select>
-                </div>
-                
-                <div className="form-group">
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                    <input
-                      type="checkbox"
-                      checked={createForm.is_active}
-                      onChange={(e) => setCreateForm({...createForm, is_active: e.target.checked})}
-                    />
-                    Active (visible to users)
-                  </label>
+                  <div className="char-count">{createForm.content.length}/10000</div>
                 </div>
               </div>
               
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={() => setShowCreatePromptModal(false)}>
+                <button type="button" className="btn btn-cancel" onClick={() => setShowCreatePromptModal(false)}>
                   Cancel
                 </button>
-                <button type="submit" className="btn btn-accent">
+                <button type="submit" className="btn btn-primary">
                   Create Prompt
                 </button>
               </div>
@@ -1566,39 +1591,86 @@ export default function AdminDashboard() {
       {/* EDIT PROMPT MODAL */}
       {showEditPromptModal && editingPrompt && (
         <div className="modal-overlay" onClick={() => setShowEditPromptModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content modal-wide" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h2 className="modal-title">Edit Prompt</h2>
               <button className="modal-close" onClick={() => setShowEditPromptModal(false)}>×</button>
             </div>
             <form onSubmit={handleUpdatePrompt}>
               <div className="modal-body">
-                <div className="form-group">
-                  <label>Title *</label>
-                  <input
-                    type="text"
-                    value={editForm.title}
-                    onChange={(e) => setEditForm({...editForm, title: e.target.value})}
-                    required
-                    placeholder="Enter prompt title"
-                  />
+                {/* Row 1: Prompt Name and Category */}
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>PROMPT NAME</label>
+                    <input
+                      type="text"
+                      value={editForm.title}
+                      onChange={(e) => setEditForm({...editForm, title: e.target.value})}
+                      required
+                      placeholder="Enter prompt name"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>CATEGORY</label>
+                    <select
+                      className="custom-select"
+                      value={editForm.category}
+                      onChange={(e) => setEditForm({...editForm, category: e.target.value})}
+                      required
+                    >
+                      {categories.map(cat => (
+                        <option key={cat.name} value={cat.name}>{cat.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Row 2: Tier and Status */}
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>TIER</label>
+                    <div className="radio-group">
+                      <label className="radio-label">
+                        <input
+                          type="radio"
+                          name="edit-tier"
+                          value="starter"
+                          checked={editForm.tier === 'starter'}
+                          onChange={(e) => setEditForm({...editForm, tier: e.target.value})}
+                        />
+                        <span>FREE</span>
+                      </label>
+                      <label className="radio-label">
+                        <input
+                          type="radio"
+                          name="edit-tier"
+                          value="pro"
+                          checked={editForm.tier === 'pro'}
+                          onChange={(e) => setEditForm({...editForm, tier: e.target.value})}
+                        />
+                        <span>PRO</span>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>STATUS</label>
+                    <div className="toggle-wrapper">
+                      <div 
+                        className={`toggle-switch ${editForm.is_active ? 'active' : ''}`}
+                        onClick={() => setEditForm({...editForm, is_active: !editForm.is_active})}
+                      >
+                        <div className="toggle-slider"></div>
+                      </div>
+                      <span className="toggle-label">{editForm.is_active ? 'Active' : 'Inactive'}</span>
+                    </div>
+                  </div>
                 </div>
                 
+                {/* Description */}
                 <div className="form-group">
-                  <label>Category *</label>
-                  <select
-                    value={editForm.category}
-                    onChange={(e) => setEditForm({...editForm, category: e.target.value})}
-                    required
-                  >
-                    {categories.map(cat => (
-                      <option key={cat.name} value={cat.name}>{cat.name}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div className="form-group">
-                  <label>Description</label>
+                  <label>DESCRIPTION</label>
                   <textarea
                     value={editForm.description}
                     onChange={(e) => setEditForm({...editForm, description: e.target.value})}
@@ -1607,47 +1679,25 @@ export default function AdminDashboard() {
                   />
                 </div>
                 
+                {/* System Prompt with Character Count */}
                 <div className="form-group">
-                  <label>Prompt Content *</label>
+                  <label>SYSTEM PROMPT</label>
                   <textarea
                     value={editForm.content}
                     onChange={(e) => setEditForm({...editForm, content: e.target.value})}
                     required
-                    placeholder="Enter the prompt content"
-                    rows="8"
+                    placeholder="Enter the system prompt content"
+                    rows="10"
                   />
-                </div>
-                
-                <div className="form-group">
-                  <label>Tier *</label>
-                  <select
-                    value={editForm.tier}
-                    onChange={(e) => setEditForm({...editForm, tier: e.target.value})}
-                    required
-                  >
-                    <option value="starter">Starter</option>
-                    <option value="pro">Pro</option>
-                    <option value="premium">Premium</option>
-                  </select>
-                </div>
-                
-                <div className="form-group">
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                    <input
-                      type="checkbox"
-                      checked={editForm.is_active}
-                      onChange={(e) => setEditForm({...editForm, is_active: e.target.checked})}
-                    />
-                    Active (visible to users)
-                  </label>
+                  <div className="char-count">{editForm.content.length}/10000</div>
                 </div>
               </div>
               
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={() => setShowEditPromptModal(false)}>
+                <button type="button" className="btn btn-cancel" onClick={() => setShowEditPromptModal(false)}>
                   Cancel
                 </button>
-                <button type="submit" className="btn btn-accent">
+                <button type="submit" className="btn btn-primary">
                   Update Prompt
                 </button>
               </div>
