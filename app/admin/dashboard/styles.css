@@ -97,7 +97,7 @@ body {
 .icon {
     width: 20px;
     height: 20px;
-    stroke-width: 2;
+    stroke-width: 1.5;
     stroke: currentColor;
     fill: none;
     stroke-linecap: round;
@@ -222,7 +222,6 @@ body {
 .search-box {
     position: relative;
     flex: 1;
-    max-width: 400px;
 }
 
 .search-box svg {
@@ -271,7 +270,7 @@ body {
 
 .marketplace-table thead th {
     text-align: left;
-    padding: 10px 16px;
+    padding: 10px 12px;
     background: var(--bg-secondary);
     font-size: 11px;
     font-weight: 600;
@@ -296,7 +295,7 @@ body {
 }
 
 .marketplace-table td {
-    padding: 8px 16px;
+    padding: 6px 12px;
     font-size: 13px;
     color: var(--text-secondary);
     vertical-align: middle;
@@ -395,7 +394,7 @@ body {
 }
 
 .marketplace-actions {
-    width: 90px;
+    width: 80px;
     text-align: right;
 }
 
@@ -412,12 +411,17 @@ body {
     color: var(--text-muted);
     cursor: pointer;
     transition: all var(--transition-fast);
-    margin-left: 4px;
+    margin-left: 2px;
+}
+
+.marketplace-actions .action-btn:first-child {
+    margin-left: 0;
 }
 
 .marketplace-actions .action-btn svg {
     width: 14px;
     height: 14px;
+    stroke-width: 1.5;
 }
 
 .marketplace-actions .action-edit:hover {
@@ -593,7 +597,7 @@ body {
     font-size: 10px;
     font-weight: 700;
     padding: 2px 8px;
-    border-radius: 99px;
+    border-radius: 8px;
 }
 
 .user-profile-section {
@@ -670,6 +674,7 @@ body {
 .logout-btn svg {
     width: 16px;
     height: 16px;
+    stroke-width: 1.5;
 }
 
 /* CONTENT AREA */
@@ -825,6 +830,7 @@ textarea {
 .btn svg {
     width: 16px;
     height: 16px;
+    stroke-width: 1.5;
 }
 
 .btn-primary {
@@ -912,6 +918,7 @@ textarea {
     width: 24px;
     height: 24px;
     color: white;
+    stroke-width: 1.5;
 }
 
 .stat-content {

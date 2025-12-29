@@ -743,19 +743,47 @@ export default function AdminDashboard() {
       );
     }
     
-    // Category color mapping
-    const categoryColors = {
-      'Marketing': '#f59e0b',
-      'Sales': '#3b82f6',
-      'Design': '#8b5cf6',
-      'Development': '#10b981',
-      'Support': '#ef4444',
-      'Analytics': '#06b6d4',
-      'Content': '#ec4899',
-      'SEO': '#6366f1',
-      'Social Media': '#f97316',
-      'Email': '#14b8a6',
-      'Uncategorized': '#6b7280'
+    // Category color pool - 30 distinct colors
+    const categoryColorPool = [
+      '#f59e0b', // Orange
+      '#3b82f6', // Blue
+      '#8b5cf6', // Purple
+      '#10b981', // Green
+      '#ef4444', // Red
+      '#06b6d4', // Cyan
+      '#ec4899', // Pink
+      '#6366f1', // Indigo
+      '#f97316', // Deep Orange
+      '#14b8a6', // Teal
+      '#84cc16', // Lime
+      '#a855f7', // Violet
+      '#f43f5e', // Rose
+      '#0ea5e9', // Sky Blue
+      '#22c55e', // Light Green
+      '#eab308', // Yellow
+      '#d946ef', // Fuchsia
+      '#fb923c', // Amber
+      '#4ade80', // Emerald
+      '#facc15', // Bright Yellow
+      '#94a3b8', // Slate
+      '#fb7185', // Light Rose
+      '#38bdf8', // Light Sky
+      '#a78bfa', // Light Purple
+      '#34d399', // Mint
+      '#fbbf24', // Gold
+      '#c084fc', // Lavender
+      '#60a5fa', // Bright Blue
+      '#f472b6', // Hot Pink
+      '#2dd4bf'  // Turquoise
+    ];
+    
+    // Hash function to get consistent color for category
+    const getCategoryColor = (category) => {
+      let hash = 0;
+      for (let i = 0; i < category.length; i++) {
+        hash = category.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return categoryColorPool[Math.abs(hash) % categoryColorPool.length];
     };
     
     return paginatedData.map(p => {
@@ -770,8 +798,7 @@ export default function AdminDashboard() {
         ? new Date(p.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) 
         : 'N/A';
       
-      // Get category color or generate one based on hash
-      const categoryColor = categoryColors[category] || '#' + Math.abs(category.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0) % 0xFFFFFF).toString(16).padStart(6, '0').substring(0, 6);
+      const categoryColor = getCategoryColor(category);
       
       return (
         <tr key={promptId} className="marketplace-row">
@@ -900,7 +927,7 @@ export default function AdminDashboard() {
             </div>
             <button type="submit" className="btn btn-primary">
               Sign In
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
                 <polyline points="10 17 15 12 10 7" />
                 <line x1="15" y1="12" x2="3" y2="12" />
@@ -963,7 +990,7 @@ export default function AdminDashboard() {
               DB Queries
             </div>
             <div className={`nav-link ${currentView === 'marketplace' ? 'active' : ''}`} onClick={() => switchView('marketplace')}>
-              <svg className="icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M2.7,9.45a4.235,4.235,0,0,0,.3.3V22a1,1,0,0,0,1,1H20a1,1,0,0,0,1-1V9.752a4.235,4.235,0,0,0,.3-.3,4,4,0,0,0,.731-3.456L20.97,1.758A1,1,0,0,0,20,1H4a1,1,0,0,0-.97.758L1.972,5.994A4,4,0,0,0,2.7,9.45ZM13,21H11V16h2Zm6,0H15V15a1,1,0,0,0-1-1H10a1,1,0,0,0-1,1v6H5V10.9A3.989,3.989,0,0,0,8.914,9.61c.026.03.053.059.08.089A4.086,4.086,0,0,0,12.041,11a4.039,4.039,0,0,0,2.965-1.3c.027-.03.054-.059.08-.089A3.989,3.989,0,0,0,19,10.9ZM3.911,6.479,4.781,3H19.219l.87,3.479A2.029,2.029,0,0,1,18.12,9,2.041,2.041,0,0,1,16.1,7.14l-.042-.5a1,1,0,0,0-1.993.166v0a2.006,2.006,0,0,1-.529,1.539A2.059,2.059,0,0,1,11.959,9,2.029,2.029,0,0,1,9.937,6.806v0a1,1,0,0,0-.914-1.079.989.989,0,0,0-1.079.913l-.042.5A2.041,2.041,0,0,1,5.88,9,2.029,2.029,0,0,1,3.911,6.479Z" />
               </svg>
               Marketplace
