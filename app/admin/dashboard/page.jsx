@@ -1042,7 +1042,7 @@ export default function AdminDashboard() {
                   </div>
                   <p>Real-time platform metrics</p>
                 </div>
-                <button className="btn btn-secondary" onClick={loadDashboardData} style={{ height: '40px' }}>
+                <button className="btn btn-secondary" onClick={loadDashboardData}>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" />
                   </svg>
@@ -1468,8 +1468,352 @@ export default function AdminDashboard() {
         </main>
       </div>
 
-      {/* MODALS - All modals code continues here but truncated for brevity */}
-      {/* The full modal code should be included from your original file */}
+      {/* MODALS */}
+      
+      {/* CREATE PROMPT MODAL */}
+      {showCreatePromptModal && (
+        <div className="modal-overlay" onClick={() => setShowCreatePromptModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">Create New Prompt</h2>
+              <button className="modal-close" onClick={() => setShowCreatePromptModal(false)}>×</button>
+            </div>
+            <form onSubmit={handleCreatePrompt}>
+              <div className="modal-body">
+                <div className="form-group">
+                  <label>Title *</label>
+                  <input
+                    type="text"
+                    value={createForm.title}
+                    onChange={(e) => setCreateForm({...createForm, title: e.target.value})}
+                    required
+                    placeholder="Enter prompt title"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label>Category *</label>
+                  <select
+                    value={createForm.category}
+                    onChange={(e) => setCreateForm({...createForm, category: e.target.value})}
+                    required
+                  >
+                    {categories.map(cat => (
+                      <option key={cat.name} value={cat.name}>{cat.name}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div className="form-group">
+                  <label>Description</label>
+                  <textarea
+                    value={createForm.description}
+                    onChange={(e) => setCreateForm({...createForm, description: e.target.value})}
+                    placeholder="Brief description of the prompt"
+                    rows="3"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label>Prompt Content *</label>
+                  <textarea
+                    value={createForm.content}
+                    onChange={(e) => setCreateForm({...createForm, content: e.target.value})}
+                    required
+                    placeholder="Enter the prompt content"
+                    rows="8"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label>Tier *</label>
+                  <select
+                    value={createForm.tier}
+                    onChange={(e) => setCreateForm({...createForm, tier: e.target.value})}
+                    required
+                  >
+                    <option value="starter">Starter</option>
+                    <option value="pro">Pro</option>
+                    <option value="premium">Premium</option>
+                  </select>
+                </div>
+                
+                <div className="form-group">
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                    <input
+                      type="checkbox"
+                      checked={createForm.is_active}
+                      onChange={(e) => setCreateForm({...createForm, is_active: e.target.checked})}
+                    />
+                    Active (visible to users)
+                  </label>
+                </div>
+              </div>
+              
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={() => setShowCreatePromptModal(false)}>
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-accent">
+                  Create Prompt
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* EDIT PROMPT MODAL */}
+      {showEditPromptModal && editingPrompt && (
+        <div className="modal-overlay" onClick={() => setShowEditPromptModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">Edit Prompt</h2>
+              <button className="modal-close" onClick={() => setShowEditPromptModal(false)}>×</button>
+            </div>
+            <form onSubmit={handleUpdatePrompt}>
+              <div className="modal-body">
+                <div className="form-group">
+                  <label>Title *</label>
+                  <input
+                    type="text"
+                    value={editForm.title}
+                    onChange={(e) => setEditForm({...editForm, title: e.target.value})}
+                    required
+                    placeholder="Enter prompt title"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label>Category *</label>
+                  <select
+                    value={editForm.category}
+                    onChange={(e) => setEditForm({...editForm, category: e.target.value})}
+                    required
+                  >
+                    {categories.map(cat => (
+                      <option key={cat.name} value={cat.name}>{cat.name}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div className="form-group">
+                  <label>Description</label>
+                  <textarea
+                    value={editForm.description}
+                    onChange={(e) => setEditForm({...editForm, description: e.target.value})}
+                    placeholder="Brief description of the prompt"
+                    rows="3"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label>Prompt Content *</label>
+                  <textarea
+                    value={editForm.content}
+                    onChange={(e) => setEditForm({...editForm, content: e.target.value})}
+                    required
+                    placeholder="Enter the prompt content"
+                    rows="8"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label>Tier *</label>
+                  <select
+                    value={editForm.tier}
+                    onChange={(e) => setEditForm({...editForm, tier: e.target.value})}
+                    required
+                  >
+                    <option value="starter">Starter</option>
+                    <option value="pro">Pro</option>
+                    <option value="premium">Premium</option>
+                  </select>
+                </div>
+                
+                <div className="form-group">
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                    <input
+                      type="checkbox"
+                      checked={editForm.is_active}
+                      onChange={(e) => setEditForm({...editForm, is_active: e.target.checked})}
+                    />
+                    Active (visible to users)
+                  </label>
+                </div>
+              </div>
+              
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={() => setShowEditPromptModal(false)}>
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-accent">
+                  Update Prompt
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* DELETE CONFIRMATION MODAL */}
+      {showDeleteModal && deleteTarget && (
+        <div className="modal-overlay" onClick={() => setShowDeleteModal(false)}>
+          <div className="modal-content modal-sm" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">Confirm Delete</h2>
+              <button className="modal-close" onClick={() => setShowDeleteModal(false)}>×</button>
+            </div>
+            <div className="modal-body">
+              <p>Are you sure you want to delete "{deleteTarget.name}"?</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '8px' }}>
+                This action cannot be undone.
+              </p>
+            </div>
+            <div className="modal-footer">
+              <button className="btn btn-secondary" onClick={() => setShowDeleteModal(false)}>
+                Cancel
+              </button>
+              <button className="btn btn-danger" onClick={handleDeletePrompt}>
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CATEGORIES MODAL */}
+      {showCategoriesModal && (
+        <div className="modal-overlay" onClick={() => setShowCategoriesModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">Manage Categories</h2>
+              <button className="modal-close" onClick={() => setShowCategoriesModal(false)}>×</button>
+            </div>
+            <div className="modal-body">
+              <div className="form-group">
+                <label>Add New Category</label>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <input
+                    type="text"
+                    value={newCategoryName}
+                    onChange={(e) => setNewCategoryName(e.target.value)}
+                    placeholder="Category name"
+                    onKeyPress={(e) => e.key === 'Enter' && handleAddCategory()}
+                  />
+                  <button className="btn btn-accent" onClick={handleAddCategory}>
+                    Add
+                  </button>
+                </div>
+              </div>
+              
+              <div style={{ marginTop: '24px' }}>
+                <label style={{ marginBottom: '12px', display: 'block' }}>Existing Categories</label>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {categories.map(cat => (
+                    <div key={cat.name} style={{ 
+                      display: 'flex', 
+                      justifyContent: 'space-between', 
+                      alignItems: 'center',
+                      padding: '10px 12px',
+                      background: 'var(--bg-tertiary)',
+                      borderRadius: 'var(--radius-md)'
+                    }}>
+                      <span style={{ fontWeight: '500' }}>{cat.name}</span>
+                      <button 
+                        className="btn btn-ghost" 
+                        onClick={() => handleDeleteCategory(cat.name)}
+                        style={{ padding: '4px 8px', fontSize: '12px', color: 'var(--danger)' }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="btn btn-secondary" onClick={() => setShowCategoriesModal(false)}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* BULK UPLOAD MODAL */}
+      {showBulkUploadModal && (
+        <div className="modal-overlay" onClick={() => setShowBulkUploadModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">Bulk Upload Prompts</h2>
+              <button className="modal-close" onClick={() => setShowBulkUploadModal(false)}>×</button>
+            </div>
+            <div className="modal-body">
+              <p style={{ marginBottom: '16px', color: 'var(--text-secondary)' }}>
+                Upload a JSON file containing an array of prompts. Each prompt should have:
+              </p>
+              <ul style={{ marginBottom: '20px', color: 'var(--text-tertiary)', fontSize: '13px', paddingLeft: '20px' }}>
+                <li>title (required)</li>
+                <li>content (required)</li>
+                <li>category (optional)</li>
+                <li>description (optional)</li>
+                <li>tier (optional: starter, pro, or premium)</li>
+                <li>is_active (optional: true or false)</li>
+              </ul>
+              
+              <div className="form-group">
+                <label>Select JSON File</label>
+                <input
+                  type="file"
+                  accept=".json"
+                  onChange={handleBulkUpload}
+                />
+              </div>
+              
+              {bulkUploadStatus && (
+                <div style={{ 
+                  marginTop: '16px', 
+                  padding: '12px', 
+                  background: 'var(--bg-tertiary)', 
+                  borderRadius: 'var(--radius-md)',
+                  fontSize: '13px'
+                }}>
+                  {bulkUploadStatus}
+                </div>
+              )}
+            </div>
+            <div className="modal-footer">
+              <button className="btn btn-secondary" onClick={() => {
+                setShowBulkUploadModal(false);
+                setBulkUploadStatus('');
+              }}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ALERT MODAL */}
+      {showAlertModal && (
+        <div className="modal-overlay" onClick={() => setShowAlertModal(false)}>
+          <div className="modal-content modal-sm" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">{alertConfig.title}</h2>
+              <button className="modal-close" onClick={() => setShowAlertModal(false)}>×</button>
+            </div>
+            <div className="modal-body">
+              <p>{alertConfig.message}</p>
+            </div>
+            <div className="modal-footer">
+              <button className="btn btn-accent" onClick={() => setShowAlertModal(false)}>
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
