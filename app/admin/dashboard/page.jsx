@@ -1561,6 +1561,7 @@ export default function AdminDashboard() {
                 <div className="form-group">
                   <label>DESCRIPTION</label>
                   <textarea
+                    className="textarea-description"
                     value={createForm.description}
                     onChange={(e) => setCreateForm({...createForm, description: e.target.value})}
                     placeholder="Brief description of the prompt"
@@ -1572,6 +1573,7 @@ export default function AdminDashboard() {
                 <div className="form-group">
                   <label>SYSTEM PROMPT</label>
                   <textarea
+                    className="textarea-system-prompt"
                     value={createForm.content}
                     onChange={(e) => setCreateForm({...createForm, content: e.target.value})}
                     required
@@ -1679,6 +1681,7 @@ export default function AdminDashboard() {
                 <div className="form-group">
                   <label>DESCRIPTION</label>
                   <textarea
+                    className="textarea-description"
                     value={editForm.description}
                     onChange={(e) => setEditForm({...editForm, description: e.target.value})}
                     placeholder="Brief description of the prompt"
@@ -1690,6 +1693,7 @@ export default function AdminDashboard() {
                 <div className="form-group">
                   <label>SYSTEM PROMPT</label>
                   <textarea
+                    className="textarea-system-prompt"
                     value={editForm.content}
                     onChange={(e) => setEditForm({...editForm, content: e.target.value})}
                     required
