@@ -294,20 +294,46 @@ export default function AdminDashboard() {
         
       const tbody = document.getElementById('topPromptsTable');
       if (tbody && topPrompts.length > 0) {
-        tbody.innerHTML = topPrompts.map(p => `
-          <tr>
-            <td>
-              <div class="table-prompt">
-                <div>
-                  <div class="table-name">${p.title || 'Untitled'}</div>
+        const getCategoryColor = (category) => {
+          const categoryColorPool = [
+            '#f59e0b', '#3b82f6', '#8b5cf6', '#10b981', '#ef4444', '#06b6d4', '#ec4899', '#6366f1',
+            '#f97316', '#14b8a6', '#84cc16', '#a855f7', '#f43f5e', '#0ea5e9', '#22c55e', '#eab308',
+            '#d946ef', '#fb923c', '#4ade80', '#facc15', '#94a3b8', '#fb7185', '#38bdf8', '#a78bfa',
+            '#34d399', '#fbbf24', '#c084fc', '#60a5fa', '#f472b6', '#2dd4bf'
+          ];
+          let hash = 0;
+          for (let i = 0; i < category.length; i++) {
+            hash = category.charCodeAt(i) + ((hash << 5) - hash);
+          }
+          return categoryColorPool[Math.abs(hash) % categoryColorPool.length];
+        };
+        
+        tbody.innerHTML = topPrompts.map(p => {
+          const tier = p.tier || 'starter';
+          const tierLabel = tier === 'starter' ? 'Standard' : tier.charAt(0).toUpperCase() + tier.slice(1);
+          const category = p.category || 'Uncategorized';
+          const categoryColor = getCategoryColor(category);
+          
+          return `
+            <tr>
+              <td>
+                <div class="table-prompt">
+                  <div>
+                    <div class="table-name">${p.title || 'Untitled'}</div>
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td><span class="badge badge-category">${p.category || 'Uncategorized'}</span></td>
-            <td class="text-mono">${(p.downloads_count || 0).toLocaleString()}</td>
-            <td><span class="badge badge-${p.tier || 'starter'}">${(p.tier || 'starter').toUpperCase()}</span></td>
-          </tr>
-        `).join('');
+              </td>
+              <td>
+                <span class="category-dot" style="background-color: ${categoryColor}; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px;"></span>
+                <span style="font-size: 13px; color: var(--text-secondary);">${category}</span>
+              </td>
+              <td class="text-mono">${(p.downloads_count || 0).toLocaleString()}</td>
+              <td style="text-align: center;">
+                <span class="tier-text tier-${tier}">${tierLabel}</span>
+              </td>
+            </tr>
+          `;
+        }).join('');
       }
     } catch (error) {
       console.error('Error loading marketplace stats:', error);
