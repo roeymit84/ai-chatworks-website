@@ -119,6 +119,13 @@ export default function AdminDashboard() {
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
+  // Set first category as default when categories load
+  useEffect(() => {
+    if (categories.length > 0 && !createForm.category) {
+      setCreateForm(prev => ({ ...prev, category: categories[0].name }));
+    }
+  }, [categories]);
+
   async function checkAuth() {
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -1521,7 +1528,7 @@ export default function AdminDashboard() {
                           checked={createForm.tier === 'starter'}
                           onChange={(e) => setCreateForm({...createForm, tier: e.target.value})}
                         />
-                        <span>FREE</span>
+                        <span>Standard</span>
                       </label>
                       <label className="radio-label">
                         <input
@@ -1531,7 +1538,7 @@ export default function AdminDashboard() {
                           checked={createForm.tier === 'pro'}
                           onChange={(e) => setCreateForm({...createForm, tier: e.target.value})}
                         />
-                        <span>PRO</span>
+                        <span>Pro</span>
                       </label>
                     </div>
                   </div>
@@ -1639,7 +1646,7 @@ export default function AdminDashboard() {
                           checked={editForm.tier === 'starter'}
                           onChange={(e) => setEditForm({...editForm, tier: e.target.value})}
                         />
-                        <span>FREE</span>
+                        <span>Standard</span>
                       </label>
                       <label className="radio-label">
                         <input
@@ -1649,7 +1656,7 @@ export default function AdminDashboard() {
                           checked={editForm.tier === 'pro'}
                           onChange={(e) => setEditForm({...editForm, tier: e.target.value})}
                         />
-                        <span>PRO</span>
+                        <span>Pro</span>
                       </label>
                     </div>
                   </div>
