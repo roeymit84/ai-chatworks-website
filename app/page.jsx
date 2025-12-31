@@ -1,5 +1,6 @@
-// DESTINATION: /app/page.jsx
-// Complete file with BetaModal integration
+// page.jsx
+// Complete homepage with BetaModal integration and improved badge positioning
+// Place in: /app/page.jsx
 
 'use client'
 
@@ -237,19 +238,23 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Starter Tier - UPDATED WITH BETA BADGE AND MODAL */}
+              {/* Starter Tier - IMPROVED BADGE POSITIONING */}
               <div className="bg-white rounded-2xl border-3 border-brand-purple p-8 relative shadow-lg transition-all hover:shadow-xl flex flex-col" style={{ borderWidth: '3px' }}>
-                {/* Beta Badges - Updated */}
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-                  <div className="bg-brand-purple text-white px-4 py-1.5 rounded-full text-xs font-bold">
+                {/* Most Popular Badge - CENTERED */}
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-brand-purple text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-md">
                     Most Popular
                   </div>
-                  <div className="bg-yellow-400 text-gray-900 px-4 py-1.5 rounded-full text-xs font-bold shadow-md">
+                </div>
+                
+                {/* BETA Badge - TOP RIGHT CORNER */}
+                <div className="absolute -top-3 -right-3">
+                  <div className="bg-yellow-400 text-gray-900 px-4 py-1.5 rounded-full text-xs font-bold shadow-lg border-2 border-white">
                     BETA
                   </div>
                 </div>
 
-                <div className="mb-8">
+                <div className="mb-8 mt-4">
                   <h3 className="text-2xl font-bold mb-2">Starter</h3>
                   <p className="text-brand-slate text-sm mb-6">Great for everyday AI workflows</p>
                   <div className="flex items-center justify-center gap-3 mb-3">
@@ -286,7 +291,7 @@ export default function Home() {
                   </li>
                 </ul>
 
-                {/* UPDATED BUTTON - Opens Modal Instead of Direct Link */}
+                {/* BUTTON - Opens Modal */}
                 <button
                   onClick={() => setShowBetaModal(true)}
                   className="block w-full text-center px-6 py-3 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark transition-all duration-200 mt-auto"
@@ -294,7 +299,7 @@ export default function Home() {
                   Join Beta
                 </button>
                 
-                <p className="text-xs text-brand-dark font-medium text-center mt-3 whitespace-nowrap">
+                <p className="text-xs text-brand-dark font-medium text-center mt-3">
                   Free during beta period (limited time only)
                 </p>
                 
