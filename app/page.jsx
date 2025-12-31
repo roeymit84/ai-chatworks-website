@@ -1,17 +1,22 @@
 // DESTINATION: /app/page.jsx
+// Complete file with BetaModal integration
 
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-
-export const metadata = {
-  title: 'AI ChatWorks - Your Smart Layer for AI Chatbots',
-  description: 'The smart productivity layer for modern AI workflows. Stay organized, save time, and master your prompts across ChatGPT, Claude, and Gemini.',
-}
+import BetaModal from '../components/BetaModal'
 
 export default function Home() {
+  const [showBetaModal, setShowBetaModal] = useState(false)
+
   return (
     <>
+      {/* Beta Modal */}
+      <BetaModal isOpen={showBetaModal} onClose={() => setShowBetaModal(false)} />
+
       {/* Background Effects */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
         <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-brand-purple/5 rounded-full blur-[100px]"></div>
@@ -232,11 +237,16 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Starter Tier - Most Popular */}
+              {/* Starter Tier - UPDATED WITH BETA BADGE AND MODAL */}
               <div className="bg-white rounded-2xl border-3 border-brand-purple p-8 relative shadow-lg transition-all hover:shadow-xl flex flex-col" style={{ borderWidth: '3px' }}>
-                {/* Most Popular Badge */}
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-purple text-white px-4 py-1.5 rounded-full text-xs font-bold">
-                  Most Popular
+                {/* Beta Badges - Updated */}
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                  <div className="bg-brand-purple text-white px-4 py-1.5 rounded-full text-xs font-bold">
+                    Most Popular
+                  </div>
+                  <div className="bg-yellow-400 text-gray-900 px-4 py-1.5 rounded-full text-xs font-bold shadow-md">
+                    BETA
+                  </div>
                 </div>
 
                 <div className="mb-8">
@@ -276,9 +286,13 @@ export default function Home() {
                   </li>
                 </ul>
 
-                <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark transition-all duration-200 mt-auto">
-                  Upgrade
-                </a>
+                {/* UPDATED BUTTON - Opens Modal Instead of Direct Link */}
+                <button
+                  onClick={() => setShowBetaModal(true)}
+                  className="block w-full text-center px-6 py-3 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark transition-all duration-200 mt-auto"
+                >
+                  Join Beta
+                </button>
                 
                 <p className="text-xs text-brand-dark font-medium text-center mt-3 whitespace-nowrap">
                   Free during beta period (limited time only)
