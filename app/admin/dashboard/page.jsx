@@ -924,7 +924,7 @@ export default function AdminDashboard() {
       <div className="login-overlay">
         <div className="login-card">
           <div className="login-brand">
-            <img src="/images/AI%20ChatWorks.svg" alt="AI ChatWorks" onError={(e) => e.target.style.display = 'none'} />
+            <img src="/images/AI_20ChatWorks.svg" alt="AI ChatWorks" onError={(e) => e.target.style.display = 'none'} />
             <div className="login-brand-text">
               <h1>AI ChatWorks</h1>
               <span>Admin Dashboard</span>
@@ -980,7 +980,7 @@ export default function AdminDashboard() {
         <aside className="sidebar">
           <div className="sidebar-header-group">
             <div className="sidebar-logo">
-              <img src="/images/AI%20ChatWorks.svg" alt="AI ChatWorks" onError={(e) => e.target.style.display = 'none'} />
+              <img src="/images/AI_20ChatWorks.svg" alt="AI ChatWorks" onError={(e) => e.target.style.display = 'none'} />
               <div className="sidebar-brand-text">
                 <h2>AI ChatWorks</h2>
                 <span>Admin Dashboard</span>
