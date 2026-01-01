@@ -198,11 +198,11 @@ export default function Home() {
                     <th className="px-4 py-3 text-left w-[35%]">
                       <span className="text-xs font-semibold text-brand-slate uppercase tracking-wide">Feature</span>
                     </th>
-                    <th className="px-4 py-3 text-center bg-brand-purple/5 w-[32.5%]">
-                      <span className="text-sm font-bold text-brand-purple">AI ChatWorks</span>
+                    <th className="px-4 py-3 w-[32.5%]">
+                      <span className="text-sm font-bold text-brand-purple block text-center">AI ChatWorks</span>
                     </th>
-                    <th className="px-4 py-3 text-center w-[32.5%]">
-                      <span className="text-sm font-semibold text-brand-gray">Competitors</span>
+                    <th className="px-4 py-3 w-[32.5%]">
+                      <span className="text-sm font-semibold text-brand-gray block text-center">Competitors</span>
                     </th>
                   </tr>
                 </thead>
@@ -214,7 +214,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Automatic backup across all devices</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -224,7 +224,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -242,7 +242,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Save and organize your prompts</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -252,7 +252,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -270,7 +270,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Organize with folders & categories</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -280,7 +280,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -298,7 +298,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Access community prompts</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -308,7 +308,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -326,7 +326,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Export in multiple formats</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -336,7 +336,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -354,7 +354,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Visual conversation navigation</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -364,7 +364,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -382,7 +382,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">AI-powered autocomplete</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -392,7 +392,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center gap-2 justify-start">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -418,6 +418,65 @@ export default function Home() {
                 </svg>
                 Add to Chrome
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* VIDEO DEMONSTRATION SECTION */}
+        <section className="py-20 px-6 bg-brand-surface/30">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">See AI ChatWorks in Action</h2>
+              <p className="text-xl text-brand-slate max-w-2xl mx-auto">Watch how AI ChatWorks transforms your AI workflow</p>
+            </div>
+
+            {/* Video Container */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-border bg-black">
+              <div className="relative aspect-video">
+                <video
+                  className="w-full h-full"
+                  controls
+                  preload="metadata"
+                  poster="/videos/demo-thumbnail.jpg"
+                >
+                  <source src="/videos/ai-chatworks-demo.mp4" type="video/mp4" />
+                  <source src="/videos/ai-chatworks-demo.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+
+            {/* Optional: Video highlights below */}
+            <div className="mt-12 grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-brand-purple/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-brand-dark mb-2">Lightning Fast</h3>
+                <p className="text-sm text-brand-slate">Access your prompts instantly with keyboard shortcuts</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-12 h-12 bg-brand-purple/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-brand-dark mb-2">Cloud Synced</h3>
+                <p className="text-sm text-brand-slate">Your library follows you across all devices</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-12 h-12 bg-brand-purple/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-brand-dark mb-2">Organized</h3>
+                <p className="text-sm text-brand-slate">Keep your prompts structured with folders and tags</p>
+              </div>
             </div>
           </div>
         </section>
