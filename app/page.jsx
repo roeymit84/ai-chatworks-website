@@ -455,7 +455,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="font-semibold text-brand-dark mb-2">Lightning Fast</h3>
-                <p className="text-sm text-brand-slate">Access your prompts instantly with keyboard shortcuts</p>
+                <p className="text-sm text-brand-slate">Access your prompts instantly</p>
               </div>
               
               <div className="text-center">
@@ -475,7 +475,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="font-semibold text-brand-dark mb-2">Organized</h3>
-                <p className="text-sm text-brand-slate">Keep your prompts structured with folders and tags</p>
+                <p className="text-sm text-brand-slate">Keep your prompts structured in folders</p>
               </div>
             </div>
           </div>
