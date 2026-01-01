@@ -207,6 +207,7 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody>
+                <tbody>
                   {/* Cloud Sync */}
                   <tr className="border-b border-brand-border hover:bg-brand-surface/30 transition-colors">
                     <td className="px-4 py-3">
@@ -214,23 +215,27 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Automatic backup across all devices</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-brand-dark text-sm">Automatic</span>
                         </div>
-                        <span className="font-semibold text-brand-dark text-sm">Automatic</span>
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </div>
+                          <span className="text-brand-gray text-sm">Rarely</span>
                         </div>
-                        <span className="text-brand-gray text-sm">Rarely</span>
                       </div>
                     </td>
                   </tr>
@@ -242,23 +247,27 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Save and organize your prompts</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-brand-dark text-sm">Unlimited</span>
                         </div>
-                        <span className="font-semibold text-brand-dark text-sm">Unlimited</span>
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </div>
+                          <span className="text-brand-gray text-sm">Limited</span>
                         </div>
-                        <span className="text-brand-gray text-sm">Limited</span>
                       </div>
                     </td>
                   </tr>
@@ -270,23 +279,27 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Organize with folders & categories</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-brand-dark text-sm">Unlimited</span>
                         </div>
-                        <span className="font-semibold text-brand-dark text-sm">Unlimited</span>
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </div>
+                          <span className="text-brand-gray text-sm">Limited</span>
                         </div>
-                        <span className="text-brand-gray text-sm">Limited</span>
                       </div>
                     </td>
                   </tr>
@@ -298,23 +311,27 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Access community prompts</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-brand-dark text-sm">Curated</span>
                         </div>
-                        <span className="font-semibold text-brand-dark text-sm">Curated</span>
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </div>
+                          <span className="text-brand-gray text-sm">Some</span>
                         </div>
-                        <span className="text-brand-gray text-sm">Some</span>
                       </div>
                     </td>
                   </tr>
@@ -326,23 +343,27 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Export in multiple formats</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-brand-dark text-sm">8 formats</span>
                         </div>
-                        <span className="font-semibold text-brand-dark text-sm">8 formats</span>
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </div>
+                          <span className="text-brand-gray text-sm">0-2 formats</span>
                         </div>
-                        <span className="text-brand-gray text-sm">0-2 formats</span>
                       </div>
                     </td>
                   </tr>
@@ -354,23 +375,27 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Visual conversation navigation</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-brand-dark text-sm">Yes</span>
                         </div>
-                        <span className="font-semibold text-brand-dark text-sm">Yes</span>
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </div>
+                          <span className="text-brand-gray text-sm">No</span>
                         </div>
-                        <span className="text-brand-gray text-sm">No</span>
                       </div>
                     </td>
                   </tr>
@@ -382,31 +407,31 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">AI-powered autocomplete</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="font-semibold text-brand-dark text-sm">AI-powered</span>
                         </div>
-                        <span className="font-semibold text-brand-dark text-sm">AI-powered</span>
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-center">
-                        <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
+                      <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-[20px_auto] gap-2 items-center">
+                          <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
+                            <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </div>
+                          <span className="text-brand-gray text-sm">No</span>
                         </div>
-                        <span className="text-brand-gray text-sm">No</span>
                       </div>
                     </td>
                   </tr>
                 </tbody>
-              </table>
-            </div>
-
-            {/* Bottom CTA */}
             <div className="text-center mt-10">
               <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-brand-purple text-white rounded-xl font-semibold text-lg hover:bg-brand-purpleDark hover:scale-105 transition-all duration-300 shadow-xl shadow-brand-purple/25">
                 <svg className="w-6 h-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
