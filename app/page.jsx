@@ -214,7 +214,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Automatic backup across all devices</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -224,7 +224,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -242,7 +242,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Save and organize your prompts</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -252,7 +252,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -270,7 +270,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Organize with folders & categories</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -280,7 +280,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -298,7 +298,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Access community prompts</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -308,7 +308,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -326,7 +326,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Export in multiple formats</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -336,7 +336,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -354,7 +354,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">Visual conversation navigation</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -364,7 +364,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
@@ -382,7 +382,7 @@ export default function Home() {
                       <div className="text-xs text-brand-slate">AI-powered autocomplete</div>
                     </td>
                     <td className="px-4 py-3 bg-brand-purple/5">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -392,7 +392,7 @@ export default function Home() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 justify-start">
+                      <div className="flex items-center gap-2 justify-center">
                         <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
