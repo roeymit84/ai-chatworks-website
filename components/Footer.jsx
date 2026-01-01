@@ -61,7 +61,7 @@ export default function Footer() {
             </a>
           </div>
           
-          <p className="text-xs text-brand-slate">© 2025 AI ChatWorks. All rights reserved.</p>
+          <p className="text-xs text-brand-slate">© 2026 AI ChatWorks. All rights reserved.</p>
         </div>
 
         {/* Product Links */}
