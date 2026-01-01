@@ -445,3 +445,126 @@ export default function Home() {
 
         {/* PRICING SECTION */}
         <section id="pricing" className="py-24 px-6 bg-brand-surface/30">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Simple, Transparent Pricing</h2>
+              <p className="text-xl text-brand-slate max-w-2xl mx-auto">Start free, upgrade when you're ready</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Free Plan */}
+              <div className="bg-white rounded-2xl border-2 border-brand-border p-8 hover:border-brand-purple/50 transition-all">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold mb-2">Free Beta</h3>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-5xl font-bold">$0</span>
+                    <span className="text-brand-slate">/month</span>
+                  </div>
+                  <p className="text-brand-slate">Perfect for getting started</p>
+                </div>
+                
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-brand-dark">Unlimited prompts</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-brand-dark">Cloud sync</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-brand-dark">Folder organization</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-brand-dark">All export formats</span>
+                  </li>
+                </ul>
+
+                <button onClick={() => setShowBetaModal(true)} className="w-full px-6 py-3 bg-brand-purple/10 text-brand-purple rounded-xl font-semibold hover:bg-brand-purple/20 transition-all">
+                  Join Beta Waitlist
+                </button>
+              </div>
+
+              {/* Pro Plan */}
+              <div className="bg-gradient-to-br from-brand-purple to-brand-purpleDark rounded-2xl border-2 border-brand-purple p-8 text-white relative overflow-hidden">
+                <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-semibold">
+                  Coming Soon
+                </div>
+                
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold mb-2">Pro</h3>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-5xl font-bold">$4.99</span>
+                    <span className="text-white/80">/month</span>
+                  </div>
+                  <p className="text-white/80">For power users</p>
+                </div>
+                
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-white mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Everything in Free</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-white mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Priority support</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-white mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Advanced analytics</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-white mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Team collaboration</span>
+                  </li>
+                </ul>
+
+                <button disabled className="w-full px-6 py-3 bg-white/20 backdrop-blur-sm text-white rounded-xl font-semibold cursor-not-allowed">
+                  Coming Soon
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FINAL CTA */}
+        <section className="py-24 px-6 bg-gradient-to-br from-brand-purple to-brand-purpleDark text-white">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your AI Workflow?</h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Join thousands of users who are already working smarter with AI ChatWorks</p>
+            
+            <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-brand-purple rounded-xl font-semibold text-lg hover:scale-105 transition-all duration-300 shadow-xl">
+              <svg className="w-6 h-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <ellipse cx="50" cy="50" rx="20" ry="20" style={{ fill: "#188FD1" }} />
+                <path d="M 8.5,26 A 48,48 0 0 1 91.5,26 L 62,29.5 A 24,24 0 0 0 26,50 z" style={{ fill: "#EA3939" }} />
+                <path d="M 50,98 A 48,48 0 0 1 8.5,26 L 26,50 A 24,24 0 0 0 62,70.5 z" style={{ fill: "#4AAE48" }} />
+                <path d="M 91.5,26 A 48,48 0 0 1 50,98 L 62,70.5 A 24,24 0 0 0 62,29.5 z" style={{ fill: "#FED14B" }} />
+              </svg>
+              Add to Chrome - It's Free
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  )
+}
