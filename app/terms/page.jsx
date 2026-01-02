@@ -10,7 +10,7 @@ export default function TermsPage() {
   return (
     <>
       <Navbar />
-      
+
       <main className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto bg-white shadow-xl shadow-brand-dark/5 rounded-2xl border border-brand-border overflow-hidden animate-fade-in">
           <div className="px-8 py-10 border-b border-brand-border bg-gradient-to-r from-brand-surface to-white">
