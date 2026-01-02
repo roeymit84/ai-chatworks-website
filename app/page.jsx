@@ -640,7 +640,7 @@ export default function Home() {
                   <h3 className="text-2xl font-bold mb-2">Pro</h3>
                   <p className="text-brand-slate text-sm mb-6">Built for power users and pros</p>
                   <div className="flex items-baseline gap-1 mb-6">
-                    <span className="text-5xl font-bold">$7.99</span>
+                    <span className="text-5xl font-bold">TBD</span>
                     <span className="text-brand-slate">/month</span>
                   </div>
                 </div>
