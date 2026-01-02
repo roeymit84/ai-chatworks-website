@@ -207,7 +207,6 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody>
-                <tbody>
                   {/* Cloud Sync */}
                   <tr className="border-b border-brand-border hover:bg-brand-surface/30 transition-colors">
                     <td className="px-4 py-3">
@@ -432,6 +431,10 @@ export default function Home() {
                     </td>
                   </tr>
                 </tbody>
+              </table>
+            </div>
+
+            {/* Bottom CTA */}
             <div className="text-center mt-10">
               <a href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-brand-purple text-white rounded-xl font-semibold text-lg hover:bg-brand-purpleDark hover:scale-105 transition-all duration-300 shadow-xl shadow-brand-purple/25">
                 <svg className="w-6 h-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
