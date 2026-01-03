@@ -2,16 +2,18 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import OwnerView from './OwnerView'
 import OverviewView from './OverviewView'
 import MarketplaceView from './MarketplaceView'
 import QueriesView from './QueriesView'
 import SettingsView from './SettingsView'
 
 export default function AdminDashboard({ user, onLogout, supabase }) {
-  const [activeView, setActiveView] = useState('overview')
+  const [activeView, setActiveView] = useState('owner')
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
   const navItems = [
+    { id: 'owner', label: 'Owner Analytics', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
     { id: 'overview', label: 'Overview', icon: 'M4 6h16M4 10h16M4 14h16M4 18h16' },
     { id: 'queries', label: 'DB Queries', icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4' },
     { id: 'marketplace', label: 'Marketplace', icon: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z' },
@@ -88,6 +90,7 @@ export default function AdminDashboard({ user, onLogout, supabase }) {
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
+        {activeView === 'owner' && <OwnerView supabase={supabase} />}
         {activeView === 'overview' && <OverviewView supabase={supabase} />}
         {activeView === 'queries' && <QueriesView supabase={supabase} />}
         {activeView === 'marketplace' && <MarketplaceView supabase={supabase} user={user} />}
