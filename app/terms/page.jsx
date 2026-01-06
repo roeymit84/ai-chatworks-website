@@ -38,14 +38,14 @@ export default function TermsPage() {
               <ul className="list-disc pl-6 space-y-4">
                 <li><strong>Registration:</strong> You may create an account to access features like Cloud Sync and the Marketplace. You must be at least 16 years old to create an account. You agree to provide accurate and complete information during registration.</li>
                 <li><strong>Security:</strong> You are responsible for safeguarding the password and credentials used to access the Service. You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.</li>
-                <li><strong>Account Types:</strong> The Service offers different account tiers (Starter, Pro, Premium) with varying limits on prompts, folders, and features. You may upgrade or downgrade your account at any time.</li>
+                <li><strong>Account Types:</strong> The Service offers different account tiers (Basic, Starter, and Pro) with varying limits on prompts, folders, and features. You may upgrade or downgrade your account at any time.</li>
               </ul>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-brand-dark mb-4">3. Subscriptions and Payments</h2>
               <ul className="list-disc pl-6 space-y-4">
-                <li><strong>Free and Paid Tiers:</strong> The Service offers both free (Starter) and paid subscription tiers (Pro, Premium) with different feature limits.</li>
+                <li><strong>Free and Paid Tiers:</strong> The Service offers both free (Basic tier) and paid subscription tiers (Starter, Pro) with different feature limits.</li>
                 <li><strong>Billing:</strong> If you choose a paid subscription, you agree to pay the fees indicated. Payments are processed securely by third-party payment processors (e.g., Stripe or LemonSqueezy). We do not store your credit card details.</li>
                 <li><strong>Cancellation:</strong> You may cancel your subscription at any time through Settings. Upon cancellation, you will retain access to paid features until the end of your current billing period.</li>
                 <li><strong>No Refunds:</strong> Except where required by law, payments are non-refundable. You may cancel your subscription to prevent future billing, but previous payments will not be refunded.</li>
@@ -104,6 +104,7 @@ export default function TermsPage() {
               <ul className="list-disc pl-6 space-y-4">
                 <li><strong>Local-First Architecture:</strong> Your conversation history with AI providers (e.g., ChatGPT, Claude, Gemini) is stored <strong>locally on your device only</strong> and is never synced to our servers.</li>
                 <li><strong>Cloud Sync:</strong> If you enable Cloud Sync, your prompts, folders, settings, and marketplace downloads are securely stored on our servers (Supabase) and synchronized across your devices.</li>
+                <li><strong>Browser History Access:</strong> The Extension requires access to your browser history to enable the Conversation Timeline feature. This access is <strong>limited exclusively to AI chat platform URLs</strong> (ChatGPT, Claude, Gemini) and is used only to organize your conversations chronologically. We do not access, store, or sync your general browsing history. History data remains in your browser and is read-only.</li>
                 <li><strong>Privacy Policy:</strong> For detailed information about how we collect, use, and protect your data, please review our Privacy Policy.</li>
               </ul>
             </section>
@@ -122,7 +123,7 @@ export default function TermsPage() {
               <h2 className="text-2xl font-bold text-brand-dark mb-4">9. Account Deletion and Data Retention</h2>
               <ul className="list-disc pl-6 space-y-4">
                 <li><strong>Deletion Request:</strong> You may request deletion of your account and all associated cloud data at any time via <strong>Settings &gt; Cloud Data &gt; Delete Account</strong>, or by contacting our support team.</li>
-                <li><strong>24-Hour Processing:</strong> Upon confirmation, your account and all cloud data will be removed from our live databases within <strong>24 hours</strong>. Backups will be purged within 30 days.</li>
+                <li><strong>Immediate Processing:</strong> Upon confirmation, your account and all cloud data will be <strong>permanently deleted</strong> from our databases within <strong>24 hours</strong>. This deletion is immediate and irreversible—there are no backups or restoration options once the deletion is confirmed.</li>
                 <li><strong>Local Data:</strong> Deleting your account does not delete local data stored on your device. To remove local data, uninstall the Extension or clear your browser's local storage.</li>
               </ul>
             </section>
