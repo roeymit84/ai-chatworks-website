@@ -75,7 +75,17 @@ export default function PrivacyPage() {
               <p className="mt-2"><strong>Note:</strong> We do NOT collect IP addresses as part of our security logging.</p>
               <p className="mt-2">This technical data helps us fix bugs, prevent fraud, and improve reliability.</p>
 
-              <h3 className="text-xl font-semibold text-brand-dark mt-6 mb-2">1.6. Cookies & Browser Storage</h3>
+              <h3 className="text-xl font-semibold text-brand-dark mt-6 mb-2">1.6. Browser History</h3>
+              <p className="mb-2">To enable the <strong>Conversation Timeline</strong> feature, the Extension requires access to your browser history for AI chat platforms only (ChatGPT, Claude, Gemini).</p>
+              <ul className="list-disc pl-6 space-y-2 mt-2">
+                <li><strong>Purpose:</strong> The Timeline feature allows you to navigate through your past AI conversations by date. We use browser history to detect when you visited AI chat URLs and organize them chronologically.</li>
+                <li><strong>Scope:</strong> History access is limited exclusively to AI platform URLs (e.g., <code>chatgpt.com/*</code>, <code>claude.ai/*</code>, <code>gemini.google.com/*</code>). We do not access or process your general browsing history.</li>
+                <li><strong>Storage:</strong> Browser history data is <strong>read-only</strong> and remains in your browser. We do not copy, store, or sync your browsing history to our servers.</li>
+                <li><strong>Privacy:</strong> Only the URLs and timestamps of AI chat pages are used locally to build the timeline view. No actual conversation content from history is accessed or transmitted.</li>
+              </ul>
+              <p className="mt-2"><strong>You can disable the Timeline feature at any time</strong> in Settings if you prefer not to use this functionality.</p>
+
+              <h3 className="text-xl font-semibold text-brand-dark mt-6 mb-2">1.7. Cookies & Browser Storage</h3>
               <p className="mb-2">We use browser storage technologies for:</p>
               <ul className="list-disc pl-6 space-y-2 mt-2">
                 <li><strong>Authentication:</strong> Session tokens (via Supabase Auth)</li>
@@ -98,7 +108,7 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="text-2xl font-bold text-brand-dark mb-4">3. Data Storage and Security</h2>
-
+              
               <h3 className="text-xl font-semibold text-brand-dark mt-6 mb-2">3.1. Storage</h3>
               <ul className="list-disc pl-6 space-y-2 mt-2">
                 <li><strong>Cloud Data:</strong> We use <strong>Supabase</strong>, a secure and industry-standard backend-as-a-service provider, to store your synced data.</li>
@@ -139,8 +149,9 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-bold text-brand-dark mb-4">6. Data Retention</h2>
               <ul className="list-disc pl-6 space-y-2 mt-2">
                 <li><strong>Account Data:</strong> We retain your account data as long as your account is active.</li>
-                <li><strong>Deleted Accounts:</strong> Upon request for deletion, your data is removed from our live databases within <strong>24 hours</strong>. Automated backups are purged according to our infrastructure provider's retention policy.</li>
+                <li><strong>Deleted Accounts:</strong> Upon request for deletion, your account and all associated cloud data are <strong>permanently deleted</strong> from our databases within <strong>24 hours</strong>. This deletion is immediate and irreversible—there are no backups or restoration options once the deletion is confirmed.</li>
                 <li><strong>Usage History:</strong> Stored as long as your account is active. Deleted with account deletion.</li>
+                <li><strong>Local Data:</strong> Data stored locally in your browser (chat history, drafts) is not affected by account deletion and remains on your device until you uninstall the Extension or clear browser storage.</li>
               </ul>
             </section>
 
@@ -158,6 +169,16 @@ export default function PrivacyPage() {
                 <li>Sending an email notification for material changes (if you've opted in)</li>
               </ul>
               <p className="mt-4">We encourage you to review this Privacy Policy periodically for any changes.</p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-brand-dark mb-4">9. Legal Compliance</h2>
+              <p className="mb-2">This Privacy Policy is designed to comply with:</p>
+              <ul className="list-disc pl-6 space-y-2 mt-2">
+                <li><strong>GDPR</strong> (General Data Protection Regulation - EU)</li>
+                <li><strong>CCPA</strong> (California Consumer Privacy Act - US)</li>
+                <li><strong>Other applicable data protection laws</strong></li>
+              </ul>
             </section>
 
             <section>
