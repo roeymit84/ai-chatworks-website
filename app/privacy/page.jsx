@@ -72,6 +72,7 @@ export default function PrivacyPage() {
                 <li><strong>Security Events:</strong> Failed login attempts, suspicious activity</li>
                 <li><strong>API Usage:</strong> Performance monitoring data</li>
               </ul>
+              <p className="mt-2"><strong>Note:</strong> We do NOT collect IP addresses as part of our security logging.</p>
               <p className="mt-2">This technical data helps us fix bugs, prevent fraud, and improve reliability.</p>
 
               <h3 className="text-xl font-semibold text-brand-dark mt-6 mb-2">1.6. Cookies & Browser Storage</h3>
@@ -97,7 +98,7 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="text-2xl font-bold text-brand-dark mb-4">3. Data Storage and Security</h2>
-              
+
               <h3 className="text-xl font-semibold text-brand-dark mt-6 mb-2">3.1. Storage</h3>
               <ul className="list-disc pl-6 space-y-2 mt-2">
                 <li><strong>Cloud Data:</strong> We use <strong>Supabase</strong>, a secure and industry-standard backend-as-a-service provider, to store your synced data.</li>
@@ -157,16 +158,6 @@ export default function PrivacyPage() {
                 <li>Sending an email notification for material changes (if you've opted in)</li>
               </ul>
               <p className="mt-4">We encourage you to review this Privacy Policy periodically for any changes.</p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-brand-dark mb-4">9. Legal Compliance</h2>
-              <p className="mb-2">This Privacy Policy is designed to comply with:</p>
-              <ul className="list-disc pl-6 space-y-2 mt-2">
-                <li><strong>GDPR</strong> (General Data Protection Regulation - EU)</li>
-                <li><strong>CCPA</strong> (California Consumer Privacy Act - US)</li>
-                <li><strong>Other applicable data protection laws</strong></li>
-              </ul>
             </section>
 
             <section>
