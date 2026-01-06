@@ -7,7 +7,7 @@ import './styles.css';
 
 export default function AdminDashboard() {
   const supabase = createClientComponentClient();
-  
+
   // State
   const [isLoading, setIsLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
@@ -19,11 +19,11 @@ export default function AdminDashboard() {
   const [growthChart, setGrowthChart] = useState(null);
   const [loginError, setLoginError] = useState('');
   const [categories, setCategories] = useState([]);
-  
+
   // Session timeout management
   const sessionTimeoutRef = useRef(null);
   const SESSION_TIMEOUT = 15 * 60 * 1000; // 15 minutes in milliseconds
-  
+
   // Modal states
   const [showCreatePromptModal, setShowCreatePromptModal] = useState(false);
   const [showEditPromptModal, setShowEditPromptModal] = useState(false);
@@ -36,7 +36,7 @@ export default function AdminDashboard() {
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [alertConfig, setAlertConfig] = useState({ title: '', message: '' });
   const [confirmConfig, setConfirmConfig] = useState({ title: '', message: '', onConfirm: null });
-  
+
   // Form states
   const [createForm, setCreateForm] = useState({
     title: '',
@@ -46,7 +46,7 @@ export default function AdminDashboard() {
     tier: 'starter',
     is_active: true
   });
-  
+
   const [editForm, setEditForm] = useState({
     title: '',
     category: '',
@@ -55,11 +55,19 @@ export default function AdminDashboard() {
     tier: 'starter',
     is_active: true
   });
-  
+
   const [newCategoryName, setNewCategoryName] = useState('');
   const [bulkUploadStatus, setBulkUploadStatus] = useState('');
   const [selectedPrompts, setSelectedPrompts] = useState(new Set());
-  
+
+  // DB Queries state
+  const [userRole, setUserRole] = useState(null);
+  const [selectedQuery, setSelectedQuery] = useState(null);
+  const [queryParams, setQueryParams] = useState({});
+  const [queryResults, setQueryResults] = useState(null);
+  const [isQueryLoading, setIsQueryLoading] = useState(false);
+  const [queryError, setQueryError] = useState(null);
+
   const ITEMS_PER_PAGE = 25;
 
   // Session timeout functions
@@ -93,9 +101,9 @@ export default function AdminDashboard() {
     if (!currentUser) return;
 
     const events = ['mousedown', 'keydown', 'scroll', 'touchstart', 'click'];
-    
+
     const resetTimeout = () => resetSessionTimeout();
-    
+
     events.forEach(event => {
       document.addEventListener(event, resetTimeout);
     });
@@ -114,7 +122,7 @@ export default function AdminDashboard() {
   // Check auth on mount - FORCE LOGIN
   useEffect(() => {
     checkAuth();
-    
+
     // Load theme
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
@@ -131,22 +139,23 @@ export default function AdminDashboard() {
   async function checkAuth() {
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      
+
       if (user) {
         const { data: profile } = await supabase
           .from('user_profiles')
           .select('role, email')
           .eq('id', user.id)
           .single();
-          
+
         if (profile?.role === 'admin') {
           setCurrentUser({ ...user, email: profile.email });
+          setUserRole(profile.role); // Set user role for DB queries
           setIsLoading(false);
           loadDashboardData();
           return;
         }
       }
-      
+
       // Force show login screen
       setCurrentUser(null);
       setIsLoading(false);
@@ -160,29 +169,29 @@ export default function AdminDashboard() {
   async function handleLogin(e) {
     e.preventDefault();
     setLoginError('');
-    
+
     const email = e.target.email.value;
     const password = e.target.password.value;
-    
+
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password
       });
-      
+
       if (error) throw error;
-      
+
       const { data: profile } = await supabase
         .from('user_profiles')
         .select('role')
         .eq('id', data.user.id)
         .single();
-        
+
       if (profile?.role !== 'admin') {
         await supabase.auth.signOut();
         throw new Error('Access denied: Admin role required');
       }
-      
+
       setCurrentUser(data.user);
       loadDashboardData();
     } catch (error) {
@@ -246,7 +255,7 @@ export default function AdminDashboard() {
         supabase.rpc('get_pro_users_count'),
         supabase.rpc('get_free_users_count')
       ]);
-      
+
       animateValue('statUsers', totalUsers || 0);
       animateValue('statPrompts', totalPrompts || 0);
       animateValue('statFolders', totalFolders || 0);
@@ -255,7 +264,7 @@ export default function AdminDashboard() {
       animateValue('statMonthlySignups', monthlySignups || 0);
       animateValue('statProUsers', proUsers || 0);
       animateValue('statFreeUsers', freeUsers || 0);
-      
+
       await loadMarketplaceStats();
       await initChart();
     } catch (error) {
@@ -268,30 +277,30 @@ export default function AdminDashboard() {
       const { data: prompts } = await supabase
         .from('marketplace_prompts')
         .select('tier, downloads_count, title, category, is_active');
-        
+
       if (!prompts) return;
-      
+
       const total = prompts.length;
       const pro = prompts.filter(p => p.tier === 'pro').length;
       const starter = prompts.filter(p => p.tier === 'starter').length;
       const inactive = prompts.filter(p => !p.is_active).length;
-      
+
       const mpTotal = document.getElementById('mpTotalPrompts');
       const mpPro = document.getElementById('mpProPrompts');
       const mpStarter = document.getElementById('mpStarterPrompts');
       const mpInactive = document.getElementById('mpInactivePrompts');
       const badge = document.getElementById('marketplaceBadge');
-      
+
       if (mpTotal) mpTotal.textContent = total;
       if (mpPro) mpPro.textContent = pro;
       if (mpStarter) mpStarter.textContent = starter;
       if (mpInactive) mpInactive.textContent = inactive;
       if (badge) badge.textContent = total;
-      
+
       const topPrompts = prompts
         .sort((a, b) => (b.downloads_count || 0) - (a.downloads_count || 0))
         .slice(0, 5);
-        
+
       const tbody = document.getElementById('topPromptsTable');
       if (tbody && topPrompts.length > 0) {
         const getCategoryColor = (category) => {
@@ -307,13 +316,13 @@ export default function AdminDashboard() {
           }
           return categoryColorPool[Math.abs(hash) % categoryColorPool.length];
         };
-        
+
         tbody.innerHTML = topPrompts.map(p => {
           const tier = p.tier || 'starter';
           const tierLabel = tier === 'starter' ? 'Standard' : tier.charAt(0).toUpperCase() + tier.slice(1);
           const category = p.category || 'Uncategorized';
           const categoryColor = getCategoryColor(category);
-          
+
           return `
             <tr>
               <td>
@@ -343,23 +352,23 @@ export default function AdminDashboard() {
   async function initChart() {
     try {
       const { data } = await supabase.rpc('get_user_growth_data');
-      
+
       const ctx = document.getElementById('growthChart')?.getContext('2d');
       if (!ctx) return;
-      
+
       if (growthChart) {
         growthChart.destroy();
       }
-      
+
       const gradient = ctx.createLinearGradient(0, 0, 0, 260);
       gradient.addColorStop(0, 'rgba(139, 92, 246, 0.4)');
       gradient.addColorStop(1, 'rgba(139, 92, 246, 0)');
-      
-      const labels = data && data.length > 0 
+
+      const labels = data && data.length > 0
         ? data.map(row => new Date(row.signup_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }))
         : ['No data'];
       const chartData = data && data.length > 0 ? data.map(row => row.user_count) : [0];
-      
+
       const newChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -386,7 +395,7 @@ export default function AdminDashboard() {
           }
         }
       });
-      
+
       setGrowthChart(newChart);
     } catch (error) {
       console.error('Error loading chart:', error);
@@ -396,9 +405,9 @@ export default function AdminDashboard() {
   async function loadMarketplaceData() {
     try {
       const { data, error } = await supabase.rpc('admin_get_marketplace_prompts');
-      
+
       if (error) throw error;
-      
+
       setAllMarketplaceData(data || []);
       setFilteredMarketplaceData(data || []);
       setCurrentPage(1);
@@ -421,14 +430,14 @@ export default function AdminDashboard() {
     const search = document.getElementById('marketplaceSearch')?.value.toLowerCase() || '';
     const categoryFilter = document.getElementById('categoryFilter')?.value || '';
     const tierFilter = document.getElementById('tierFilter')?.value || '';
-    
+
     let filtered = allMarketplaceData.filter(p => {
       const matchSearch = !search || (p.prompt_name || p.title || '').toLowerCase().includes(search);
       const matchCategory = !categoryFilter || p.category === categoryFilter;
       const matchTier = !tierFilter || p.tier === tierFilter;
       return matchSearch && matchCategory && matchTier;
     });
-    
+
     setFilteredMarketplaceData(filtered);
     setCurrentPage(1);
   }
@@ -436,7 +445,7 @@ export default function AdminDashboard() {
   function animateValue(id, target) {
     const el = document.getElementById(id);
     if (!el) return;
-    
+
     const duration = 1000;
     const start = performance.now();
 
@@ -447,6 +456,226 @@ export default function AdminDashboard() {
       if (progress < 1) requestAnimationFrame(update);
     }
     requestAnimationFrame(update);
+  }
+
+  // ============================================
+  // DB QUERIES FUNCTIONS
+  // ============================================
+
+  // Define available queries with metadata
+  const getAvailableQueries = () => {
+    const adminQueries = [
+      {
+        id: 'recent_users', name: 'Recent Users', category: 'User Management',
+        func: 'admin_get_recent_users', params: [{ name: 'limit_count', label: 'Limit', type: 'number', default: 50 }]
+      },
+      {
+        id: 'heavy_users', name: 'Most Active Users', category: 'User Management',
+        func: 'admin_get_heavy_users', params: [{ name: 'limit_count', label: 'Limit', type: 'number', default: 20 }]
+      },
+      {
+        id: 'inactive_users', name: 'Inactive Users', category: 'User Management',
+        func: 'admin_get_inactive_users', params: [{ name: 'days_inactive', label: 'Days Inactive', type: 'number', default: 30 }]
+      },
+      {
+        id: 'all_prompts', name: 'All Prompts', category: 'User Management',
+        func: 'admin_get_all_prompts', params: [{ name: 'limit_count', label: 'Limit', type: 'number', default: 100 }]
+      },
+      {
+        id: 'statistics', name: 'Overall Statistics', category: 'System Health',
+        func: 'admin_get_statistics', params: []
+      },
+      {
+        id: 'db_stats', name: 'Database Metrics', category: 'System Health',
+        func: 'admin_get_db_stats', params: []
+      },
+      {
+        id: 'total_users', name: 'Total Users', category: 'System Health',
+        func: 'get_total_users', params: []
+      },
+      {
+        id: 'encrypted_count', name: 'Encrypted Items Count', category: 'System Health',
+        func: 'get_encrypted_items_count', params: []
+      },
+      {
+        id: 'free_users', name: 'Free Tier Users', category: 'Analytics',
+        func: 'get_free_users_count', params: []
+      },
+      {
+        id: 'pro_users', name: 'Pro Tier Users', category: 'Analytics',
+        func: 'get_pro_users_count', params: []
+      },
+      {
+        id: 'weekly_signups', name: 'Weekly Signups', category: 'Analytics',
+        func: 'get_weekly_signups', params: []
+      },
+      {
+        id: 'monthly_signups', name: 'Monthly Signups', category: 'Analytics',
+        func: 'get_monthly_signups', params: []
+      },
+      {
+        id: 'user_growth', name: 'User Growth (30 days)', category: 'Analytics',
+        func: 'get_user_growth_data', params: []
+      },
+      {
+        id: 'marketplace_prompts', name: 'All Marketplace Items', category: 'Marketplace',
+        func: 'admin_get_marketplace_prompts', params: []
+      },
+      {
+        id: 'marketplace_stats', name: 'Marketplace Statistics', category: 'Marketplace',
+        func: 'admin_get_marketplace_stats', params: []
+      },
+      {
+        id: 'top_downloads', name: 'Top Downloads', category: 'Marketplace',
+        func: 'admin_get_top_downloads', params: [{ name: 'limit_count', label: 'Limit', type: 'number', default: 10 }]
+      },
+    ];
+
+    const supportQueries = [
+      {
+        id: 'find_user', name: 'Find User by Email', category: 'User Lookup',
+        func: 'admin_find_user_by_email', params: [{ name: 'search_email', label: 'Email', type: 'text', placeholder: 'user@example.com', required: true }]
+      },
+      {
+        id: 'user_prompts', name: 'User Prompts', category: 'User Lookup',
+        func: 'admin_get_user_prompts', params: [
+          { name: 'user_id', label: 'User ID', type: 'text', placeholder: 'UUID', required: true },
+          { name: 'limit_count', label: 'Limit', type: 'number', default: 50 }
+        ]
+      },
+      {
+        id: 'user_folders', name: 'User Folders', category: 'User Lookup',
+        func: 'admin_get_user_folders', params: [{ name: 'user_id', label: 'User ID', type: 'text', placeholder: 'UUID', required: true }]
+      },
+      {
+        id: 'activity_stats', name: 'Activity Statistics', category: 'Analytics',
+        func: 'admin_get_activity_stats', params: []
+      },
+      {
+        id: 'prompt_activity', name: 'Prompt Activity Data', category: 'Analytics',
+        func: 'get_prompt_activity_data', params: []
+      },
+    ];
+
+    // Filter based on role
+    return userRole === 'admin'
+      ? [...adminQueries, ...supportQueries]
+      : supportQueries;
+  };
+
+  async function executeQuery() {
+    if (!selectedQuery) return;
+
+    setIsQueryLoading(true);
+    setQueryError(null);
+    setQueryResults(null);
+
+    try {
+      // Validate required parameters
+      const query = getAvailableQueries().find(q => q.id === selectedQuery.id);
+      const requiredParams = query.params.filter(p => p.required);
+
+      for (const param of requiredParams) {
+        if (!queryParams[param.name] || queryParams[param.name].trim() === '') {
+          throw new Error(`${param.label} is required`);
+        }
+      }
+
+      // Build parameters object
+      const params = {};
+      query.params.forEach(param => {
+        const value = queryParams[param.name] !== undefined
+          ? queryParams[param.name]
+          : param.default;
+
+        if (value !== undefined && value !== '') {
+          // Convert to appropriate type
+          if (param.type === 'number') {
+            params[param.name] = parseInt(value, 10);
+          } else {
+            params[param.name] = value;
+          }
+        }
+      });
+
+      // Execute RPC call
+      const { data, error } = await supabase.rpc(query.func, params);
+
+      if (error) throw error;
+
+      setQueryResults(data);
+    } catch (error) {
+      console.error('Query execution error:', error);
+      setQueryError(error.message || 'Failed to execute query');
+      showAlert('Query Error', error.message || 'Failed to execute query');
+    } finally {
+      setIsQueryLoading(false);
+    }
+  }
+
+  function handleQuerySelect(query) {
+    setSelectedQuery(query);
+    setQueryParams({});
+    setQueryResults(null);
+    setQueryError(null);
+  }
+
+  function handleParamChange(paramName, value) {
+    setQueryParams(prev => ({ ...prev, [paramName]: value }));
+  }
+
+  function exportResults(format) {
+    if (!queryResults || queryResults.length === 0) {
+      showAlert('No Data', 'No results to export');
+      return;
+    }
+
+    try {
+      if (format === 'json') {
+        const jsonStr = JSON.stringify(queryResults, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${selectedQuery.id}_${new Date().toISOString()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      } else if (format === 'csv') {
+        if (queryResults.length === 0) return;
+
+        // Get headers from first row
+        const headers = Object.keys(queryResults[0]);
+
+        // Create CSV content
+        let csv = headers.join(',') + '\n';
+        queryResults.forEach(row => {
+          const values = headers.map(header => {
+            const value = row[header];
+            // Escape commas and quotes
+            if (value === null || value === undefined) return '';
+            const str = String(value);
+            if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+              return `"${str.replace(/"/g, '""')}"`;
+            }
+            return str;
+          });
+          csv += values.join(',') + '\n';
+        });
+
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${selectedQuery.id}_${new Date().toISOString()}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+      showAlert('Export Successful', `Results exported as ${format.toUpperCase()}`);
+    } catch (error) {
+      console.error('Export error:', error);
+      showAlert('Export Failed', 'Failed to export results');
+    }
   }
 
   // ============================================
@@ -467,15 +696,15 @@ export default function AdminDashboard() {
 
   async function handleCreatePrompt(e) {
     e.preventDefault();
-    
+
     try {
       const validTiers = ['starter', 'pro', 'premium'];
       const tier = createForm.tier.toLowerCase();
-      
+
       if (!validTiers.includes(tier)) {
         throw new Error(`Invalid tier value: ${tier}. Must be one of: ${validTiers.join(', ')}`);
       }
-      
+
       const promptData = {
         title: createForm.title.trim(),
         category: createForm.category || 'Uncategorized',
@@ -488,14 +717,14 @@ export default function AdminDashboard() {
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
       };
-      
+
       const { data, error } = await supabase
         .from('marketplace_prompts')
         .insert(promptData)
         .select();
-        
+
       if (error) throw error;
-      
+
       showAlert('Success', 'Prompt created successfully!');
       setShowCreatePromptModal(false);
       await loadMarketplaceData();
@@ -512,7 +741,7 @@ export default function AdminDashboard() {
         .select('*')
         .eq('id', promptId)
         .single();
-        
+
       if (data) {
         setEditingPrompt(data);
         setEditForm({
@@ -533,15 +762,15 @@ export default function AdminDashboard() {
 
   async function handleUpdatePrompt(e) {
     e.preventDefault();
-    
+
     try {
       const validTiers = ['starter', 'pro', 'premium'];
       const tier = editForm.tier.toLowerCase();
-      
+
       if (!validTiers.includes(tier)) {
         throw new Error(`Invalid tier value: ${tier}. Must be one of: ${validTiers.join(', ')}`);
       }
-      
+
       const updateData = {
         title: editForm.title.trim(),
         category: editForm.category || 'Uncategorized',
@@ -551,15 +780,15 @@ export default function AdminDashboard() {
         is_active: Boolean(editForm.is_active),
         updated_at: new Date().toISOString()
       };
-      
+
       const { data, error } = await supabase
         .from('marketplace_prompts')
         .update(updateData)
         .eq('id', editingPrompt.id)
         .select();
-        
+
       if (error) throw error;
-      
+
       showAlert('Success', 'Prompt updated successfully!');
       setShowEditPromptModal(false);
       await loadMarketplaceData();
@@ -576,12 +805,12 @@ export default function AdminDashboard() {
 
   async function handleDeletePrompt() {
     try {
-      const { error } = await supabase.rpc('admin_delete_marketplace_prompt', { 
-        prompt_id: deleteTarget.id 
+      const { error } = await supabase.rpc('admin_delete_marketplace_prompt', {
+        prompt_id: deleteTarget.id
       });
-      
+
       if (error) throw error;
-      
+
       showAlert('Success', 'Prompt deleted successfully!');
       setShowDeleteModal(false);
       setDeleteTarget(null);
@@ -594,14 +823,14 @@ export default function AdminDashboard() {
 
   async function handleBulkDelete() {
     if (selectedPrompts.size === 0) return;
-    
+
     try {
       const deletePromises = Array.from(selectedPrompts).map(id =>
         supabase.rpc('admin_delete_marketplace_prompt', { prompt_id: id })
       );
-      
+
       await Promise.all(deletePromises);
-      
+
       showAlert('Success', `${selectedPrompts.size} prompt(s) deleted successfully!`);
       setSelectedPrompts(new Set());
       await loadMarketplaceData();
@@ -638,21 +867,21 @@ export default function AdminDashboard() {
       showAlert('Error', 'Please enter a category name');
       return;
     }
-    
+
     try {
       const { error } = await supabase.rpc('add_marketplace_category', {
         category_name: newCategoryName.trim()
       });
-      
+
       if (error) throw error;
-      
+
       showAlert('Success', `Category "${newCategoryName}" added successfully!`);
       setNewCategoryName('');
       await loadCategories();
     } catch (error) {
       console.error('Error adding category:', error);
-      showAlert('Error', error.message.includes('duplicate') 
-        ? 'Category already exists' 
+      showAlert('Error', error.message.includes('duplicate')
+        ? 'Category already exists'
         : 'Failed to add category: ' + error.message
       );
     }
@@ -668,9 +897,9 @@ export default function AdminDashboard() {
             category_name: categoryName,
             move_to_category: 'Uncategorized'
           });
-          
+
           if (error) throw error;
-          
+
           showAlert('Success', 'Category deleted successfully!');
           await loadCategories();
           await loadMarketplaceData();
@@ -689,23 +918,23 @@ export default function AdminDashboard() {
   async function handleBulkUpload(e) {
     const file = e.target.files?.[0];
     if (!file) return;
-    
+
     setBulkUploadStatus('Reading file...');
-    
+
     try {
       const text = await file.text();
       const prompts = JSON.parse(text);
-      
+
       if (!Array.isArray(prompts)) {
         throw new Error('JSON file must contain an array of prompts');
       }
-      
+
       setBulkUploadStatus(`Uploading ${prompts.length} prompts...`);
-      
+
       let successCount = 0;
       let errorCount = 0;
       const validTiers = ['starter', 'pro', 'premium'];
-      
+
       for (const prompt of prompts) {
         try {
           if (!prompt.title || !prompt.content) {
@@ -713,14 +942,14 @@ export default function AdminDashboard() {
             errorCount++;
             continue;
           }
-          
+
           const tier = (prompt.tier || 'starter').toLowerCase();
           if (!validTiers.includes(tier)) {
             console.warn(`Skipping prompt "${prompt.title}": invalid tier "${tier}"`, prompt);
             errorCount++;
             continue;
           }
-          
+
           const promptData = {
             title: prompt.title.trim(),
             category: prompt.category || 'Uncategorized',
@@ -734,11 +963,11 @@ export default function AdminDashboard() {
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString()
           };
-          
+
           const { error } = await supabase
             .from('marketplace_prompts')
             .insert(promptData);
-            
+
           if (error) {
             console.error(`Error inserting prompt "${prompt.title}":`, error);
             throw error;
@@ -749,13 +978,13 @@ export default function AdminDashboard() {
           errorCount++;
         }
       }
-      
+
       setBulkUploadStatus(`✓ ${successCount} prompts uploaded, ${errorCount} failed`);
-      
+
       if (successCount > 0) {
         await loadMarketplaceData();
       }
-      
+
       setTimeout(() => {
         setShowBulkUploadModal(false);
         setBulkUploadStatus('');
@@ -774,7 +1003,7 @@ export default function AdminDashboard() {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const paginatedData = filteredMarketplaceData.slice(startIndex, endIndex);
-    
+
     if (paginatedData.length === 0) {
       return (
         <tr>
@@ -784,7 +1013,7 @@ export default function AdminDashboard() {
         </tr>
       );
     }
-    
+
     // Category color pool - 30 distinct colors
     const categoryColorPool = [
       '#f59e0b', '#3b82f6', '#8b5cf6', '#10b981', '#ef4444', '#06b6d4', '#ec4899', '#6366f1',
@@ -792,7 +1021,7 @@ export default function AdminDashboard() {
       '#d946ef', '#fb923c', '#4ade80', '#facc15', '#94a3b8', '#fb7185', '#38bdf8', '#a78bfa',
       '#34d399', '#fbbf24', '#c084fc', '#60a5fa', '#f472b6', '#2dd4bf'
     ];
-    
+
     const getCategoryColor = (category) => {
       let hash = 0;
       for (let i = 0; i < category.length; i++) {
@@ -800,7 +1029,7 @@ export default function AdminDashboard() {
       }
       return categoryColorPool[Math.abs(hash) % categoryColorPool.length];
     };
-    
+
     return paginatedData.map(p => {
       const promptId = p.prompt_id || p.id;
       const title = p.prompt_name || p.title || 'Untitled';
@@ -809,17 +1038,17 @@ export default function AdminDashboard() {
       const downloads = p.downloads || p.downloads_count || 0;
       const tier = p.tier || 'starter';
       const isActive = p.is_active !== undefined ? p.is_active : true;
-      const createdAt = p.created_at 
-        ? new Date(p.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) 
+      const createdAt = p.created_at
+        ? new Date(p.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
         : 'N/A';
-      
+
       const categoryColor = getCategoryColor(category);
-      
+
       return (
         <tr key={promptId} className="marketplace-row">
           <td className="marketplace-checkbox">
-            <input 
-              type="checkbox" 
+            <input
+              type="checkbox"
               checked={selectedPrompts.has(promptId)}
               onChange={() => togglePromptSelection(promptId)}
             />
@@ -843,22 +1072,22 @@ export default function AdminDashboard() {
             </span>
           </td>
           <td className="marketplace-actions">
-            <button 
-              className="action-btn action-edit" 
-              onClick={() => openEditPromptModal(promptId)} 
+            <button
+              className="action-btn action-edit"
+              onClick={() => openEditPromptModal(promptId)}
               title="Edit"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
               </svg>
             </button>
-            <button 
-              className="action-btn action-delete" 
-              onClick={() => confirmDeletePrompt(promptId, title)} 
+            <button
+              className="action-btn action-delete"
+              onClick={() => confirmDeletePrompt(promptId, title)}
               title="Delete"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
               </svg>
             </button>
           </td>
@@ -869,19 +1098,19 @@ export default function AdminDashboard() {
 
   function renderPaginationControls() {
     const totalPages = Math.ceil(filteredMarketplaceData.length / ITEMS_PER_PAGE);
-    
+
     if (totalPages <= 1) return null;
-    
+
     const startItem = ((currentPage - 1) * ITEMS_PER_PAGE) + 1;
     const endItem = Math.min(currentPage * ITEMS_PER_PAGE, filteredMarketplaceData.length);
-    
+
     return (
       <div className="pagination-controls">
         <div className="pagination-info">
           Showing {startItem}-{endItem} of {filteredMarketplaceData.length} prompts
         </div>
         <div className="pagination-buttons">
-          <button 
+          <button
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
             disabled={currentPage === 1}
             className="pagination-btn"
@@ -889,7 +1118,7 @@ export default function AdminDashboard() {
             Previous
           </button>
           {Array.from({ length: Math.min(5, totalPages) }, (_, i) => i + 1).map(i => (
-            <button 
+            <button
               key={i}
               onClick={() => setCurrentPage(i)}
               className={`pagination-btn ${i === currentPage ? 'active' : ''}`}
@@ -897,7 +1126,7 @@ export default function AdminDashboard() {
               {i}
             </button>
           ))}
-          <button 
+          <button
             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
             className="pagination-btn"
@@ -959,7 +1188,7 @@ export default function AdminDashboard() {
               </div>
             )}
           </form>
-          
+
           <div className="session-notice">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <circle cx="12" cy="12" r="10" />
@@ -1276,19 +1505,247 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            <div className="card">
-              <div className="card-body" style={{ padding: '40px', textAlign: 'center' }}>
-                <svg width="64" height="64" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ margin: '0 auto 20px', opacity: 0.3 }}>
-                  <path d="M14.5 2.49866C14.5 3.60194 11.366 4.49731 7.5 4.49731C3.634 4.49731 0.5 3.60194 0.5 2.49866M14.5 2.49866C14.5 1.39538 11.366 0.5 7.5 0.5C3.634 0.5 0.5 1.39538 0.5 2.49866M14.5 2.49866V12.4922C14.5 13.5955 11.366 14.4908 7.5 14.4908C3.634 14.4908 0.5 13.5956 0.5 12.4923V2.49866M14.5 7.49536C14.5 8.59864 11.366 9.49414 7.5 9.49414C3.634 9.49414 0.5 8.59864 0.5 7.49536" stroke="currentColor" strokeLinecap="square" />
-                </svg>
-                <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '8px' }}>
-                  Query Console Coming Soon
-                </h3>
-                <p style={{ color: 'var(--text-tertiary)', fontSize: '14px', maxWidth: '500px', margin: '0 auto' }}>
-                  Run custom database queries, export results to CSV, and analyze your data with predefined query templates.
-                </p>
+            {!userRole ? (
+              <div className="card">
+                <div className="card-body" style={{ padding: '40px', textAlign: 'center' }}>
+                  <div style={{ color: 'var(--text-secondary)' }}>Loading...</div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: '24px' }}>
+                {/* Query Selector Sidebar */}
+                <div className="card" style={{ height: 'fit-content' }}>
+                  <div className="card-header">
+                    <span className="card-title">Available Queries</span>
+                  </div>
+                  <div className="card-body" style={{ padding: '12px' }}>
+                    {(() => {
+                      const queries = getAvailableQueries();
+                      const categories = [...new Set(queries.map(q => q.category))];
+
+                      return categories.map(category => {
+                        const categoryQueries = queries.filter(q => q.category === category);
+                        const isAdminCategory = ['User Management', 'System Health', 'Marketplace'].includes(category);
+
+                        return (
+                          <div key={category} style={{ marginBottom: '16px' }}>
+                            <div style={{
+                              fontSize: '11px',
+                              fontWeight: '600',
+                              color: 'var(--text-tertiary)',
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.5px',
+                              marginBottom: '8px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '6px'
+                            }}>
+                              {category}
+                              {isAdminCategory && userRole === 'admin' && (
+                                <span style={{
+                                  fontSize: '9px',
+                                  background: 'var(--accent)',
+                                  color: 'white',
+                                  padding: '2px 6px',
+                                  borderRadius: '3px'
+                                }}>ADMIN</span>
+                              )}
+                            </div>
+                            {categoryQueries.map(query => (
+                              <button
+                                key={query.id}
+                                onClick={() => handleQuerySelect(query)}
+                                className={`btn btn-ghost ${selectedQuery?.id === query.id ? 'active' : ''}`}
+                                style={{
+                                  width: '100%',
+                                  justifyContent: 'flex-start',
+                                  marginBottom: '4px',
+                                  fontSize: '13px',
+                                  padding: '8px 12px',
+                                  background: selectedQuery?.id === query.id ? 'var(--accent-bg)' : 'transparent',
+                                  color: selectedQuery?.id === query.id ? 'var(--accent)' : 'var(--text-primary)'
+                                }}
+                              >
+                                {query.name}
+                              </button>
+                            ))}
+                          </div>
+                        );
+                      });
+                    })()}
+                  </div>
+                </div>
+
+                {/* Query Execution Panel */}
+                <div>
+                  {!selectedQuery ? (
+                    <div className="card">
+                      <div className="card-body" style={{ padding: '60px', textAlign: 'center' }}>
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ margin: '0 auto 16px', opacity: 0.3 }}>
+                          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                        <h3 style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '8px' }}>
+                          Select a Query
+                        </h3>
+                        <p style={{ color: 'var(--text-tertiary)', fontSize: '14px' }}>
+                          Choose a query from the sidebar to get started
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      {/* Query Info & Parameters */}
+                      <div className="card" style={{ marginBottom: '24px' }}>
+                        <div className="card-header">
+                          <div>
+                            <span className="card-title">{selectedQuery.name}</span>
+                            <div style={{ fontSize: '12px', color: 'var(--text-tertiary)', marginTop: '4px' }}>
+                              Function: <code style={{ background: 'var(--bg-tertiary)', padding: '2px 6px', borderRadius: '3px' }}>{selectedQuery.func}</code>
+                            </div>
+                          </div>
+                          <button
+                            className="btn btn-accent"
+                            onClick={executeQuery}
+                            disabled={isQueryLoading}
+                          >
+                            {isQueryLoading ? (
+                              <>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ animation: 'spin 1s linear infinite' }}>
+                                  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                                </svg>
+                                Running...
+                              </>
+                            ) : (
+                              <>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                  <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
+                                Execute Query
+                              </>
+                            )}
+                          </button>
+                        </div>
+
+                        {selectedQuery.params.length > 0 && (
+                          <div className="card-body">
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
+                              {selectedQuery.params.map(param => (
+                                <div key={param.name} className="form-group">
+                                  <label>
+                                    {param.label}
+                                    {param.required && <span style={{ color: 'var(--danger)' }}> *</span>}
+                                  </label>
+                                  <input
+                                    type={param.type === 'number' ? 'number' : 'text'}
+                                    placeholder={param.placeholder || param.label}
+                                    value={queryParams[param.name] !== undefined ? queryParams[param.name] : (param.default || '')}
+                                    onChange={(e) => handleParamChange(param.name, e.target.value)}
+                                    required={param.required}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Results Section */}
+                      {queryError && (
+                        <div className="card" style={{ marginBottom: '24px', borderLeft: '4px solid var(--danger)' }}>
+                          <div className="card-body">
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--danger)' }}>
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                              </svg>
+                              <div>
+                                <strong>Query Error</strong>
+                                <div style={{ fontSize: '13px', marginTop: '4px' }}>{queryError}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {queryResults && (
+                        <div className="card">
+                          <div className="card-header">
+                            <span className="card-title">
+                              Results ({Array.isArray(queryResults) ? queryResults.length : 1} {Array.isArray(queryResults) && queryResults.length === 1 ? 'row' : 'rows'})
+                            </span>
+                            <div className="btn-group">
+                              <button className="btn btn-secondary" onClick={() => exportResults('json')}>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                  <polyline points="7 10 12 15 17 10" />
+                                  <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Export JSON
+                              </button>
+                              <button className="btn btn-secondary" onClick={() => exportResults('csv')}>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                  <polyline points="7 10 12 15 17 10" />
+                                  <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Export CSV
+                              </button>
+                            </div>
+                          </div>
+                          <div className="table-wrapper">
+                            <table className="data-table">
+                              <thead>
+                                <tr>
+                                  {Array.isArray(queryResults) && queryResults.length > 0 &&
+                                    Object.keys(queryResults[0]).map(key => (
+                                      <th key={key}>{key}</th>
+                                    ))
+                                  }
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {Array.isArray(queryResults) ? (
+                                  queryResults.map((row, idx) => (
+                                    <tr key={idx}>
+                                      {Object.entries(row).map(([key, value]) => (
+                                        <td key={key}>
+                                          {value === null || value === undefined ? (
+                                            <span style={{ color: 'var(--text-tertiary)', fontStyle: 'italic' }}>null</span>
+                                          ) : typeof value === 'object' ? (
+                                            <code style={{ fontSize: '11px', background: 'var(--bg-tertiary)', padding: '2px 4px', borderRadius: '3px' }}>
+                                              {JSON.stringify(value)}
+                                            </code>
+                                          ) : typeof value === 'boolean' ? (
+                                            <span style={{ color: value ? 'var(--success)' : 'var(--danger)' }}>
+                                              {value.toString()}
+                                            </span>
+                                          ) : (
+                                            String(value)
+                                          )}
+                                        </td>
+                                      ))}
+                                    </tr>
+                                  ))
+                                ) : (
+                                  <tr>
+                                    <td colSpan="100" style={{ textAlign: 'center' }}>
+                                      <pre style={{ textAlign: 'left', background: 'var(--bg-tertiary)', padding: '12px', borderRadius: '4px', fontSize: '12px' }}>
+                                        {JSON.stringify(queryResults, null, 2)}
+                                      </pre>
+                                    </td>
+                                  </tr>
+                                )}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* MARKETPLACE VIEW - SLIM TABLE VERSION */}
@@ -1343,18 +1800,18 @@ export default function AdminDashboard() {
                       <circle cx="11" cy="11" r="8" />
                       <path d="m21 21-4.35-4.35" />
                     </svg>
-                    <input 
-                      type="text" 
-                      className="search-input" 
-                      placeholder="Search prompts..." 
+                    <input
+                      type="text"
+                      className="search-input"
+                      placeholder="Search prompts..."
                       id="marketplaceSearch"
                       onChange={applyFilters}
                     />
                   </div>
                   <div style={{ display: 'flex', gap: '8px' }}>
-                    <select 
-                      className="filter-select" 
-                      id="categoryFilter" 
+                    <select
+                      className="filter-select"
+                      id="categoryFilter"
                       onChange={applyFilters}
                     >
                       <option value="">All Categories</option>
@@ -1362,9 +1819,9 @@ export default function AdminDashboard() {
                         <option key={cat.name} value={cat.name}>{cat.name}</option>
                       ))}
                     </select>
-                    <select 
-                      className="filter-select" 
-                      id="tierFilter" 
+                    <select
+                      className="filter-select"
+                      id="tierFilter"
                       onChange={applyFilters}
                     >
                       <option value="">All Tiers</option>
@@ -1401,8 +1858,8 @@ export default function AdminDashboard() {
                   <thead>
                     <tr>
                       <th className="marketplace-checkbox">
-                        <input 
-                          type="checkbox" 
+                        <input
+                          type="checkbox"
                           checked={selectedPrompts.size === filteredMarketplaceData.length && filteredMarketplaceData.length > 0}
                           onChange={toggleSelectAll}
                         />
@@ -1484,7 +1941,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* MODALS */}
-      
+
       {/* CREATE PROMPT MODAL */}
       {showCreatePromptModal && (
         <div className="modal-overlay" onClick={() => setShowCreatePromptModal(false)}>
@@ -1502,18 +1959,18 @@ export default function AdminDashboard() {
                     <input
                       type="text"
                       value={createForm.title}
-                      onChange={(e) => setCreateForm({...createForm, title: e.target.value})}
+                      onChange={(e) => setCreateForm({ ...createForm, title: e.target.value })}
                       required
                       placeholder="Enter prompt name"
                     />
                   </div>
-                  
+
                   <div className="form-group">
                     <label>CATEGORY</label>
                     <select
                       className="custom-select"
                       value={createForm.category}
-                      onChange={(e) => setCreateForm({...createForm, category: e.target.value})}
+                      onChange={(e) => setCreateForm({ ...createForm, category: e.target.value })}
                       required
                     >
                       {categories.map(cat => (
@@ -1534,7 +1991,7 @@ export default function AdminDashboard() {
                           name="create-tier"
                           value="starter"
                           checked={createForm.tier === 'starter'}
-                          onChange={(e) => setCreateForm({...createForm, tier: e.target.value})}
+                          onChange={(e) => setCreateForm({ ...createForm, tier: e.target.value })}
                         />
                         <span>Standard</span>
                       </label>
@@ -1544,19 +2001,19 @@ export default function AdminDashboard() {
                           name="create-tier"
                           value="pro"
                           checked={createForm.tier === 'pro'}
-                          onChange={(e) => setCreateForm({...createForm, tier: e.target.value})}
+                          onChange={(e) => setCreateForm({ ...createForm, tier: e.target.value })}
                         />
                         <span>Pro</span>
                       </label>
                     </div>
                   </div>
-                  
+
                   <div className="form-group">
                     <label>STATUS</label>
                     <div className="toggle-wrapper">
-                      <div 
+                      <div
                         className={`toggle-switch ${createForm.is_active ? 'active' : ''}`}
-                        onClick={() => setCreateForm({...createForm, is_active: !createForm.is_active})}
+                        onClick={() => setCreateForm({ ...createForm, is_active: !createForm.is_active })}
                       >
                         <div className="toggle-slider"></div>
                       </div>
@@ -1564,26 +2021,26 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Description */}
                 <div className="form-group">
                   <label>DESCRIPTION</label>
                   <textarea
                     className="textarea-description"
                     value={createForm.description}
-                    onChange={(e) => setCreateForm({...createForm, description: e.target.value})}
+                    onChange={(e) => setCreateForm({ ...createForm, description: e.target.value })}
                     placeholder="Brief description of the prompt"
                     rows="3"
                   />
                 </div>
-                
+
                 {/* System Prompt with Character Count */}
                 <div className="form-group">
                   <label>SYSTEM PROMPT</label>
                   <textarea
                     className="textarea-system-prompt"
                     value={createForm.content}
-                    onChange={(e) => setCreateForm({...createForm, content: e.target.value})}
+                    onChange={(e) => setCreateForm({ ...createForm, content: e.target.value })}
                     required
                     placeholder="Enter the system prompt content"
                     rows="10"
@@ -1591,7 +2048,7 @@ export default function AdminDashboard() {
                   <div className="char-count">{createForm.content.length}/10000</div>
                 </div>
               </div>
-              
+
               <div className="modal-footer">
                 <button type="button" className="btn btn-cancel" onClick={() => setShowCreatePromptModal(false)}>
                   Cancel
@@ -1622,18 +2079,18 @@ export default function AdminDashboard() {
                     <input
                       type="text"
                       value={editForm.title}
-                      onChange={(e) => setEditForm({...editForm, title: e.target.value})}
+                      onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
                       required
                       placeholder="Enter prompt name"
                     />
                   </div>
-                  
+
                   <div className="form-group">
                     <label>CATEGORY</label>
                     <select
                       className="custom-select"
                       value={editForm.category}
-                      onChange={(e) => setEditForm({...editForm, category: e.target.value})}
+                      onChange={(e) => setEditForm({ ...editForm, category: e.target.value })}
                       required
                     >
                       {categories.map(cat => (
@@ -1654,7 +2111,7 @@ export default function AdminDashboard() {
                           name="edit-tier"
                           value="starter"
                           checked={editForm.tier === 'starter'}
-                          onChange={(e) => setEditForm({...editForm, tier: e.target.value})}
+                          onChange={(e) => setEditForm({ ...editForm, tier: e.target.value })}
                         />
                         <span>Standard</span>
                       </label>
@@ -1664,19 +2121,19 @@ export default function AdminDashboard() {
                           name="edit-tier"
                           value="pro"
                           checked={editForm.tier === 'pro'}
-                          onChange={(e) => setEditForm({...editForm, tier: e.target.value})}
+                          onChange={(e) => setEditForm({ ...editForm, tier: e.target.value })}
                         />
                         <span>Pro</span>
                       </label>
                     </div>
                   </div>
-                  
+
                   <div className="form-group">
                     <label>STATUS</label>
                     <div className="toggle-wrapper">
-                      <div 
+                      <div
                         className={`toggle-switch ${editForm.is_active ? 'active' : ''}`}
-                        onClick={() => setEditForm({...editForm, is_active: !editForm.is_active})}
+                        onClick={() => setEditForm({ ...editForm, is_active: !editForm.is_active })}
                       >
                         <div className="toggle-slider"></div>
                       </div>
@@ -1684,26 +2141,26 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Description */}
                 <div className="form-group">
                   <label>DESCRIPTION</label>
                   <textarea
                     className="textarea-description"
                     value={editForm.description}
-                    onChange={(e) => setEditForm({...editForm, description: e.target.value})}
+                    onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
                     placeholder="Brief description of the prompt"
                     rows="3"
                   />
                 </div>
-                
+
                 {/* System Prompt with Character Count */}
                 <div className="form-group">
                   <label>SYSTEM PROMPT</label>
                   <textarea
                     className="textarea-system-prompt"
                     value={editForm.content}
-                    onChange={(e) => setEditForm({...editForm, content: e.target.value})}
+                    onChange={(e) => setEditForm({ ...editForm, content: e.target.value })}
                     required
                     placeholder="Enter the system prompt content"
                     rows="10"
@@ -1711,7 +2168,7 @@ export default function AdminDashboard() {
                   <div className="char-count">{editForm.content.length}/10000</div>
                 </div>
               </div>
-              
+
               <div className="modal-footer">
                 <button type="button" className="btn btn-cancel" onClick={() => setShowEditPromptModal(false)}>
                   Cancel
@@ -1775,14 +2232,14 @@ export default function AdminDashboard() {
                   </button>
                 </div>
               </div>
-              
+
               <div style={{ marginTop: '24px' }}>
                 <label style={{ marginBottom: '12px', display: 'block' }}>EXISTING CATEGORIES</label>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '350px', overflowY: 'auto' }}>
                   {categories.map(cat => (
-                    <div key={cat.name} style={{ 
-                      display: 'flex', 
-                      justifyContent: 'space-between', 
+                    <div key={cat.name} style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
                       alignItems: 'center',
                       padding: '12px 16px',
                       background: 'var(--bg-tertiary)',
@@ -1795,8 +2252,8 @@ export default function AdminDashboard() {
                           ({cat.prompt_count || 0} prompts)
                         </span>
                       </div>
-                      <button 
-                        className="btn btn-ghost" 
+                      <button
+                        className="btn btn-ghost"
                         onClick={() => handleDeleteCategory(cat.name)}
                         style={{ padding: '6px 12px', fontSize: '13px', color: 'var(--danger)' }}
                       >
@@ -1828,10 +2285,10 @@ export default function AdminDashboard() {
               <p style={{ marginBottom: '16px', color: 'var(--text-secondary)', fontSize: '14px' }}>
                 Upload a JSON file with multiple prompts. Expected format:
               </p>
-              
-              <div style={{ 
-                background: 'var(--bg-tertiary)', 
-                padding: '16px', 
+
+              <div style={{
+                background: 'var(--bg-tertiary)',
+                padding: '16px',
                 borderRadius: 'var(--radius-md)',
                 fontFamily: 'monospace',
                 fontSize: '12px',
@@ -1849,7 +2306,7 @@ export default function AdminDashboard() {
   }
 ]`}</pre>
               </div>
-              
+
               <div className="form-group">
                 <label>SELECT JSON FILE</label>
                 <input
@@ -1858,12 +2315,12 @@ export default function AdminDashboard() {
                   onChange={handleBulkUpload}
                 />
               </div>
-              
+
               {bulkUploadStatus && (
-                <div style={{ 
-                  marginTop: '16px', 
-                  padding: '12px', 
-                  background: bulkUploadStatus.includes('✓') ? 'var(--success-bg)' : 'var(--bg-tertiary)', 
+                <div style={{
+                  marginTop: '16px',
+                  padding: '12px',
+                  background: bulkUploadStatus.includes('✓') ? 'var(--success-bg)' : 'var(--bg-tertiary)',
                   borderRadius: 'var(--radius-md)',
                   fontSize: '13px',
                   color: bulkUploadStatus.includes('✓') ? 'var(--success)' : 'var(--text-primary)',
@@ -1880,8 +2337,8 @@ export default function AdminDashboard() {
               }}>
                 Cancel
               </button>
-              <button 
-                className="btn btn-primary" 
+              <button
+                className="btn btn-primary"
                 onClick={() => document.querySelector('input[type="file"]').click()}
                 style={{ width: 'auto', paddingLeft: '20px', paddingRight: '20px' }}
               >
