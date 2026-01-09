@@ -43,9 +43,11 @@ export default function PromptLibraryPage() {
           
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-border">
             <video 
-              controls
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full"
-              poster="/images/prompt-library-thumbnail.jpg"
             >
               <source src="/videos/prompt-library-demo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
