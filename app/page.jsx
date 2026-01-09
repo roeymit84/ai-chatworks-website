@@ -460,16 +460,17 @@ export default function Home() {
             {/* Video Container */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-border bg-black">
               <div className="relative aspect-video">
-                <video
-                  className="w-full h-full"
-                  controls
-                  preload="metadata"
-                  poster="/videos/demo-thumbnail.jpg"
-                >
-                  <source src="/videos/ai-chatworks-demo.mp4" type="video/mp4" />
-                  <source src="/videos/ai-chatworks-demo.webm" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
+               <video 
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="w-full"
+>
+  <source src="/videos/ai-chatworks-demo.mp4" type="video/mp4" />
+  <source src="/videos/ai-chatworks-demo.webm" type="video/webm" />
+  Your browser does not support the video tag.
+</video>
               </div>
             </div>
 
