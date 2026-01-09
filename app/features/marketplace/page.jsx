@@ -5,7 +5,7 @@ import Footer from '../../../components/Footer'
 
 export const metadata = {
   title: 'Marketplace - AI ChatWorks',
-  description: 'Browse and download curated AI prompts from the community. Get expert-level results instantly.',
+  description: 'Browse and download expert-crafted AI prompts. Get professional results instantly.',
 }
 
 export default function MarketplacePage() {
@@ -27,7 +27,7 @@ export default function MarketplacePage() {
             Expert Prompts, <span className="text-brand-purple">Instant Results</span>
           </h1>
           <p className="text-xl md:text-2xl text-brand-slate max-w-3xl mx-auto leading-relaxed">
-            Skip the trial and error. Download battle-tested prompts curated by the community and start getting professional-grade AI outputs immediately.
+            Skip the trial and error. Download prompts crafted by AI ChatWorks experts and start getting professional-grade AI outputs immediately.
           </p>
         </div>
 
@@ -79,17 +79,20 @@ export default function MarketplacePage() {
         <div className="max-w-6xl mx-auto mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-brand-dark">Browse by Category</h2>
-            <p className="text-xl text-brand-slate">Curated prompts for every use case</p>
+            <p className="text-xl text-brand-slate">Expert-crafted prompts for every use case</p>
+            <p className="text-sm text-brand-gray mt-2">New categories and prompts added weekly by our team</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: 'Writing & Content', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z', color: 'blue' },
-              { name: 'Coding & Development', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4', color: 'green' },
-              { name: 'Marketing & Sales', icon: 'M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z', color: 'purple' },
-              { name: 'Data Analysis', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', color: 'orange' },
-              { name: 'Creative & Design', icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01', color: 'pink' },
-              { name: 'Business & Strategy', icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', color: 'gray' }
+              { name: 'Writing', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z', color: 'blue' },
+              { name: 'Sales', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1', color: 'green' },
+              { name: 'Marketing', icon: 'M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z', color: 'purple' },
+              { name: 'Projects', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01', color: 'orange' },
+              { name: 'Communication', icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z', color: 'pink' },
+              { name: 'Home', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', color: 'indigo' },
+              { name: 'Travel', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z', color: 'teal' },
+              { name: 'And More...', icon: 'M12 6v6m0 0v6m0-6h6m-6 0H6', color: 'gray' }
             ].map((category, index) => (
               <div key={index} className={`bg-white rounded-xl border border-brand-border p-6 hover:shadow-lg transition-all cursor-pointer group`}>
                 <div className={`w-12 h-12 bg-${category.color}-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
@@ -98,7 +101,6 @@ export default function MarketplacePage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-brand-dark mb-2">{category.name}</h3>
-                <p className="text-sm text-brand-slate">Explore prompts →</p>
               </div>
             ))}
           </div>
@@ -164,7 +166,7 @@ export default function MarketplacePage() {
                   <h3 className="text-2xl font-bold text-brand-dark">Standard Prompts</h3>
                 </div>
                 <p className="text-brand-slate mb-6">
-                  High-quality, community-vetted prompts available to all users. Perfect for everyday tasks and general use cases.
+                  High-quality, expert-vetted prompts available to all users. Perfect for everyday tasks and general use cases.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
@@ -177,7 +179,7 @@ export default function MarketplacePage() {
                     <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm text-brand-gray">Community curated</span>
+                    <span className="text-sm text-brand-gray">Expert crafted</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
