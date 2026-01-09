@@ -132,13 +132,13 @@ export default function FlowPage() {
         </div>
 
         {/* Available Actions */}
-        <div className="max-w-5xl mx-auto mb-20 animate-fade-in">
+        <div className="max-w-6xl mx-auto mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-brand-dark">Powerful Actions Built-In</h2>
             <p className="text-xl text-brand-slate">Execute common tasks without leaving the keyboard</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { 
                 name: 'Summarize Chat', 
@@ -171,9 +171,9 @@ export default function FlowPage() {
                 icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
               }
             ].map((action, index) => (
-              <div key={index} className="bg-white rounded-xl border border-brand-border p-5 hover:shadow-lg transition-all">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div key={index} className="bg-white rounded-xl border border-brand-border p-6 hover:shadow-lg transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={action.icon} />
                     </svg>
@@ -189,16 +189,16 @@ export default function FlowPage() {
         </div>
 
         {/* Keyboard-First Design */}
-        <div className="max-w-5xl mx-auto mb-20 animate-fade-in">
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-12 text-white">
-            <div className="text-center mb-12">
+        <div className="max-w-4xl mx-auto mb-20 animate-fade-in">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-10 text-white">
+            <div className="text-center mb-10">
               <h2 className="text-3xl font-bold mb-4">Designed for Keyboard Masters</h2>
               <p className="text-xl text-gray-300">Navigate everything without touching your mouse</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold mb-4 text-gray-300">Navigation</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold mb-3 text-gray-300">Navigation</h3>
                 <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
                   <span className="text-sm">Open Flow</span>
                   <div className="flex gap-1">
@@ -217,21 +217,21 @@ export default function FlowPage() {
                   <span className="text-sm">Move Up</span>
                   <kbd className="px-2 py-1 bg-gray-700 rounded text-xs">↑</kbd>
                 </div>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold mb-3 text-gray-300">Quick Actions</h3>
                 <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
                   <span className="text-sm">Select Item</span>
                   <kbd className="px-2 py-1 bg-gray-700 rounded text-xs">Enter</kbd>
                 </div>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold mb-4 text-gray-300">Quick Actions</h3>
-                <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
-                  <span className="text-sm">Close Flow</span>
-                  <kbd className="px-2 py-1 bg-gray-700 rounded text-xs">Esc</kbd>
-                </div>
                 <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
                   <span className="text-sm">Execute & Close</span>
                   <kbd className="px-2 py-1 bg-gray-700 rounded text-xs">Enter</kbd>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
+                  <span className="text-sm">Close Flow</span>
+                  <kbd className="px-2 py-1 bg-gray-700 rounded text-xs">Esc</kbd>
                 </div>
               </div>
             </div>
