@@ -44,9 +44,9 @@ export default function PromptLibraryPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-brand-dark">Unlimited Storage</h3>
+              <h3 className="text-2xl font-bold mb-4 text-brand-dark">Save All Your Prompts</h3>
               <p className="text-brand-slate leading-relaxed">
-                Save as many prompts as you need. From simple one-liners to complex multi-paragraph instructions, your entire prompt collection is stored securely and accessible instantly.
+                Never lose a great prompt again. From simple one-liners to complex multi-paragraph instructions, save everything you need in one organized place.
               </p>
             </div>
 
@@ -59,7 +59,7 @@ export default function PromptLibraryPage() {
               </div>
               <h3 className="text-2xl font-bold mb-4 text-brand-dark">Smart Organization</h3>
               <p className="text-brand-slate leading-relaxed">
-                Create unlimited folders to categorize your prompts by project, use case, or any system that works for you. Color-code folders for instant visual recognition.
+                Organize prompts with folders by project, use case, or any system that works for you. Find what you need instantly with visual organization.
               </p>
             </div>
 
@@ -72,7 +72,7 @@ export default function PromptLibraryPage() {
               </div>
               <h3 className="text-2xl font-bold mb-4 text-brand-dark">Lightning-Fast Search</h3>
               <p className="text-brand-slate leading-relaxed">
-                Find any prompt in milliseconds. Search by title, content, or tags. The more prompts you save, the more valuable your searchable knowledge base becomes.
+                Find any prompt in milliseconds. Search by title or content. The more prompts you save, the more valuable your searchable knowledge base becomes.
               </p>
             </div>
 
@@ -158,13 +158,13 @@ export default function PromptLibraryPage() {
                 <div className="flex-shrink-0">
                   <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-brand-dark mb-1">Flexible Tagging</h4>
-                  <p className="text-sm text-brand-slate">Add multiple tags to each prompt for cross-category organization and powerful filtering.</p>
+                  <h4 className="font-semibold text-brand-dark mb-1">Cloud Sync</h4>
+                  <p className="text-sm text-brand-slate">Access your prompts from any device. Automatically syncs across all your computers.</p>
                 </div>
               </div>
 
@@ -200,20 +200,6 @@ export default function PromptLibraryPage() {
                 <div className="flex-shrink-0">
                   <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-brand-dark mb-1">Privacy First</h4>
-                  <p className="text-sm text-brand-slate">Your prompts are encrypted and stored securely. Optional cloud sync means you control where your data lives.</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
@@ -221,6 +207,20 @@ export default function PromptLibraryPage() {
                 <div>
                   <h4 className="font-semibold text-brand-dark mb-1">Usage History</h4>
                   <p className="text-sm text-brand-slate">Track which prompts you use most often. Identify your MVPs and refine your workflow over time.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-1">Favorites System</h4>
+                  <p className="text-sm text-brand-slate">Star your most-used prompts for quick access. Favorites appear at the top for instant availability.</p>
                 </div>
               </div>
             </div>
