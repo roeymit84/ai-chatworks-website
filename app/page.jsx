@@ -468,7 +468,6 @@ export default function Home() {
   className="w-full"
 >
   <source src="/videos/ai-chatworks-demo.mp4" type="video/mp4" />
-  <source src="/videos/ai-chatworks-demo.webm" type="video/webm" />
   Your browser does not support the video tag.
 </video>
               </div>
