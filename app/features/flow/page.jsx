@@ -132,13 +132,13 @@ export default function FlowPage() {
         </div>
 
         {/* Available Actions */}
-        <div className="max-w-6xl mx-auto mb-20 animate-fade-in">
+        <div className="max-w-5xl mx-auto mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-brand-dark">Powerful Actions Built-In</h2>
             <p className="text-xl text-brand-slate">Execute common tasks without leaving the keyboard</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {[
               { 
                 name: 'Summarize Chat', 
@@ -171,9 +171,9 @@ export default function FlowPage() {
                 icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
               }
             ].map((action, index) => (
-              <div key={index} className="bg-white rounded-xl border border-brand-border p-6 hover:shadow-lg transition-all">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div key={index} className="bg-white rounded-xl border border-brand-border p-5 hover:shadow-lg transition-all">
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={action.icon} />
                     </svg>
