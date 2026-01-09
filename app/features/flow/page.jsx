@@ -272,31 +272,7 @@ export default function FlowPage() {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Experience the Speed of Flow
-            </h2>
-            <p className="text-xl mb-8 text-blue-100">
-              Install AI ChatWorks and press Cmd+Shift+F to unlock your productivity superpower.
-            </p>
-            <a 
-              href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all shadow-xl"
-            >
-              <svg className="w-6 h-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <ellipse cx="50" cy="50" rx="20" ry="20" style={{ fill: "#188FD1" }} />
-                <path d="M 8.5,26 A 48,48 0 0 1 91.5,26 L 62,29.5 A 24,24 0 0 0 26,50 z" style={{ fill: "#EA3939" }} />
-                <path d="M 50,98 A 48,48 0 0 1 8.5,26 L 26,50 A 24,24 0 0 0 62,70.5 z" style={{ fill: "#4AAE48" }} />
-                <path d="M 91.5,26 A 48,48 0 0 1 50,98 L 62,70.5 A 24,24 0 0 0 62,29.5 z" style={{ fill: "#FED14B" }} />
-              </svg>
-              Try Flow Now
-            </a>
-          </div>
-        </div>
+
       </main>
 
       <Footer />
