@@ -31,6 +31,25 @@ export default function MarketplacePage() {
           </p>
         </div>
 
+        {/* See it in Action - Video Section */}
+        <div className="max-w-5xl mx-auto mb-20 animate-fade-in">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-3 text-brand-dark">See it in Action</h2>
+            <p className="text-lg text-brand-slate">Discover how easy it is to browse and install expert prompts</p>
+          </div>
+          
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-border">
+            <video 
+              controls
+              className="w-full"
+              poster="/images/marketplace-thumbnail.jpg"
+            >
+              <source src="/videos/marketplace-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
         {/* Value Proposition Grid */}
         <div className="max-w-6xl mx-auto mb-20 animate-fade-in">
           <div className="grid md:grid-cols-3 gap-8">
