@@ -40,9 +40,11 @@ export default function MarketplacePage() {
           
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-border">
             <video 
-              controls
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full"
-              poster="/images/marketplace-thumbnail.jpg"
             >
               <source src="/videos/marketplace-demo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
