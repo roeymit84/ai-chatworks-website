@@ -189,36 +189,36 @@ export default function MarketplacePage() {
               </div>
 
               {/* Pro Tier */}
-              <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl p-8 text-white border-2 border-purple-400">
+              <div className="bg-white rounded-xl p-8 border border-gray-200">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold">Pro Prompts</h3>
+                  <h3 className="text-2xl font-bold text-brand-dark">Pro Prompts</h3>
                 </div>
-                <p className="text-purple-100 mb-6">
+                <p className="text-brand-slate mb-6">
                   Premium, expert-crafted prompts for advanced use cases. Tested extensively and optimized for maximum performance.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm">Pro tier subscription required</span>
+                    <span className="text-sm text-brand-gray">Pro tier subscription required</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm">Expert-level quality</span>
+                    <span className="text-sm text-brand-gray">Expert-level quality</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-sm">Advanced workflows included</span>
+                    <span className="text-sm text-brand-gray">Advanced workflows included</span>
                   </li>
                 </ul>
               </div>
@@ -226,31 +226,7 @@ export default function MarketplacePage() {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <div className="bg-gradient-to-r from-emerald-600 to-green-600 rounded-3xl p-12 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Start Using Expert Prompts Today
-            </h2>
-            <p className="text-xl mb-8 text-emerald-100">
-              Install AI ChatWorks and get instant access to hundreds of curated prompts.
-            </p>
-            <a 
-              href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-emerald-600 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all shadow-xl"
-            >
-              <svg className="w-6 h-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <ellipse cx="50" cy="50" rx="20" ry="20" style={{ fill: "#188FD1" }} />
-                <path d="M 8.5,26 A 48,48 0 0 1 91.5,26 L 62,29.5 A 24,24 0 0 0 26,50 z" style={{ fill: "#EA3939" }} />
-                <path d="M 50,98 A 48,48 0 0 1 8.5,26 L 26,50 A 24,24 0 0 0 62,70.5 z" style={{ fill: "#4AAE48" }} />
-                <path d="M 91.5,26 A 48,48 0 0 1 50,98 L 62,70.5 A 24,24 0 0 0 62,29.5 z" style={{ fill: "#FED14B" }} />
-              </svg>
-              Browse Marketplace
-            </a>
-          </div>
-        </div>
+
       </main>
 
       <Footer />
