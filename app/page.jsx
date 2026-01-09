@@ -461,12 +461,13 @@ export default function Home() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-border bg-black">
               <div className="relative aspect-video">
                <video 
-  autoPlay
-  loop
-  muted
-  playsInline
-  className="w-full"
->
+          controls
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full"
+        >
   <source src="/videos/ai-chatworks-demo.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
