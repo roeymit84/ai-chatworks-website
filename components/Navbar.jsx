@@ -16,11 +16,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-brand-purple to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-brand-purple/25 transition-all">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
+            <img 
+              alt="AI ChatWorks" 
+              loading="lazy" 
+              width="32" 
+              height="32" 
+              decoding="async" 
+              className="w-8 h-8" 
+              src="/images/AI_ChatWorks.svg"
+            />
             <span className="text-xl font-bold text-brand-dark">AI ChatWorks</span>
           </Link>
 
