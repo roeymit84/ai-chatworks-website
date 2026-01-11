@@ -172,16 +172,6 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-brand-dark mb-4">9. Legal Compliance</h2>
-              <p className="mb-2">This Privacy Policy is designed to comply with:</p>
-              <ul className="list-disc pl-6 space-y-2 mt-2">
-                <li><strong>GDPR</strong> (General Data Protection Regulation - EU)</li>
-                <li><strong>CCPA</strong> (California Consumer Privacy Act - US)</li>
-                <li><strong>Other applicable data protection laws</strong></li>
-              </ul>
-            </section>
-
-            <section>
               <h2 className="text-2xl font-bold text-brand-dark mb-4">10. Contact Us</h2>
               <p>If you have any questions about this Privacy Policy, please contact us at:</p>
               <p className="mt-4">
