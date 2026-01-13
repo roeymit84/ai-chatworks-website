@@ -168,7 +168,7 @@ export default function TermsPage() {
                 <li>Unauthorized access, use, or alteration of your transmissions or content;</li>
                 <li>Interruptions or errors in the Service caused by third-party providers (e.g., Supabase, AI platforms).</li>
               </ul>
-              <p>To the maximum extent permitted by law, our total liability to you for all claims arising out of or related to the Service shall not exceed the amount you paid us in the 12 months prior to the claim, or $100, whichever is greater.</p>
+              <p>To the maximum extent permitted by law, our total liability to you for all claims arising out of or related to the Service shall not exceed the amount you paid us in the 12 months prior to the claim, or maximum of fifty US dollars (U.S. $50), whichever is greater.</p>
             </section>
 
             <section>
