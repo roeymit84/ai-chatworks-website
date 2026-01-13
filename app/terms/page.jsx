@@ -80,17 +80,8 @@ export default function TermsPage() {
                   </ul>
                 </li>
                 <li><strong>Acceptance of Risks:</strong> By using Beta Features, you acknowledge and accept the risks of data loss, service interruptions, and feature changes inherent in pre-release software.</li>
-                  <strong>Service Discontinuation:</strong> We reserve the right to discontinue the Service entirely without transitioning to a paid production release.
-  <p>If we decide to terminate the platform, we will provide at least <strong>30 days' written notice</strong> via email to your registered email address.
-  </p>
-  <p>
-    During this notice period, you will have the opportunity to export your data via
-    <strong>Settings &gt; Cloud Data &gt; Export Data</strong>.
-    Upon termination, all cloud data will be permanently deleted in accordance with our data retention policy.
-  </p>
-  <p>
-    No compensation, refund, or alternative service will be provided.
-  </p>
+                <li><strong>Service Discontinuation:</strong> We reserve the right to discontinue the Service entirely without transitioning to a paid production release. If we decide to terminate the platform, we will provide at least <strong>30 days' written notice</strong> via email to your registered email address. During this notice period, you will have the opportunity to export your data via <strong>Settings &gt; Cloud Data &gt; Export Data</strong>. Upon termination, all cloud data will be permanently deleted in accordance with our data retention policy. No compensation, refund, or alternative service will be provided.</li>
+
               </ul>
             </section>
 
