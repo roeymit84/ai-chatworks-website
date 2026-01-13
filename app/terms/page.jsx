@@ -81,8 +81,7 @@ export default function TermsPage() {
                 </li>
                 <li><strong>Acceptance of Risks:</strong> By using Beta Features, you acknowledge and accept the risks of data loss, service interruptions, and feature changes inherent in pre-release software.</li>
                 <li><strong>Service Discontinuation:</strong> We reserve the right to discontinue the Service entirelywithout transitioning to a paid production release.<br>If we decide to terminate the platform, we will provide at least **30 days' written notice** via email to yourregistered email address.<br></> During this notice period, you will have the opportunity to export your data via Settings > Cloud Data > Export Data. Upon termination, all cloud data will be permanently deleted in accordance with our data retention policy. <br>
-No compensation, refund, or alternative service will be provided.
-</li>
+No compensation, refund, or alternative service will be provided.</li>
               </ul>
             </section>
 
