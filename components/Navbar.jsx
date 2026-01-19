@@ -137,7 +137,7 @@ export default function Navbar() {
           <div className="h-4 w-px bg-gray-200"></div>
           
           <a 
-            href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" 
+            href="https://chromewebstore.google.com/detail/defbmebondpdilmjcdnjpgindiljpohp" 
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2.5 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark shadow-lg shadow-brand-purple/25 transition-all"
@@ -232,7 +232,7 @@ export default function Navbar() {
             </Link>
             
             <a 
-              href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc" 
+              href="https://chromewebstore.google.com/detail/defbmebondpdilmjcdnjpgindiljpohp" 
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full px-5 py-3 bg-brand-purple text-white rounded-lg font-semibold hover:bg-brand-purpleDark shadow-lg transition-all mt-4"
