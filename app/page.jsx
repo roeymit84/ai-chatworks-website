@@ -585,7 +585,7 @@ export default function Home() {
                   <h3 className="text-2xl font-bold mb-2">Starter</h3>
                   <p className="text-brand-slate text-sm mb-6">Great for everyday AI workflows</p>
                   <div className="flex items-center justify-center gap-3 mb-3">
-                    <span className="text-4xl font-bold text-gray-300 line-through decoration-2">$4.99</span>
+                    <span className="text-4xl font-bold text-gray-300 line-through decoration-2">$6.99</span>
                     <span className="text-5xl font-bold text-brand-dark">$0</span>
                     <span className="text-brand-slate">/month</span>
                   </div>
