@@ -140,7 +140,7 @@ export default function BetaModal({ isOpen, onClose }) {
               Cancel
             </button>
             <a
-              href="https://chromewebstore.google.com/detail/ai-chatworks/legmkjenpjbcgmmifpdhehgbmbkofmmc"
+              href="https://chromewebstore.google.com/detail/defbmebondpdilmjcdnjpgindiljpohp"
               target="_blank"
               rel="noopener noreferrer"
               onClick={onClose}
